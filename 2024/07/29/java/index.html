@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="Ymnnb" />
+       
+      <meta name="description" content="Ymnnb Blog" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title> Ymnnb</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/1.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-java"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/java/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.172Z" itemprop="datePublished">2024-07-29</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.9k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">8 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="String类"><a href="#String类" class="headerlink" title="String类"></a>String类</h2><h3 id="1String类概述"><a href="#1String类概述" class="headerlink" title="1String类概述"></a>1String类概述</h3><p>​	String 类代表字符串，Java 程序中的所有字符串文字（例如“abc”）都被实现为此类的实例。也就是说，Java 程序中所有的双引号字符串，都是 String 类的对象。String 类在 java.lang 包下，所以使用的时候不需要导包！</p>
+<h3 id="2String类的特点"><a href="#2String类的特点" class="headerlink" title="2String类的特点"></a>2String类的特点</h3><ul>
+<li>字符串不可变，它们的值在创建后不能被更改</li>
+<li>虽然 String 的值是不可变的，但是它们可以被共享</li>
+<li>字符串效果上相当于字符数组( char[] )，但是底层原理是字节数组( byte[] )</li>
+</ul>
+<h3 id="3String类的构造方法"><a href="#3String类的构造方法" class="headerlink" title="3String类的构造方法"></a>3String类的构造方法</h3><ul>
+<li><p>常用的构造方法</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public   String()</td>
+<td>创建一个空白字符串对象，不含有任何内容</td>
+</tr>
+<tr>
+<td>public   String(char[] chs)</td>
+<td>根据字符数组的内容，来创建字符串对象</td>
+</tr>
+<tr>
+<td>public   String(byte[] bys)</td>
+<td>根据字节数组的内容，来创建字符串对象</td>
+</tr>
+<tr>
+<td>String s &#x3D;   “abc”;</td>
+<td>直接赋值的方式创建字符串对象，内容就是abc</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>示例代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StringDemo01</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//public String()：创建一个空白字符串对象，不含有任何内容</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>();</span><br><span class="line">        System.out.println(<span class="string">&quot;s1:&quot;</span> + s1);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//public String(char[] chs)：根据字符数组的内容，来创建字符串对象</span></span><br><span class="line">        <span class="type">char</span>[] chs = &#123;<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>&#125;;</span><br><span class="line">        <span class="type">String</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(chs);</span><br><span class="line">        System.out.println(<span class="string">&quot;s2:&quot;</span> + s2);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//public String(byte[] bys)：根据字节数组的内容，来创建字符串对象</span></span><br><span class="line">        <span class="type">byte</span>[] bys = &#123;<span class="number">97</span>, <span class="number">98</span>, <span class="number">99</span>&#125;;</span><br><span class="line">        <span class="type">String</span> <span class="variable">s3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(bys);</span><br><span class="line">        System.out.println(<span class="string">&quot;s3:&quot;</span> + s3);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//String s = “abc”;	直接赋值的方式创建字符串对象，内容就是abc</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">s4</span> <span class="operator">=</span> <span class="string">&quot;abc&quot;</span>;</span><br><span class="line">        System.out.println(<span class="string">&quot;s4:&quot;</span> + s4);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="4创建字符串对象两种方式的区别"><a href="#4创建字符串对象两种方式的区别" class="headerlink" title="4创建字符串对象两种方式的区别"></a>4创建字符串对象两种方式的区别</h3><ul>
+<li><p>通过构造方法创建</p>
+<p>​	通过 new 创建的字符串对象，每一次 new 都会申请一个内存空间，虽然内容相同，但是地址值不同</p>
+</li>
+<li><p>直接赋值方式创建</p>
+<p>​	以“”方式给出的字符串，只要字符序列相同(顺序和大小写)，无论在程序代码中出现几次，JVM 都只会建立一个 String 对象，并在字符串池中维护</p>
+</li>
+</ul>
+<h3 id="5字符串的比较"><a href="#5字符串的比较" class="headerlink" title="5字符串的比较"></a>5字符串的比较</h3><h4 id="5-1-号的作用"><a href="#5-1-号的作用" class="headerlink" title="5.1  &#x3D;&#x3D;号的作用"></a>5.1  &#x3D;&#x3D;号的作用</h4><ul>
+<li>比较基本数据类型：比较的是具体的值</li>
+<li>比较引用数据类型：比较的是对象地址值</li>
+</ul>
+<h4 id="5-2-equals方法的作用"><a href="#5-2-equals方法的作用" class="headerlink" title="5.2  equals方法的作用"></a>5.2  equals方法的作用</h4><ul>
+<li><p>方法介绍</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(String s)</span>     <span class="comment">//比较两个字符串内容是否相同、区分大小写</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="遍历字符串："><a href="#遍历字符串：" class="headerlink" title="遍历字符串："></a>遍历字符串：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">char</span> <span class="title function_">charAt</span><span class="params">(<span class="type">int</span> index)</span>      <span class="comment">//根据索引返回字符</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">length</span><span class="params">()</span>             <span class="comment">//返回此字符串的长度</span></span><br><span class="line">数组的长度：数组名.length</span><br><span class="line">字符串的长度: 字符串对象.length()</span><br></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//charAt()：会根据索引获取对应的字符</span></span><br><span class="line"><span class="comment">//length(): 会返回字符串的长度</span></span><br></pre></td></tr></table></figure>
+
+<p>fori :正着遍历      forr：倒着遍历</p>
+<h3 id="String内存模型："><a href="#String内存模型：" class="headerlink" title="String内存模型："></a>String内存模型：</h3><p>当使用双引号直接赋值时，系统会检查该字符串在串池中是否存在。</p>
+<p>不存在：创建新的     存在：复用</p>
+<p>eg：分别创建字符串s1、s2，并且用“abc”赋值，则它们指向的是同一个位置。</p>
+<h3 id="字符串截取"><a href="#字符串截取" class="headerlink" title="字符串截取"></a>字符串截取</h3><p>String substring（int beginIndex，int endIndex）截取</p>
+<p>注意点：包头不包尾，包左不包右；只有返回值才是截取的小串</p>
+<p>String substring（int beginIndex)  截取到末尾</p>
+<p>String replace (旧值，新值)  替换</p>
+<p>注意点：只有返回值才是替换之后的结果</p>
+<h2 id="3-StringBuilder"><a href="#3-StringBuilder" class="headerlink" title="3.StringBuilder"></a>3.StringBuilder</h2><p>StringBuilder 可以看成是一个容器，创建之后里面的内容是可变的。</p>
+<p>当我们在拼接字符串和反转字符串的时候会使用到</p>
+<h3 id="3-1-基本使用"><a href="#3-1-基本使用" class="headerlink" title="3.1 基本使用"></a>3.1 基本使用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StringBuilderDemo3</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//1.创建对象</span></span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.添加元素</span></span><br><span class="line">        <span class="comment">/*sb.append(1);</span></span><br><span class="line"><span class="comment">        sb.append(2.3);</span></span><br><span class="line"><span class="comment">        sb.append(true);*/</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//反转</span></span><br><span class="line">        sb.reverse();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取长度</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> sb.length();</span><br><span class="line">        System.out.println(len);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//打印</span></span><br><span class="line">        <span class="comment">//普及：</span></span><br><span class="line">        <span class="comment">//因为StringBuilder是Java已经写好的类</span></span><br><span class="line">        <span class="comment">//java在底层对他做了一些特殊处理。</span></span><br><span class="line">        <span class="comment">//打印对象不是地址值而是属性值。</span></span><br><span class="line">        System.out.println(sb);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-链式编程"><a href="#3-2-链式编程" class="headerlink" title="3.2 链式编程"></a>3.2 链式编程</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StringBuilderDemo4</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//1.创建对象</span></span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.添加字符串</span></span><br><span class="line">        sb.append(<span class="string">&quot;aaa&quot;</span>).append(<span class="string">&quot;bbb&quot;</span>).append(<span class="string">&quot;ccc&quot;</span>).append(<span class="string">&quot;ddd&quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(sb);<span class="comment">//aaabbbcccddd</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.再把StringBuilder变回字符串</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> sb.toString();</span><br><span class="line">        System.out.println(str);<span class="comment">//aaabbbcccddd</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-练习1：对称字符串"><a href="#3-3-练习1：对称字符串" class="headerlink" title="3.3 练习1：对称字符串"></a>3.3 练习1：对称字符串</h3><p>需求：</p>
+<p>​	键盘接受一个字符串，程序判断出该字符串是否是对称字符串，并在控制台打印是或不是</p>
+<pre><code>  对称字符串：123321、111
+  
+  非对称字符串：123123
+</code></pre>
+<p>代码示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StringBuilderDemo6</span> &#123;</span><br><span class="line">    <span class="comment">//使用StringBuilder的场景：</span></span><br><span class="line">    <span class="comment">//1.字符串的拼接</span></span><br><span class="line">    <span class="comment">//2.字符串的反转</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//1.键盘录入一个字符串</span></span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入一个字符串&quot;</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> sc.next();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.反转键盘录入的字符串</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>().append(str).reverse().toString();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.比较</span></span><br><span class="line">        <span class="keyword">if</span>(str.equals(result))&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;当前字符串是对称字符串&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;当前字符串不是对称字符串&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-4-练习2：拼接字符串"><a href="#3-4-练习2：拼接字符串" class="headerlink" title="3.4 练习2：拼接字符串"></a>3.4 练习2：拼接字符串</h3><p>需求：定义一个方法，把 int 数组中的数据按照指定的格式拼接成一个字符串返回。</p>
+<p>​          调用该方法，并在控制台输出结果。</p>
+<p>​          例如：数组为int[] arr &#x3D; {1,2,3}; </p>
+<p>​          执行方法后的输出结果为：[1, 2, 3]</p>
+<p>代码示例:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.itheima.stringbuilderdemo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StringBuilderDemo7</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//1.定义数组</span></span><br><span class="line">        <span class="type">int</span>[] arr = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.调用方法把数组变成字符串</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> arrToString(arr);</span><br><span class="line"></span><br><span class="line">        System.out.println(str);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">arrToString</span><span class="params">(<span class="type">int</span>[] arr)</span>&#123;</span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        sb.append(<span class="string">&quot;[&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(i == arr.length - <span class="number">1</span>)&#123;</span><br><span class="line">                sb.append(arr[i]);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                sb.append(arr[i]).append(<span class="string">&quot;, &quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        sb.append(<span class="string">&quot;]&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-StringJoiner"><a href="#4-StringJoiner" class="headerlink" title="4. StringJoiner"></a>4. StringJoiner</h2><ul>
+<li>StringJoiner跟StringBuilder一样，也可以看成是一个容器，创建之后里面的内容是可变的。</li>
+<li>作用：提高字符串的操作效率，而且代码编写特别简洁，但是目前市场上很少有人用。 </li>
+<li>JDK8出现的</li>
+</ul>
+<p>基本使用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.创建一个对象，并指定中间的间隔符号</span></span><br><span class="line"><span class="type">StringJoiner</span> <span class="variable">sj</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringJoiner</span>(<span class="string">&quot;---&quot;</span>);</span><br><span class="line"><span class="comment">//2.添加元素</span></span><br><span class="line">sj.add(<span class="string">&quot;aaa&quot;</span>).add(<span class="string">&quot;bbb&quot;</span>).add(<span class="string">&quot;ccc&quot;</span>);</span><br><span class="line"><span class="comment">//3.打印结果</span></span><br><span class="line">System.out.println(sj);<span class="comment">//aaa---bbb---ccc</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.创建对象</span></span><br><span class="line"><span class="type">StringJoiner</span> <span class="variable">sj</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringJoiner</span>(<span class="string">&quot;, &quot;</span>,<span class="string">&quot;[&quot;</span>,<span class="string">&quot;]&quot;</span>);</span><br><span class="line"><span class="comment">//2.添加元素</span></span><br><span class="line">sj.add(<span class="string">&quot;aaa&quot;</span>).add(<span class="string">&quot;bbb&quot;</span>).add(<span class="string">&quot;ccc&quot;</span>);</span><br><span class="line"><span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> sj.length();</span><br><span class="line">System.out.println(len);<span class="comment">//15</span></span><br><span class="line"><span class="comment">//3.打印</span></span><br><span class="line">System.out.println(sj);<span class="comment">//[aaa, bbb, ccc]</span></span><br><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> sj.toString();</span><br><span class="line">System.out.println(str);<span class="comment">//[aaa, bbb, ccc]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="关于字符串的小扩展："><a href="#关于字符串的小扩展：" class="headerlink" title="关于字符串的小扩展："></a>关于字符串的小扩展：</h2><ol>
+<li><p>字符串存储的内存原理</p>
+<p>String s &#x3D; “abc”；直接赋值</p>
+<p>特点：</p>
+<p>​	此时字符串abc是存在字符串常量池中的。</p>
+<p>​	先检查字符串常量池中有没有字符串abc，如果有，不会创建新的，而是直接复用。如果没有abc，才会创建一个新的。</p>
+<p>所以，直接赋值的方式，代码简单，而且节约内存。</p>
+</li>
+<li><p>new出来的字符串</p>
+<p>看到new关键字，一定是在堆里面开辟了一个小空间。</p>
+<p>String s1 &#x3D; new String（“abc”）；</p>
+<p>String s2 &#x3D; “abc”；</p>
+<p>s1记录的是new出来的，在堆里面的地址值。</p>
+<p>s2是直接赋值的，所以记录的是字符串常量池中的地址值。</p>
+</li>
+<li><p>&#x3D;&#x3D;号比较的到底是什么？</p>
+<p>如果比较的是基本数据类型：比的是具体的数值是否相等。</p>
+<p>如果比较的是引用数据类型：比的是地址值是否相等。</p>
+<p>结论：&#x3D;&#x3D;只能用于比较基本数据类型。不能比较引用数据类型。</p>
+</li>
+</ol>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/07/29/java/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2024/07/29/Mysql_Pro/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            (no title)
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2024/07/29/ipv4&ipv6/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title"></div>
+      </a>
+    
+  </nav>
+
+  
+   
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2024
+        <i class="ri-heart-fill heart_icon"></i> Ymnnb
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Ymnnb"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">hhh</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">搜索</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i></p>
+  <div class="reward-box">
+    
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

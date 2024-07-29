@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="Ymnnb" />
+       
+      <meta name="description" content="Ymnnb Blog" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title> Ymnnb</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/1.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-DHCP"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/DHCP/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.162Z" itemprop="datePublished">2024-07-29</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.9k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">12 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="DHCP协议原理"><a href="#DHCP协议原理" class="headerlink" title="DHCP协议原理"></a>DHCP协议原理</h1><h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>一个网络如果要正常地运行，则网络中的主机（Host）必需要知道某些重要的网络参数，如IP地址、网络掩码、网关地址、DNS服务器地址、网络打印机地址等等。显然，在每台主机上都采用手工方式来配置这些参数是非常困难的、或是根本不可能的。</p>
+<p>因此有了  动态主机配置协议 DHCP</p>
+<p>DHCP的应用，实现了网络参数配置过程的自动化。那么DHCP技术具体是如何实现的呢？面对网络规模的扩大，DHCP又是如何应对的？面对网络中的攻击， DHCP又是如何防护的呢？</p>
+<h2 id="DHCP工作流程："><a href="#DHCP工作流程：" class="headerlink" title="DHCP工作流程："></a>DHCP工作流程：</h2><h3 id="IP地址分配方式-："><a href="#IP地址分配方式-：" class="headerlink" title="IP地址分配方式 ："></a>IP地址分配方式 ：</h3><p>DHCP SERVER负责接收客户端的DHCP请求，集中管理所有客户机的IP地址设定资料，并负责处理客户端的DHCP请求，相比于BOOTP，DHCP通过“租约”来实现动态分配IP的功能，实现IP的时分复用，从而解决IP资源短缺的问题。</p>
+<p>其地址分配方式有如下三种</p>
+<p>·人工配置：由管理员对每台具体的计算机指定一个地址<br>·自动配置：服务器为第一次连接网络的计算机分配一个永久地址，DHCP客户端第一次成功地从DHCP服务器端分配到一个IP地址之后，就永远使用这个地址<br>·动态配置：在一定的期限内将地址租给计算机，客户端第一次从DHCP服务器分配到IP地址后，并非永久地使用该地址，每次使用完后，DHCP客户端就得释放这个IP地址，并且租期结束后客户必须续租或者停用该地址，而对于路由器，经常使用的地址分配方式是动态配置。</p>
+<h3 id="比较："><a href="#比较：" class="headerlink" title="比较："></a>比较：</h3><p>传统的手工配置网络参数需要每个用户都手动配置IP地址、掩码、网关、DNS等多个参数</p>
+<p>随着用户规模的扩大及用户位置的不固定性，传统的静态手工配置方式已经无法满足需求，为了实现网络可以动态合理地分配IP地址给主机使用，需要用到动态主机配置协议DHCP。<br>DHCP相对于静态手工配置有如下优点：效率高 灵活性强 易于管理</p>
+<h2 id="租约表"><a href="#租约表" class="headerlink" title="租约表"></a>租约表</h2><ul>
+<li>静态租约表：对应一个静态租约存储文件，server运行时从文件中读取静态租约表。</li>
+<li>动态租约表：对应一个周期存储文件，server周期性将租约表存进该文件，在程序开始时将会读取上次存放的租约表。（租约表记录了当前所有分配的租约，包括静态链接的）。</li>
+<li>DHCP服务器是一直处在被动接受请求的状态，当有客户端请求时，服务器会读取获得客户端当前所在的状态以及客户端的信息，并在静态租约表和动态租约表中进行检索找到相应的表项，再根据客户端的状态执行不同的回复。</li>
+<li>当收到客户端的首次请求时，DHCP服务器先查找静态租约表；若存在请求的表项，返回这个客户的静态IP地址；否则，从IP地址池中选择可用的IP分配给客户，并添加信息到动态数据库中。此外，服务器将会周期性的刷新租约表写入文件存档，在这个过程中会顺便对动态租约表进行租期检查。</li>
+</ul>
+<h2 id="DHCP工作流程：-1"><a href="#DHCP工作流程：-1" class="headerlink" title="DHCP工作流程："></a>DHCP工作流程：</h2><p>见ppt</p>
+<h1 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h1><h2 id="PC1通过dhcp-接口复制实现IP地址分配："><a href="#PC1通过dhcp-接口复制实现IP地址分配：" class="headerlink" title="PC1通过dhcp 接口复制实现IP地址分配："></a>PC1通过dhcp 接口复制实现IP地址分配：</h2><p><Huawei>sys<br>[Huawei]vlan bat 10 20 30	</p>
+<p>[Huawei]int e0&#x2F;0&#x2F;2<br>[Huawei-Ethernet0&#x2F;0&#x2F;2]port link-type access<br>[Huawei-Ethernet0&#x2F;0&#x2F;2]port default vlan 10</p>
+<p>[Huawei-Ethernet0&#x2F;0&#x2F;2]int e0&#x2F;0&#x2F;1<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port link-type access<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port default vlan 20</p>
+<p>[Huawei-Ethernet0&#x2F;0&#x2F;1]int e0&#x2F;0&#x2F;4<br>[Huawei-Ethernet0&#x2F;0&#x2F;4]port link-type access<br>[Huawei-Ethernet0&#x2F;0&#x2F;4]port default vlan 30<br>在LSW3创建3个vlan,分别进入端口2,1,4配置接口类型为access，配置上对应的vlan</p>
+<p>[Huawei-Ethernet0&#x2F;0&#x2F;4]int e0&#x2F;0&#x2F;3<br>[Huawei-Ethernet0&#x2F;0&#x2F;3]port link-type trunk 	<br>[Huawei-Ethernet0&#x2F;0&#x2F;3]port trunk allow-pass vlan 10 20 30<br>接口3配置trunk接口，允许vlan10,20,30通过</p>
+<p>路由器AR1接受10 20 30的流量通过，设置单臂路由的子接口<br>比如：<br>0.1:192.168.1.1&#x2F;24<br>0.2:192.168.2.1&#x2F;24<br>0.3:192.168.3.1&#x2F;24<br>三个子接口分别去接收3个vlan<br>[Huawei]int g0&#x2F;0&#x2F;0.1<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]dot1q termination vid 10<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]ip add 192.168.1.1 24<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]<br>May 13 2024 17:12:30-08:00 Huawei %%01IFNET&#x2F;4&#x2F;LINK_STATE(l)[0]:The line protocol<br> IP on the interface GigabitEthernet0&#x2F;0&#x2F;0.1 has entered the UP state.<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]arp broadcast enable </p>
+<p>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]int g0&#x2F;0&#x2F;0.2<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.2]dot1q termination vid 20<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.2]ip add 192.168.2.1 24<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.2]arp broadcast enable</p>
+<p>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.2]int g0&#x2F;0&#x2F;0.3<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.3]ip add 192.168.3.1 24<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.3]dot1q termination vid 30<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.3]arp broadcast enable</p>
+<p>打开路由器的DHCP功能<br>[Huawei]dhcp enable<br>[Huawei]int g0&#x2F;0&#x2F;0.1<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]dhcp select interface<br>这个命令代表了：当前接口下的客户端，会被分配到当前接口下的ip地址192.168.1.0网段的ip地址</p>
+<p>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]dhcp server dns-list 61.139.2.69<br>设置dns服务器，61.139.2.69是成都DNS服务器<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]dhcp server lease day 1<br>设置租约为1天</p>
+<p>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]dhcp server excluded-ip-address 192.168.1.2 192.1<br>68.1.254<br>设置预留地址（这里不知道啥意思）<br>Warning:Some of addresses not be excluded are not idle,or not in the pool.<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]dhcp server excluded-ip-address 192.168.1.2<br>Error:Only idle or expired IP address can be disabled.<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]dis th<br>[V200R003C00]<br>#<br>interface GigabitEthernet0&#x2F;0&#x2F;0.1<br> dot1q termination vid 10<br> ip address 192.168.1.1 255.255.255.0<br> arp broadcast enable<br> dhcp select interface<br> dhcp server excluded-ip-address 192.168.1.2 192.168.1.253<br> dhcp server dns-list 61.139.2.69<br>#<br>return<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]</p>
+<p>查看一下，设置pc1为DHCP，命令行输入ipconfig：<br>PC&gt;ipconfig</p>
+<p>Link local IPv6 address………..: fe80::5689:98ff:fee3:6d23<br>IPv6 address………………….: :: &#x2F; 128<br>IPv6 gateway………………….: ::<br>IPv4 address………………….: 192.168.1.254        （获取到了ip）<br>Subnet mask…………………..: 255.255.255.0<br>Gateway………………………: 192.168.1.1              （网关地址，路由器AR1的地址）<br>Physical address………………: 54-89-98-E3-6D-23<br>DNS server……………………:</p>
+<h2 id="PC2网段采用第二种方式实现DHCP功能："><a href="#PC2网段采用第二种方式实现DHCP功能：" class="headerlink" title="PC2网段采用第二种方式实现DHCP功能："></a>PC2网段采用第二种方式实现DHCP功能：</h2><p>地址池的方式获取ip地址<br>[Huawei]ip pool vlan20<br>Info: It’s successful to create an IP address pool.<br>[Huawei-ip-pool-vlan20]network 192.168.2.0 mask 24</p>
+<p>[Huawei-ip-pool-vlan20]excluded-ip-address 192.168.2.2<br>[Huawei-ip-pool-vlan20]excluded-ip-address 192.168.2.254<br>预留了两个地址<br>[Huawei-ip-pool-vlan20]gateway-list 192.168.2.1<br>配置网关<br>第一个模式是在接口下面配置的，会自动把接口的地址设置为网关地址<br>目前我们在系统视图里面，创建地址池，基于地址池，它不知道给谁应用，所以需要申明网关<br>[Huawei-ip-pool-vlan20]dns-list 2.2.2.2<br>[Huawei-ip-pool-vlan20]lease day 1<br>[Huawei-ip-pool-vlan20]q<br>[Huawei]int g0&#x2F;0&#x2F;0.2<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.2]dhcp select global<br>退出，在接口2下去引用刚刚的这个地址池<br>写了global后，会自动的去地址池里面寻找网段</p>
+<p>查看pc2：<br>PC&gt;ipconfig</p>
+<p>Link local IPv6 address………..: fe80::5689:98ff:fe38:5a85<br>IPv6 address………………….: :: &#x2F; 128<br>IPv6 gateway………………….: ::<br>IPv4 address………………….: 192.168.2.253<br>Subnet mask…………………..: 255.255.255.0<br>Gateway………………………: 192.168.2.1<br>Physical address………………: 54-89-98-38-5A-85<br>DNS server……………………: 2.2.2.2</p>
+<h2 id="PC3采用第三中中继方式获取IP地址："><a href="#PC3采用第三中中继方式获取IP地址：" class="headerlink" title="PC3采用第三中中继方式获取IP地址："></a>PC3采用第三中中继方式获取IP地址：</h2><p>路由器另一个接口连接”云”，云桥接vmnet 1<br>VMware虚拟机开启 windows server 2016服务器，网卡为vmnet1<br>服务器配置：<br>安装DHCP<br>配置到dhcp地址池 网段范围为 :192.168.4.0&#x2F;24</p>
+<p>增加PC3 连接至交换机的e0&#x2F;0&#x2F;4口，并将该接口加入vlan30<br>另外需要在交换机上行口允许vlan30流量通过<br>[Huawei]vlan 30<br>[Huawei-vlan30]int e0&#x2F;0&#x2F;4<br>[Huawei-Ethernet0&#x2F;0&#x2F;4]port link-type access 	<br>[Huawei-Ethernet0&#x2F;0&#x2F;4]port default vlan 30</p>
+<p>[Huawei-Ethernet0&#x2F;0&#x2F;4]int e0&#x2F;0&#x2F;3	<br>[Huawei-Ethernet0&#x2F;0&#x2F;3]port trunk allow-pass vlan 30</p>
+<p>路由器配置：<br>[Huawei]int g0&#x2F;0&#x2F;0.3<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.3]dot1q termination vid 30<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.3]ip add 192.168.4.254 255.255.255.0<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.3]arp broadcast enable<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.3]dhcp select relay<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.3]dhcp relay server-ip 192.168.3.1</p>
+<h2 id="DHCP面临的安全威胁："><a href="#DHCP面临的安全威胁：" class="headerlink" title="DHCP面临的安全威胁："></a>DHCP面临的安全威胁：</h2><p>​	网络攻击行为无处不在，针对DHCP的攻击行为也不例外。例如，某公司突然出现了大面积用户无法上网的情况，经检查用户终端均未获取到IP地址，且DHCP Server地址池中的地址已经全部被分配出去了，这种情况很有可能就是DHCP受到了饿死攻击而导致的。<br>​	DHCP在设计上未充分考虑到安全因素，从而留下了许多安全漏洞，使得DHCP很容易受到攻击。实际网络中，针对DHCP的攻击行为主要有以下三种：<br>1、DHCP饿死攻击<br>2、仿冒DHCP Server攻击<br>3、DHCP中间人攻击</p>
+<h3 id="DHCP饿死攻击"><a href="#DHCP饿死攻击" class="headerlink" title="DHCP饿死攻击"></a>DHCP饿死攻击</h3><p>攻击原理：攻击者持续大量地向DHCP Server申请IP地址，直到耗尽DHCP Server地址池中的IP地址，导致DHCP Server不能给正常的用户进行分配。<br>漏洞分析：DHCP Server向申请者分配IP地址时，无法区分正常的申请者与恶意的申请者。</p>
+<h3 id="DHCP中间人攻击"><a href="#DHCP中间人攻击" class="headerlink" title="DHCP中间人攻击"></a>DHCP中间人攻击</h3><p>攻击原理：攻击者利用ARP机制，让PC-A学习到IP-S与MAC-B的映射关系，又让Server学习到IP-A与MAC-B的映射关系。如此一来，PC-A与Server之间交互的IP报文都会经过攻击者中转。<br>漏洞分析：从本质上讲，中间人攻击是一种Spoofing IP&#x2F;MAC攻击，中间人利用了虚假的IP地址与MAC地址之间的映射关系来同时欺骗DHCP的客户端和服务器。</p>
+<h3 id="仿冒DHCP-Server攻击"><a href="#仿冒DHCP-Server攻击" class="headerlink" title="仿冒DHCP Server攻击"></a>仿冒DHCP Server攻击</h3><p>攻击原理：攻击者仿冒DHCP Server，向客户端分配错误的IP地址及提供错误的网关地址等参数，导致客户端无法正常访问网络。<br>漏洞分析：DHCP客户端接收到来自DHCP Server的DHCP消息后，无法区分这些DHCP消息是来自仿冒的DHCP Server，还是来自合法的DHCP Server。</p>
+<h2 id="DHCP-Snooping技术："><a href="#DHCP-Snooping技术：" class="headerlink" title="DHCP Snooping技术："></a>DHCP Snooping技术：</h2><p>为了增强网络安全，防止DHCP受到攻击，一种称为DHCP Snooping的技术应运而生。DHCP Snooping不是一种标准技术，尚未有统一的标准规范，不同的网络设备制造商在DHCP Snooping的实现上也不尽相同。<br>DHCP Snooping部署在交换机上，其作用类似于在DHCP客户端与DHCP服务器端之间构筑了一道虚拟的防火墙</p>
+<p>打开DHCP snooping功能：<br>[Huawei]dhcp enable<br>[Huawei]dhcp snooping enable<br>防御饿死攻击：<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]dhcp snooping check dhcp-chaddr enable<br>防御仿冒攻击：<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]dhcp snooping trusted<br>[Huawei-Ethernet0&#x2F;0&#x2F;4]undo dhcp snooping trusted 		&#x2F;&#x2F;设置非信任接口<br>防止中间人攻击：<br>[Huawei]arp dhcp-snooping-detect enable </p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/07/29/DHCP/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2024/07/29/ensp%E7%AE%80%E5%8D%95%E5%91%BD%E4%BB%A4/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            (no title)
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2024/07/29/CTF-ping/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title"></div>
+      </a>
+    
+  </nav>
+
+  
+   
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2024
+        <i class="ri-heart-fill heart_icon"></i> Ymnnb
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Ymnnb"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">hhh</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">搜索</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i></p>
+  <div class="reward-box">
+    
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

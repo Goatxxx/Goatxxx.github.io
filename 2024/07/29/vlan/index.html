@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="Ymnnb" />
+       
+      <meta name="description" content="Ymnnb Blog" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title> Ymnnb</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/1.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-vlan"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/vlan/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.185Z" itemprop="datePublished">2024-07-29</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3.3k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">11 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="什么是VLAN"><a href="#什么是VLAN" class="headerlink" title="什么是VLAN"></a>什么是VLAN</h1><p>VLAN（Virtual Local Area Network）即虚拟局域网，是将一个物理的LAN在逻辑上划分成多个广播域的通信技术。<br>每个VLAN是一个广播域，VLAN内的主机间可以直接通信，而VLAN间则不能直接互通。这样，广播报文就被限制在一个VLAN内。</p>
+<h2 id="为什么需要VLAN"><a href="#为什么需要VLAN" class="headerlink" title="为什么需要VLAN"></a>为什么需要VLAN</h2><p>早期以太网是一种基于CSMA&#x2F;CD（Carrier Sense Multiple Access&#x2F;Collision Detection）的共享通讯介质的数据网络通讯技术。当主机数目较多时会导致冲突严重、广播泛滥、性能显著下降甚至造成网络不可用等问题。通过二层设备实现LAN互连虽然可以解决冲突严重的问题，但仍然不能隔离广播报文和提升网络质量。</p>
+<p>在这种情况下出现了VLAN技术。这种技术可以把一个LAN划分成多个逻辑的VLAN，每个VLAN是一个广播域，VLAN内的主机间通信就和在一个LAN内一样，而VLAN间则不能直接互通，广播报文就被限制在一个VLAN内。如下图所示。</p>
+<p><img src="https://download.huawei.com/mdl/image/download?uuid=31e82e94f6c34998b68ca5c54def78dd" alt="VLAN的作用"><br><em>VLAN的作用</em></p>
+<p>因此，VLAN具备以下优点：</p>
+<ul>
+<li><strong>限制广播域</strong>：广播域被限制在一个VLAN内，节省了带宽，提高了网络处理能力。</li>
+<li><strong>增强局域网的安全性</strong>：不同VLAN内的报文在传输时相互隔离，即一个VLAN内的用户不能和其它VLAN内的用户直接通信。</li>
+<li><strong>提高了网络的健壮性</strong>：故障被限制在一个VLAN内，本VLAN内的故障不会影响其他VLAN的正常工作。</li>
+<li><strong>灵活构建虚拟工作组</strong>：用VLAN可以划分不同的用户到不同的工作组，同一工作组的用户也不必局限于某一固定的物理范围，网络构建和维护更方便灵活。</li>
+</ul>
+<h2 id="VLAN-vs-子网"><a href="#VLAN-vs-子网" class="headerlink" title="VLAN vs 子网"></a>VLAN vs 子网</h2><p>通过将IP地址的网络部分进一步划分为若干个子网，可以解决IP地址空间利用率低和两级IP地址不够灵活的问题。</p>
+<p>与VLAN相类似的是，子网也可以隔离主机间的通信。属于不同VLAN的主机之间不能直接通信，属于不同的子网的主机之间也不能直接通信。但二者没有必然的对应关系。</p>
+<p><img src="https://download.huawei.com/mdl/image/download?uuid=147da9864db1436982755b69d9355464" alt="VLAN vs 子网"><br><em>VLAN vs 子网</em></p>
+<h2 id="VLAN-Tag和VLAN-ID"><a href="#VLAN-Tag和VLAN-ID" class="headerlink" title="VLAN Tag和VLAN ID"></a>VLAN Tag和VLAN ID</h2><p>要使交换机能够分辨不同VLAN的报文，需要在报文中添加标识VLAN信息的字段。IEEE <a target="_blank" rel="noopener" href="https://info.support.huawei.com/info-finder/encyclopedia/zh/QinQ.html">802.1Q</a>协议规定，在以太网数据帧中加入4个字节的VLAN标签（又称VLAN Tag，简称Tag），用以标识VLAN信息。</p>
+<p><img src="https://download.huawei.com/mdl/image/download?uuid=6b7f04dbe20643d3a42fe55ad4eb6cef" alt="IEEE 802.1Q封装的VLAN数据帧格式"><br><em>IEEE 802.1Q封装的VLAN数据帧格式</em></p>
+<p>数据帧中的VID字段标识了该数据帧所属的VLAN，数据帧只能在其所属VLAN内进行传输。VID字段代表VLAN ID，VLAN ID取值范围是0～4095。由于0和4095为协议保留取值，所以VLAN ID的有效取值范围是1～4094。</p>
+<p>交换机内部处理的数据帧都带有VLAN标签。而交换机连接的部分设备（如用户主机、服务器）只会收发不带VLAN tag的传统以太网数据帧。因此，要与这些设备交互，就需要交换机的接口能够识别传统以太网数据帧，并在收发时给帧添加、剥除VLAN标签。添加什么VLAN标签，由接口上的缺省VLAN（Port Default VLAN ID，PVID）决定。</p>
+<h3 id="VLAN的接口类型和VLAN标签的处理机制"><a href="#VLAN的接口类型和VLAN标签的处理机制" class="headerlink" title="VLAN的接口类型和VLAN标签的处理机制"></a>VLAN的接口类型和VLAN标签的处理机制</h3><p>现网中属于同一个VLAN的用户可能会被连接在不同的交换机上，且跨越交换机的VLAN可能不止一个，如果需要用户间的互通，就需要交换机间的接口能够同时识别和发送多个VLAN的数据帧。根据接口连接对象以及对收发数据帧处理的不同，当前有VLAN的多种接口类型，以适应不同的连接和组网。</p>
+<p>不同厂商对VLAN接口类型的定义可能不同。对于华为设备来说，常见的VLAN接口类型有三种，包括：Access、Trunk和Hybrid。</p>
+<h3 id="接口类型"><a href="#接口类型" class="headerlink" title="接口类型"></a>接口类型</h3><p>根据接口连接对象以及对收发数据帧处理的不同，以太网接口分为：</p>
+<ul>
+<li><strong>Access接口</strong><br>Access接口一般用于和不能识别Tag的用户终端（如用户主机、服务器等）相连，或者不需要区分不同VLAN成员时使用。它只能收发Untagged帧，且只能为Untagged帧添加唯一VLAN的Tag。</li>
+<li><strong>Trunk接口</strong><br>Trunk接口一般用于连接交换机、路由器、AP以及可同时收发Tagged帧和Untagged帧的语音终端。它可以允许多个VLAN的帧带Tag通过，但只允许一个VLAN的帧从该类接口上发出时不带Tag（即剥除Tag）。</li>
+<li><strong>Hybrid接口</strong><br>Hybrid接口既可以用于连接不能识别Tag的用户终端（如用户主机、服务器等）和网络设备（如Hub），也可以用于连接交换机、路由器以及可同时收发Tagged帧和Untagged帧的语音终端、AP。它可以允许多个VLAN的帧带Tag通过，且允许从该类接口发出的帧根据需要配置某些VLAN的帧带Tag（即不剥除Tag）、某些VLAN的帧不带Tag（即剥除Tag）。</li>
+</ul>
+<h3 id="Access接口"><a href="#Access接口" class="headerlink" title="Access接口"></a>Access接口</h3><p>Access接口一般用于和不能识别Tag的用户终端（如用户主机、服务器）相连，或者不需要区分不同VLAN成员时使用。</p>
+<p>在一个VLAN交换网络中，以太网数据帧主要有以下两种形式：</p>
+<ul>
+<li>无标记帧（Untagged帧）：原始的、未加入4字节VLAN标签的帧。</li>
+<li>有标记帧（Tagged帧）：加入了4字节VLAN标签的帧。</li>
+</ul>
+<p>Access接口大部分情况只能收发Untagged帧，且只能为Untagged帧添加唯一VLAN的Tag。交换机内部只处理Tagged帧，所以Access接口需要给收到的数据帧添加VLAN Tag，也就必须配置缺省VLAN。配置缺省VLAN后，该Access接口也就加入了该VLAN。</p>
+<p>当Access接口收到带有Tag的帧，并且帧中VID与PVID相同时，Access接口也能接收并处理该帧。</p>
+<p>在发送带有Tag的帧前，Access接口会剥离Tag。</p>
+<h3 id="Trunk接口"><a href="#Trunk接口" class="headerlink" title="Trunk接口"></a>Trunk接口</h3><p>Trunk接口一般用于连接交换机、路由器、AP以及可同时收发Tagged帧和Untagged帧的语音终端。它可以允许多个VLAN的帧带Tag通过，但只允许属于缺省VLAN的帧从该类接口上发出时不带Tag（即剥除Tag）。</p>
+<p>Trunk接口上的缺省VLAN，有的厂商也将它定义为native VLAN。当Trunk接口收到Untagged帧时，会为Untagged帧打上Native VLAN对应的Tag。</p>
+<h3 id="Hybrid接口"><a href="#Hybrid接口" class="headerlink" title="Hybrid接口"></a>Hybrid接口</h3><p>Hybrid接口既可以用于连接不能识别Tag的用户终端（如用户主机、服务器）和网络设备（如Hub），也可以用于连接交换机、路由器以及可同时收发Tagged帧和Untagged帧的语音终端、AP。它可以允许多个VLAN的帧带Tag通过，且允许从该类接口发出的帧根据需要配置某些VLAN的帧带Tag（即不剥除Tag）、某些VLAN的帧不带Tag（即剥除Tag）。</p>
+<p>Hybrid接口和Trunk接口在很多应用场景下可以通用，但在某些应用场景下，必须使用Hybrid接口。比如在灵活<a target="_blank" rel="noopener" href="https://info.support.huawei.com/info-finder/encyclopedia/zh/QinQ.html">QinQ</a>中，服务提供商网络的多个VLAN的报文在进入用户网络前，需要剥离外层VLAN Tag，此时Trunk接口不能实现该功能，因为Trunk接口只能使该接口缺省VLAN的报文不带VLAN Tag通过。</p>
+<h3 id="网络互联三种端口区别"><a href="#网络互联三种端口区别" class="headerlink" title="网络互联三种端口区别"></a>网络互联三种端口区别</h3><h4 id="1-Access"><a href="#1-Access" class="headerlink" title="1.Access"></a>1.Access</h4><p><strong>Access端口：用于连接终端设备。</strong></p>
+<p><strong>Access类型的端口只能属于1个VLAN，一般用于连接计算机的端口；</strong></p>
+<p>Access接口只能属于一个VLAN，也就是只能传输一个VLAN数据。Access端口在从直连设备收到入站数据帧后，会判断这个数据帧是否携带VLAN标签，若不携带，则为数据帧插入本接口的PVID并进行下一步处理；若携带则判断数据帧的VLAN ID是否与本接口的PVID相同，若相同则进行下一步处理，若不同则丢弃。<br>Access端口在发送出站数据帧之前，会判断这个要被转发的数据帧中携带的VLAN ID是否与出站接口的PVID相同，若相同则去掉VLAN标签进行转发；若不同则丢弃。</p>
+<h4 id="2-Trunk"><a href="#2-Trunk" class="headerlink" title="2.Trunk"></a>2.Trunk</h4><p><strong>Trunk接口：用于连接交换机。</strong></p>
+<p><strong>Trunk类型的端口可以允许多个VLAN通过，可以接收和发送多个VLAN的报文，一般用于交换机之间连接的端口；</strong></p>
+<p>Trunk接口允许传输多个VLAN的数据。Trunk接口在从直连设备收到入站数据帧后，会判断这个数据帧是否携带VLAN标签，若不携带，则为数据帧插入本接口的PVID并进行下一步处理；若携带，则判断本接口是否允许传输这个数据帧的VLAN ID，若允许则进行下一步处理，否则丢弃。<br>Trunk接口在发送出站数据帧之前，会判断这个要被转发的数据帧中携带的VLAN ID是否与出站接口的PVID相同，若相同则去掉VLAN标签进行转发；若不同则判断本接口是否允许传输这个数据帧的VLAN ID，若允许则转发，否则丢弃。</p>
+<h4 id="3-Trunk与Hybrid的区别："><a href="#3-Trunk与Hybrid的区别：" class="headerlink" title="3.Trunk与Hybrid的区别："></a>3.Trunk与Hybrid的区别：</h4><p><strong>Hybrid类型的端口可以允许多个VLAN通过，可以接收和发送多个VLAN的报文，可以用于交换机之间连接，也可以用于连接用户的计算机。</strong></p>
+<p>收数据帧时是一致的。<br>发数据帧：Trunk接口只会摘除PVID标签。也就是说，当数据所属VLAN为该Trunk接口的缺省VLAN时，Trunk接口才会去掉VLAN标签进行转发；对于其他VLAN的数据，Trunk接口在转发时不会摘除响应的VLAN标签。而Hybrid接口能够以不携带VLAN标签的方式发送多个VLAN的数据。</p>
+<p>Hybrid端口和Trunk端口在接收数据时，处理方法是一样的，唯一不同之处在于发送数据时：Hybrid端口可以允许多个VLAN的报文发送时不打标签，而Trunk端口只允许缺省VLAN的报文发送时不打标签。</p>
+<h2 id="VLAN的使用场景"><a href="#VLAN的使用场景" class="headerlink" title="VLAN的使用场景"></a>VLAN的使用场景</h2><p>VLAN的常见使用场景包括：VLAN间用户的二层隔离，VLAN间用户的三层互访。</p>
+<h3 id="VLAN间用户的二层隔离"><a href="#VLAN间用户的二层隔离" class="headerlink" title="VLAN间用户的二层隔离"></a>VLAN间用户的二层隔离</h3><p>如下图所示，某商务楼内有多家公司，为了降低成本，多家公司共用网络资源，各公司分别连接到一台二层交换机的不同接口，并通过统一的出口访问Internet。</p>
+<p><img src="https://download.huawei.com/mdl/image/download?uuid=b07e3ea07ec04d3c806483ca06846958" alt="基于接口的VLAN划分组网图"></p>
+<p><em>基于接口的VLAN划分组网图</em></p>
+<p>为了保证各公司业务的独立和安全，可将每个公司所连接的接口划分到不同的VLAN，实现公司间业务数据的完全隔离。可以认为每个公司拥有独立的“<a target="_blank" rel="noopener" href="https://info.support.huawei.com/info-finder/encyclopedia/zh/%E8%99%9A%E6%8B%9F%E8%B7%AF%E7%94%B1%E5%99%A8.html">虚拟路由器</a>”，每个VLAN就是一个“虚拟工作组”。</p>
+<p>再比如，某公司有两个部门，分别分配了固定的IP网段。为加强员工间的学习与交流，员工的位置有时会相互调动，但公司希望各部门员工访问的网络资源的权限不变。</p>
+<p><img src="https://download.huawei.com/mdl/image/download?uuid=aac85511d6a440928478e7307d8614cd" alt="基于IP的VLAN划分组网图"></p>
+<p><em>基于IP的VLAN划分组网图</em></p>
+<p>为了保证部门内员工的位置调整后，访问网络资源的权限不变，可在公司的交换机Switch_1上配置基于IP子网划分VLAN。这样，服务器的不同网段就划分到不同的VLAN，访问服务器不同应用服务的数据流就会隔离，提高了安全性。</p>
+<h3 id="VLAN间用户的三层互访"><a href="#VLAN间用户的三层互访" class="headerlink" title="VLAN间用户的三层互访"></a>VLAN间用户的三层互访</h3><p>如下图所示，某小型公司的两个部门分别通过二层交换机接入到一台三层交换机Switch_3，所属VLAN分别为VLAN2和VLAN3，部门1和部门2的用户互通时，需要经过三层交换机。</p>
+<p><img src="https://download.huawei.com/mdl/image/download?uuid=35ceb2d067304310b72c1cdf5f445b82" alt="通过VLANIF实现VLAN间用户的三层互访"><br><em>通过VLANIF实现VLAN间用户的三层互访</em></p>
+<p>可在Switch_1和Switch_2上划分VLAN并将VLAN透传到Switch_3上，然后在Switch_3上为每个VLAN配置一个VLANIF接口，实现VLAN2和VLAN3间的路由。</p>
+<h2 id="VLAN的相关协议"><a href="#VLAN的相关协议" class="headerlink" title="VLAN的相关协议"></a>VLAN的相关协议</h2><h3 id="IEEE-802-1Q"><a href="#IEEE-802-1Q" class="headerlink" title="IEEE 802.1Q"></a>IEEE 802.1Q</h3><p>IEEE <a target="_blank" rel="noopener" href="https://info.support.huawei.com/info-finder/encyclopedia/zh/QinQ.html">802.1Q</a>（也被称为<a target="_blank" rel="noopener" href="https://info.support.huawei.com/info-finder/encyclopedia/zh/QinQ.html">Dot1q</a>）即Virtual Bridged Local Area Networks协议，规定了VLAN的实现标准。与标准的以太网数据帧相比，VLAN数据帧增加了1个4字节的VLAN标签。</p>
+<h3 id="LNP"><a href="#LNP" class="headerlink" title="LNP"></a>LNP</h3><p>链路类型协商协议（Link-type Negotiation Protocol，LNP）用来动态协商以太网接口的链路类型为Access或者Trunk。</p>
+<ul>
+<li>以太网接口的链路类型协商为Access，缺省情况下加入VLAN1。</li>
+<li>以太网接口的链路类型协商为Trunk，缺省情况下加入VLAN1～4094。</li>
+</ul>
+<h3 id="QinQ"><a href="#QinQ" class="headerlink" title="QinQ"></a>QinQ</h3><p><a target="_blank" rel="noopener" href="https://info.support.huawei.com/info-finder/encyclopedia/zh/QinQ.html">QinQ</a>（802.1Q-in-802.1Q）协议出自<a target="_blank" rel="noopener" href="https://info.support.huawei.com/info-finder/encyclopedia/zh/QinQ.html">IEEE 802.1ad</a>标准协议，通过在802.1Q标签报文的基础上再增加一层802.1Q的Tag来达到扩展VLAN空间的功能，可以使私网VLAN透传公网。</p>
+<p>由于在骨干网中传递的报文有两层802.1Q Tag（一层公网Tag，一层私网Tag），即802.1Q-in-802.1Q，所以称之为QinQ协议。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/07/29/vlan/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2024/07/29/VRRP/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            (no title)
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2024/07/29/sql%E6%B3%A8%E5%85%A5%E8%8D%89%E7%A8%BF/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title"></div>
+      </a>
+    
+  </nav>
+
+  
+   
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2024
+        <i class="ri-heart-fill heart_icon"></i> Ymnnb
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Ymnnb"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">hhh</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">搜索</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i></p>
+  <div class="reward-box">
+    
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

@@ -15,7 +15,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>aaa |  Ymnnb</title>
+      <title> Ymnnb</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/1.ico" />
@@ -57,27 +57,58 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="page-"
-  class="article article-type-page"
+  id="post-hybrid"
+  class="article article-type-post"
   itemscope
   itemprop="blogPost"
   data-scroll-reveal
 >
   <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  aaa
-</h1>
- 
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/hybrid/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.169Z" itemprop="datePublished">2024-07-29</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">733</span>
+        </span>
+    </span>
 
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">3 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
       
-    </header>
-       
+
+
+
+  
     <div class="article-entry" itemprop="articleBody">
        
-   
+  <p>[Huawei]vlan bat 10 20		&#x2F;&#x2F;批量创建10、20<br>#[Huawei]vlan bat 10 to 20	&#x2F;&#x2F;批量创建10-20<br>#[Huawei]vlan 10			&#x2F;&#x2F;只创建vlan 10<br>#[Huawei-vlan10]description caiwubu		&#x2F;&#x2F;给vlan备注说明信息<br>[Huawei]int e0&#x2F;0&#x2F;1<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port link-type hybrid 	&#x2F;&#x2F;指定接口类型为hybrid<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port hybrid pvid vlan 10	&#x2F;&#x2F;将当前接口加入vlan10</p>
+<p>[Huawei]int e0&#x2F;0&#x2F;2<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port link-type hybrid 	<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port hybrid pvid vlan 10	</p>
+<p>[Huawei]int e0&#x2F;0&#x2F;3<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port link-type hybrid 	<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port hybrid pvid vlan 20	</p>
+<p>[Huawei-Ethernet0&#x2F;0&#x2F;2]port hybrid untagged vlan 10  &#x2F;&#x2F;脱标签<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port hybrid untagged vlan 10  &#x2F;&#x2F;回去也要有脱标签，这样pc1和pc2才能通信</p>
+<p>实现PC1，PC2和服务器1通信：<br>如果数据直接从LSW1发送，没有标签，那么LSW2接收到数据后，判断没有标签，会给数据打上默认的1pvid标签，发送的时候untag1，但是发往PC4和PC5都有untag1，不合理，所以我们在发送的时候采用tag，LSW1和LSW2的tag表都要包含10，因为PC收到的都是没有标签的流量，所以LSW2往下发的时候需要一个untag10。<br>（LSW之间配untag或者tag都可以实现，但是tag好一点）</p>
+<p>[Huawei]int e0&#x2F;0&#x2F;4<br>[Huawei-Ethernet0&#x2F;0&#x2F;4]port link-type hybrid<br>[Huawei-Ethernet0&#x2F;0&#x2F;4]port hybrid tagged vlan 10  &#x2F;&#x2F;给LSW1的接口配上tag 10</p>
+<p>[Huawei]int e0&#x2F;0&#x2F;1<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port link-ty	<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port link-type hybrid<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port hybrid tagged vlan 10  &#x2F;&#x2F;给LSW2的接口配上tag 10</p>
+<p>[Huawei]int e0&#x2F;0&#x2F;2<br>[Huawei-Ethernet0&#x2F;0&#x2F;2]port link-type hybrid<br>[Huawei-Ethernet0&#x2F;0&#x2F;2]port hybrid untagged vlan 10  &#x2F;&#x2F;流量从下来的时候需要脱标签，untag</p>
+<p>当PC4返回数据时，经过LSW2，LSW1，所以需要在这两个上面加上tag 30<br>到达LSW1后，发往PC1，流量标签为30，所以需要在LSW1到PC1的接口上面加上untag 30</p>
+<p>但此时任然无法通信，为什么<br>我们查看LSW2的vlan（命令：dis vlan），只有vlan1 30 40，没有vlan10，说明看不到PC1的vlan10<br>我们需要添加上对应的vlan<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]vlan 10<br>[Huawei-vlan10]vlan 20<br>[Huawei-vlan20]</p>
+<p>此时还是还是不能ping，为什么？？<br>配置注意事项：<br>1.所有互联交换机必须要创建对方交换机的所有vlan编号<br>2.为交换机接口指定了非PVID1的编号，一定要将该编号加入该接口的untag列表或者tag列表中</p>
+<p>给LSW1的4接口配上tag20和40标签<br>[Huawei-Ethernet0&#x2F;0&#x2F;4]port hybrid tagged vlan 20<br>[Huawei-Ethernet0&#x2F;0&#x2F;4]port hybrid tagged vlan 40<br>LSW2同操作<br>PC2的流量发过来后，带有标签20，所以LSW2的3接口配上untag 20<br>同理，PC3的流量发过来后，带有标签40，所以LSW2的3接口配上untag 40</p>
+ 
       <!-- reward -->
       
     </div>
@@ -141,7 +172,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/aaa/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/07/29/hybrid/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -150,9 +181,37 @@
   </div>
 
    
+  <nav class="article-nav">
+    
+      <a href="/2024/07/29/ipv4&ipv6/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            (no title)
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2024/07/29/eval%E4%B8%80%E9%81%93%E7%AE%80%E5%8D%95%E9%A2%98/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title"></div>
+      </a>
+    
+  </nav>
+
   
    
   
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
 </article>
 
 </section>
@@ -283,6 +342,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link

