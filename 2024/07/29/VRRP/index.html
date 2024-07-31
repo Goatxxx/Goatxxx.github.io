@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="Ymnnb" />
+       
+      <meta name="description" content="Ymnnb Blog" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title> Ymnnb</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/1.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-VRRP"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/VRRP/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.187Z" itemprop="datePublished">2024-07-29</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3.3k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">11 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="虚拟路由冗余协议-VRRP"><a href="#虚拟路由冗余协议-VRRP" class="headerlink" title="虚拟路由冗余协议(VRRP)"></a><strong>虚拟路由冗余协议(VRRP)</strong></h1><h2 id="VRRP简介："><a href="#VRRP简介：" class="headerlink" title="VRRP简介："></a>VRRP简介：</h2><h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><p>虚拟路由冗余协议<strong>VRRP</strong>（Virtual Router Redundancy Protocol）通过把几台路由设备联合组成一台虚拟的路由设备，将虚拟路由设备的IP地址作为用户的默认网关实现与外部网络通信。当网关设备发生故障时，VRRP机制能够选举新的网关设备承担数据流量，从而保障网络的可靠通信。</p>
+<h3 id="目的："><a href="#目的：" class="headerlink" title="目的："></a>目的：</h3><p>VRRP能够在不改变组网的情况下，采用将多台路由设备组成一个虚拟路由器，通过配置虚拟路由器的IP地址为默认网关，实现默认网关的备份。当网关设备发生故障时，VRRP机制能够选举新的网关设备承担数据流量，从而保障网络的可靠通信。</p>
+<h3 id="收益："><a href="#收益：" class="headerlink" title="收益："></a>收益：</h3><p>在具有多播或广播能力的局域网（如以太网）中，借助VRRP能在网关设备出现故障时仍然提供高可靠的缺省链路，无需修改主机及网关设备的配置信息便可有效避免单一链路发生故障后的网络中断问题。</p>
+<h2 id="VRRP原理描述"><a href="#VRRP原理描述" class="headerlink" title="VRRP原理描述"></a>VRRP原理描述</h2><h3 id="VRRP概述："><a href="#VRRP概述：" class="headerlink" title="VRRP概述："></a><strong>VRRP概述：</strong></h3><p>​	•<strong>VRRP路由器</strong>：运行VRRP协议的设备，它可能属于一个或多个虚拟路由器。</p>
+<p>​	•<strong>虚拟路由器</strong>：又称VRRP备份组，由一个Master设备和多个Backup设备组成，被当作一个共享局域网内主机的缺省网关。</p>
+<p>​	•<strong>Master路由器</strong>：承担转发报文任务的VRRP设备。</p>
+<p>​	•<strong>Backup路由器</strong>：一组没有担转发任务的VRRP设备，当Master设备出现故障时，它们将通过竞选成为新的Master设备。</p>
+<p>​	•<strong>VRID</strong>：虚拟路由器的标识。</p>
+<p>​	•<strong>虚拟IP地址</strong>：虚拟路由器的IP地址，一个虚拟路由器可以有一个或多个IP地址，由用户配置。</p>
+<p>​	•<strong>IP地址拥有者</strong>：如果一个VRRP设备将虚拟路由器IP地址作为真实的接口地址，则该设备被称为IP地址拥有者。如果IP地址拥有者是可用的，通常它将成为Master。</p>
+<p>​	•<strong>虚拟MAC地址</strong>：虚拟路由器根据虚拟路由器ID生成的MAC地址。一个虚拟路由器拥有一个虚拟MAC地址，格式为：00-00-5E-00-01-{VRID}(VRRP for IPv4)；00-00-5E-00-02-{VRID}(VRRP for IPv6)。当虚拟路由器回应ARP请求时，使用虚拟MAC地址，而不是接口的真实MAC地址。</p>
+<h3 id="VRRP报文："><a href="#VRRP报文：" class="headerlink" title="VRRP报文："></a>VRRP报文：</h3><p><strong>VRRP协议报文用来将Master设备的优先级和状态通告给同一备份组的所有Backup设备。</strong></p>
+<p>VRRP协议报文封装在IP报文中，发送到分配给VRRP的IP组播地址。在IP报文头中，源地址为发送报文接口的主IP地址（不是虚拟IP地址），目的地址是224.0.0.18，TTL是255，协议号是112。</p>
+<p>VRRP报文的IP头中，TTL必须为255。当VRRP路由器收到TTL不等于255的VRRP协议报文后，必须丢弃。</p>
+<p>主IP地址：从接口的真实IP地址中选出来的一个主用IP地址，通常选择配置的第一个IP地址。</p>
+<p>目前，VRRP协议包括两个版本：VRRPv2和VRRPv3。VRRPv2仅适用于IPv4网络，VRRPv3适用于IPv4和IPv6两种网络。</p>
+<p>基于不同的网络类型，VRRP可以分为VRRP for IPv4和VRRP for IPv6（简称VRRP6）。VRRP for IPv4支持VRRPv2和VRRPv3，而VRRP for IPv6仅支持VRRPv3。</p>
+<h4 id="VRRP报文结构："><a href="#VRRP报文结构：" class="headerlink" title="VRRP报文结构："></a>VRRP报文结构：</h4><p>VRRPv2报文结构</p>
+<p><img src="/assets/70-17167920496906.png"></p>
+<p>VRRPv3报文结构</p>
+<p><img src="/assets/70-17167920916999.png"></p>
+<h4 id="字段解释："><a href="#字段解释：" class="headerlink" title="字段解释："></a>字段解释：</h4><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>长度</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Version</td>
+<td>4比特</td>
+<td>指VRRP协议版本，VRRPv2此字段为2，VRRPv3此字段为3。</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>4比特</td>
+<td>定义了VRRP报文的类型。本版本的协议仅定义了一个报文类型：1：ADVERTISEMENT 带有未知类型的报文必须被丢弃。</td>
+</tr>
+<tr>
+<td>Virtual Rtr ID8</td>
+<td>8比特</td>
+<td>虚拟路由器标识（VRID）字段标识了此报文所报告状态的虚拟路由器。可配置的范围是1–255。没有缺省值。</td>
+</tr>
+<tr>
+<td>Priority</td>
+<td>8比特</td>
+<td>Priority字段申明了发送此报文的VRRP路由器的优先级。值越高优先级越高。该字段为8位无符号整型。如果VRRP路由器是虚拟路由器地址的IP地址所有者，那么其优先级必须为255。起备用作用的VRRP路由器的优先级必须在1–254之间。缺省的VRRP路由器优先级为100。优先级值0用于指示当前虚拟路由器的主路由器停止参与VRRP组。主要用于触发备用路由器快速地迁移到主路由器，而不用等待当前主路由器超时。</td>
+</tr>
+<tr>
+<td>Count IP Addrs</td>
+<td>8比特</td>
+<td>在此VRRP通告中包含的IP地址的数量。</td>
+</tr>
+<tr>
+<td>Auth Type</td>
+<td>8比特</td>
+<td>认证类型字段用于标识要用到的认证方法。在一个虚拟路由器组内认证类型是唯一的。认证类型字段是一个8位无符号整型。如果报文携带未知的认证类型或者该认证类型和本地配置的认证方法不匹配，那么该报文必须被丢弃。目前定义的认证方法有：0 : No Authentication 不认证该认证类型表明VRRP协议报文的交换不需要认证。在发送VRRP协议报文时，Authentication Data 字段将被置为0；而在接收协议报文时，Authentication Data 字段被忽略。 1 : Simple Text Password，表示明文认证方式。2: IP Authentication Header，表示MD5认证方式。</td>
+</tr>
+<tr>
+<td>Adver Int</td>
+<td>8比特</td>
+<td>VRRP通告间隔时间，单位为秒。缺省为1秒。这个字段主要用于错误配置路由器时的故障定位和解决。</td>
+</tr>
+<tr>
+<td>Checksum</td>
+<td>16比特</td>
+<td>16位校验和，用于检测VRRP报文中的数据破坏情况。</td>
+</tr>
+<tr>
+<td>IP Address</td>
+<td>32比特</td>
+<td>VRRP备份组的虚拟IPv4地址 或者虚拟IPv6地址</td>
+</tr>
+<tr>
+<td>Authentication Data</td>
+<td>32比特</td>
+<td>VRRP报文的认证字。目前只有明文认证和MD5认证才用到该部分，对于其它认证方式，一律填0。</td>
+</tr>
+</tbody></table>
+<h4 id="VRRP报文主要区别："><a href="#VRRP报文主要区别：" class="headerlink" title="VRRP报文主要区别："></a>VRRP报文主要区别：</h4><p>​	•支持的网络类型不同。VRRPv3适用于IPv4和IPv6两种网络，而VRRPv2仅适用于IPv4网络。</p>
+<p>​	•认证功能不同。VRRPv3不支持认证功能，而VRRPv2支持认证功能。</p>
+<p>​	•VRRPv2版本保留报文的认证字段，是为了兼容早期版本（RFC2338），VRRP认证并不能提高安全性。</p>
+<p>​	•发送通告报文的时间间隔的单位不同。VRRPv3支持的是厘秒级，而VRRPv2支持的是秒级。</p>
+<h4 id="VRRP认证："><a href="#VRRP认证：" class="headerlink" title="VRRP认证："></a>VRRP认证：</h4><p>​	•无认证方式：设备对要发送的VRRP通告报文不进行任何认证处理，收到通告报文的设备也不进行任何认证，认为收到的都是真实的、合法的VRRP报文。<br>​	•简单字符（Simple）认证方式：发送VRRP通告报文的设备将认证方式和认证字填充到通告报文中，而收到通告报文的设备则会将报文中的认证方式和认证字与本端配置的认证方式和认证字进行匹配。如果相同，则认为接收到的报文是合法的VRRP通告报文；否则认为接收到的报文是一个非法报文，并丢弃这个报文。<br>​	•MD5认证方式：发送VRRP通告报文的设备利用MD5算法对认证字进行加密，加密后保存在Authentication Data字段中。收到通告报文的设备会对报文中的认证方式和解密后的认证字进行匹配，检查该报文的合法性。</p>
+<h4 id="VRRP工作原理："><a href="#VRRP工作原理：" class="headerlink" title="VRRP工作原理："></a><strong>VRRP工作原理：</strong></h4><p><strong>VRRP状态机：</strong></p>
+<p>VRRP协议中定义了三种状态机：</p>
+<p>初始状态（Initialize）、活动状态（Master）、备份状态（Backup）。其中，只有处于Master状态的设备才可以转发那些发送到虚拟IP地址的报文。</p>
+<p><strong>Initialize：</strong><br>    •该状态为VRRP不可用状态，在此状态时设备不会对VRRP报文做任何处理。<br>    •通常刚配置VRRP时或设备检测到故障时会进Initialize状态。<br>    •收到接口Up的消息后，如果设备的优先级为255，则直接成为Master设备；如果设备的优先级小于255，则会先切换至Backup状态。</p>
+<p><strong>Masster：</strong><br>当VRRP设备处于Master状态时，它将会做下列工作：</p>
+<p>​	•定时（Advertisement Interval）发送VRRP通告报文。<br>​	•以虚拟MAC地址响应对虚拟IP地址的ARP请求。<br>​	•转发目的MAC地址为虚拟MAC地址的IP报文。<br>​	•如果它是这个虚拟IP地址的拥有者，则接收目的IP地址为这个虚拟IP地址的IP报文。否则，丢弃这个IP报文。<br>​	•如果收到比自己优先级大的报文，立即成为Backup。<br>​	•如果收到与自己优先级相等的VRRP报文且本地接口IP地址小于对端接口IP，立即成为Backup。</p>
+<p><strong>Backup：</strong><br>    •当VRRP设备处于Backup状态时，它将会做下列工作：</p>
+<p>​	•接收Master设备发送的VRRP通告报文，判断Master设备的状态是否正常。</p>
+<p>​	•对虚拟IP地址的ARP请求，不做响应。</p>
+<p>​	•丢弃目的IP地址为虚拟IP地址的IP报文。</p>
+<p>​	•如果收到优先级和自己相同或者比自己大的报文，则重置Master_Down_Interval定时器，不进一步比较IP地址。</p>
+<p>​	•如果收到比自己优先级小的报文且该报文优先级是0时，定时器时间设置为Skew_time（偏移时间），如果该报文优先级不是0，丢弃报文，立刻成为Master。</p>
+<h4 id="VRRP的工作过程："><a href="#VRRP的工作过程：" class="headerlink" title="VRRP的工作过程："></a><strong>VRRP的工作过程：</strong></h4><p>​	1.VRRP备份组中的设备根据优先级选举出Master。Master设备通过发送免费ARP报文，将虚拟MAC地址通知给与它连接的设备或者主机，从而承担报文转发任务。<br>​	2.Master设备周期性向备份组内所有Backup设备发送VRRP通告报文，以公布其配置信息（优先级等）和工作状况。<br>​	3.如果Master设备出现故障，VRRP备份组中的Backup设备将根据优先级重新选举新的Master。<br>​	4.VRRP备份组状态切换时，Master设备由一台设备切换为另外一台设备，新的Master设备会立即发送携带虚拟路由器的虚拟MAC地址和虚拟IP地址信息的免费ARP报文，刷新与它连接的主机或设备中的MAC表项，从而把用户流量引到新的Master设备上来，整个过程对用户完全透明。<br>​	5.原Master设备故障恢复时，若该设备为IP地址拥有者（优先级为255），将直接切换至Master状态。若该设备优先级小于255，将首先切换至Backup状态，且其优先级恢复为故障前配置的优先级。<br>​	6.Backup设备的优先级高于Master设备时，由Backup设备的工作方式（抢占方式和非抢占方式）决定是否重新选举Master。<br>​		•抢占模式：在抢占模式下，如果Backup设备的优先级比当前Master设备的优先级高，则主动将自己切换成Master。<br>​		•非抢占模式：在非抢占模式下，只要Master设备没有出现故障，Backup设备即使随后被配置了更高的优先级也不会成为Master设备。</p>
+<h4 id="Master设备的选举："><a href="#Master设备的选举：" class="headerlink" title="Master设备的选举："></a><strong>Master设备的选举：</strong></h4><p>VRRP根据优先级来确定虚拟路由器中每台设备的角色（Master设备或Backup设备）。优先级越高，则越有可能成为Master设备。</p>
+<p>​	•如果VRRP报文中Master设备的优先级高于或等于自己的优先级，则Backup设备保持Backup状态。<br>​	•如果VRRP报文中Master设备的优先级低于自己的优先级，采用抢占方式的Backup设备将切换至Master状态，采用非抢占方式的Backup设备仍保持Backup状态。<br>​	•如果多个VRRP设备同时切换到Master状态，通过VRRP通告报文的交互进行协商后，优先级较低的VRRP设备将切换成Backup状态，优先级最高的VRRP设备成为最终的Master设备；优先级相同时，VRRP设备上VRRP备份组所在接口主IP地址较大的成为Master设备。<br>​	•如果创建的VRRP设备为IP地址拥有者，收到接口Up的消息后，将会直接切换至Master状态。</p>
+<h4 id="VRRP负载分担："><a href="#VRRP负载分担：" class="headerlink" title="VRRP负载分担："></a><strong>VRRP负载分担：</strong></h4><p><strong>负载分担是指多个VRRP备份组同时承担业务</strong>，VRRP负载分担与VRRP主备备份的基本原理和报文协商过程都是相同的。同样对于每一个VRRP备份组，都包含一个Master设备和若干Backup设备。与主备备份方式不同点在于：负载分担方式需要建立多个VRRP备份组，各备份组的Master设备可以不同；同一台VRRP设备可以加入多个备份组，在不同的备份组中具有不同的优先级。</p>
+<h4 id="多网关负载分担："><a href="#多网关负载分担：" class="headerlink" title="多网关负载分担："></a>多网关负载分担：</h4><p>通过创建多个带虚拟IP地址的VRRP备份组，为不同的用户指定不同的VRRP备份组作为网关，实现负载分担。</p>
+<h4 id="如何选举Master和Backup？"><a href="#如何选举Master和Backup？" class="headerlink" title="如何选举Master和Backup？"></a>如何选举Master和Backup？</h4><p>​	1.比较优先级，默认情况下优先级为100，最大可以配置的优先级为1-254，优先级越大越优。</p>
+<p>​	2.如果优先级一样，IP地址大的一端成为Master。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/07/29/VRRP/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2024/07/29/VRRP%E9%85%8D%E7%BD%AE/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            (no title)
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2024/07/29/vlan/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title"></div>
+      </a>
+    
+  </nav>
+
+  
+   
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2024
+        <i class="ri-heart-fill heart_icon"></i> Ymnnb
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Ymnnb"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="http://47.109.32.204/cat/">猫猫</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://yunchenqwq.github.io/Genshin_Start.github.io/">嘻嘻</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i></p>
+  <div class="reward-box">
+    
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=466343434&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+</body>
+
+</html>

